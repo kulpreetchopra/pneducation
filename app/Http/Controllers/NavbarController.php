@@ -25,6 +25,8 @@ class NavbarController extends Controller
         "logo"=>"required",
         "about"=>"required",
         "address"=>"required",
+        "timing"=>"required",
+        "map"=>"required",
         "facebook"=>"required",
         "twitter"=>"required",
         "instagram"=>"required",
@@ -39,6 +41,8 @@ class NavbarController extends Controller
     	$r->logo=$filename;
     	$r->about=$a->about;
     	$r->address=$a->address;
+        $r->timing=$a->timing;
+        $r->map=$a->map;
     	$r->facebook=$a->facebook;
     	$r->twitter=$a->twitter;
     	$r->instagram=$a->instagram;
@@ -69,6 +73,8 @@ class NavbarController extends Controller
     	$e->logo=$filename;
     	$e->about=$b->about;
     	$e->address=$b->address;
+        $e->timing=$b->timing;
+        $e->map=$b->map;
     	$e->facebook=$b->facebook;
     	$e->twitter=$b->twitter;
     	$e->instagram=$b->instagram;
@@ -87,6 +93,8 @@ class NavbarController extends Controller
     	$e->email=$b->email;
     	$e->about=$b->about;
     	$e->address=$b->address;
+        $e->timing=$b->timing;
+        $e->map=$b->map;
     	$e->facebook=$b->facebook;
     	$e->twitter=$b->twitter;
     	$e->instagram=$b->instagram;

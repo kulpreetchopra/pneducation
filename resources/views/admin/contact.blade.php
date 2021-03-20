@@ -53,7 +53,7 @@
               </div>
               <div class="card-body">
                    
-              <table id="example1" class="table table-bordered table-striped table-responsive">
+              <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr style="text-align: center;">
                   <th>Id</th>
@@ -61,6 +61,7 @@
                   <th>Email</th>
                   <th>Contact</th>
                   <th>Comment</th>
+                  <th>Date</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -72,6 +73,7 @@
                     <td>{{$a->email}}</td>
                     <td>{{$a->contact}}</td>
                     <td>{{$a->comment}}</td>
+                    <td>{{$a->created_at}}</td>
                     <td>
                       <a href="{{url('admin/contact_delete/'.$a->id)}}"><p class="btn btn-danger"><i class="fas fa-trash"></i></p></a>
                     </td>
@@ -85,6 +87,7 @@
                   <th>Email</th>
                   <th>Contact</th>
                   <th>Comment</th>
+                  <th>Date</th>
                   <th>Action</th>
                 </tr>
                 </tfoot>

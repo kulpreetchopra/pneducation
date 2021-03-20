@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contact;
+use App\Subscribe;
 
 class AdminController extends Controller
 {
@@ -28,6 +29,22 @@ class AdminController extends Controller
         }
         else{
             return redirect('admin/contact')->with('message','Deleted Unsuccessfully'); //reduct rout of url
+        }
+    }
+    public function subscribers(){
+        $subscriber = Subscribe::all();
+        return view("admin.subscriber",compact('subscriber'));
+    }
+    public function subscriberdelete($id)
+    {
+        echo $id;
+        $d=Subscribe::find($id);
+        $delete=$d->delete();
+        if($delete){
+            return redirect('admin/subscribers')->with('message','Deleted Successfully');; //reduct rout of url
+        }
+        else{
+            return redirect('admin/subscribers')->with('message','Deleted Unsuccessfully'); //reduct rout of url
         }
     }
 }

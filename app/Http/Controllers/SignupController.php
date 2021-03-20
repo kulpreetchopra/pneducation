@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Signup;
 use App\Navbar;
+use App\Cart;
 use DB;
 
 class SignupController extends Controller
@@ -13,7 +14,8 @@ class SignupController extends Controller
     public function signup()
     {
     	$navbar = Navbar::all();
-        return view("front.signup",compact('navbar'));
+        $cart = Cart::all();
+        return view("front.signup",compact('navbar','cart'));
     }
     public function submit(Request $a)
     {   
@@ -36,7 +38,8 @@ class SignupController extends Controller
     }
     public function user_login(){
     	$navbar = Navbar::all();
-        return view("front.login",compact('navbar'));
+        $cart = Cart::all();
+        return view("front.login",compact('navbar','cart'));
     }
     public function login_submit(Request $b)
     {   

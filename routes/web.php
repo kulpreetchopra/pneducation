@@ -25,6 +25,7 @@ Route::get('interns','FrontendController@interns');
 Route::get('placements','FrontendController@placements');
 Route::get('contact','FrontendController@contact');
 Route::post('contact_submit','FrontendController@contactsubmit');
+Route::post('subscribers_submit','FrontendController@subscribersubmit');
 
 //addtocart
 Route::get('addtocart','CartController@cart');
@@ -42,6 +43,8 @@ Auth::routes();
 Route::get('admin','AdminController@index');
 Route::get('admin/contact','AdminController@contact');
 Route::get('admin/contact_delete/{id}','AdminController@delete');
+Route::get('admin/subscribers','AdminController@subscribers');
+Route::get('admin/subscribers_delete/{id}','AdminController@subscriberdelete');
 
 //Category controller
 Route::get('admin/category','CategoryController@display');

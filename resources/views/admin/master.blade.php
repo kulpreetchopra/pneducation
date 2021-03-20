@@ -164,7 +164,30 @@
             <a href="#" class="nav-link active" style="background-color: black!important">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Index Page
+                Our Users
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item" style="background-color: white">
+                <a href="{{url('admin/contact')}}" class="nav-link ">
+                  <i class="fas fa-eye"></i>
+                  <p>ContactUs</p>
+                </a>
+              </li>
+              <li class="nav-item" style="background-color: white">
+                <a href="{{url('admin/subscribers')}}" class="nav-link ">
+                  <i class="fas fa-eye"></i>
+                  <p>Subscribers</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active" style="background-color: black!important">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Frontend Pages
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -203,6 +226,12 @@
                 <a href="{{url('admin/contact')}}" class="nav-link ">
                   <i class="fas fa-eye"></i>
                   <p>ContactUs</p>
+                </a>
+              </li>
+              <li class="nav-item" style="background-color: white">
+                <a href="{{url('admin/subscribers')}}" class="nav-link ">
+                  <i class="fas fa-eye"></i>
+                  <p>Subscribers</p>
                 </a>
               </li>
             </ul>

@@ -12,6 +12,7 @@ use App\Team;
 use App\Intern;
 use App\Placement;
 use App\Contact;
+use App\Subscribe;
 
 class FrontendController extends Controller
 {
@@ -101,6 +102,18 @@ class FrontendController extends Controller
         }
         else{
             return redirect('contact')->with('wmessage','Submitted Unsuccessfully');
+        }
+    }
+    public function subscribersubmit(Request $a)
+    {   
+        $r = new Subscribe;
+        $r->email=$a->email;
+        $r->save();
+        if($r){
+            return redirect('/');
+        }
+        else{
+            return redirect('/');
         }
     }
 }

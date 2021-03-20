@@ -2,7 +2,11 @@
 @section("title","ContactUs | PN-Education")
 @section("content")
 <!-- map section -->
-		<div id="map"></div>
+		<div>
+			@foreach($navbar as $a)
+			<iframe src="{{$a->map}}" width="100%" height="580" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+			@endforeach
+		</div>
 		<!-- end map section -->
 
 		<!-- contact-section 
@@ -96,7 +100,7 @@
 								<div class="info-content">
 									<p>
 										Our office is open:<br>
-										Mon to Fri from 8am to 6pm
+										{{$a->timing}}
 									</p>
 								</div>
 							</div>

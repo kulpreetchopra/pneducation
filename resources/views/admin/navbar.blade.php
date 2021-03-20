@@ -57,7 +57,7 @@
               </div>
               <div class="card-body">
                    
-              <table id="example1" class="table table-bordered table-striped table-responsive">
+              <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr style="text-align: center;">
                   <th>Id</th>
@@ -66,6 +66,8 @@
                   <th>Logo</th>
                   <th>About</th>
                   <th>Address</th>
+                  <th>Timing</th>
+                  <th>Map</th>
                   <th>Facebook</th>
                   <th>Twitter</th>
                   <th>Instagram</th>
@@ -84,6 +86,8 @@
                     </td>
                     <td>{{$a->about}}</td>
                     <td>{{$a->address}}</td>
+                    <td>{{$a->timing}}</td>
+                    <td>{{$a->map}}</td>
                     <td>{{$a->facebook}}</td>
                     <td>{{$a->twitter}}</td>
                     <td>{{$a->instagram}}</td>
@@ -103,6 +107,8 @@
                   <th>Logo</th>
                   <th>About</th>
                   <th>Address</th>
+                  <th>Timing</th>
+                  <th>Map</th>
                   <th>Facebook</th>
                   <th>Twitter</th>
                   <th>Instagram</th>
@@ -153,6 +159,14 @@
     <div class="form-group">
       <label>Address:</label>
       <textarea type="text" class="form-control" placeholder="Enter Address" name="address"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Timing:</label>
+      <input type="text" class="form-control" placeholder="Enter Opening Timings" name="timing">
+    </div>
+    <div class="form-group">
+      <label>Map:</label>
+      <textarea type="text" class="form-control" placeholder="Enter Map Url" name="map"></textarea>
     </div>
     <div class="form-group">
       <label>Facebook Url:</label>

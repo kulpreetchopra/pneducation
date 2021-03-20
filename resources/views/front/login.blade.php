@@ -11,16 +11,10 @@
     margin: 0px 40px
 }
 
-.logo {
-    width: 150px;
-    height: 50px;
-    margin-top: 30px;
-    margin-left: 45px;
-}
-
 .image {
+    margin-top: 30px;
     width: 450px;
-    height: 350px
+    height: 380px
 }
 
 .border-line {
@@ -166,7 +160,6 @@ a {
         <div class="row d-flex">
             <div class="col-lg-6">
                 <div class="card1 pb-5">
-                    <div class="row"> <img src="{{ url('/front/logo1615719373.png') }}" class="logo"> </div>
                     <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="https://firebasestorage.googleapis.com/v0/b/pn-images.appspot.com/o/home-%3Eclient%2Fe3.jpg?alt=media&token=0f9d6230-34e3-4233-b31f-a6c5e646bbcd" class="image"> </div>
                 </div>
             </div>

@@ -20,6 +20,8 @@ class CreateNavbarsTable extends Migration
             $table->string('logo');
             $table->string('about');
             $table->string('address');
+            $table->string('timing');
+            $table->string('map');
             $table->string('facebook');
             $table->string('twitter');
             $table->string('instagram');

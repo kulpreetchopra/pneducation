@@ -14,7 +14,8 @@
 	<link rel="stylesheet" type="text/css" href="{{url('css/fonts/elegant-icons/style.css')}}" media="screen">
 	<link rel="stylesheet" type="text/css" href="{{url('css/fonts/iconfont/material-icons.css')}}" media="screen">
 	<link rel="stylesheet" type="text/css" href="{{url('css/style.css')}}">
-
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
 </head>
 <body>
     @foreach($navbar as $a)
@@ -104,25 +105,20 @@
 					<a class="shop-icon" href="{{url('addtocart')}}">
 						<i class="material-icons">shopping_cart</i>
 						Cart
-						<span class="studiare-cart-number">0</span>
+						<span class="studiare-cart-number">{{$cart->count()}}</span>
 					</a>
+					<a href="{{url('/user_login')}}" class="login-button"><i class="material-icons">perm_identity</i>Login</a>
+					<a href="{{url('/signup')}}"  class="login-button"><i class="material-icons">perm_identity</i>Signup</a>
 				</div>
 				<nav class="mobile-nav">
 					<ul class="mobile-menu-list">
-						<li>
-							<a class="active" href="{{url('/')}}">Home</a>
+						<li><a class="active" href="{{url('/')}}">Home</a></li>
+						<li><a href="{{url('allcourses')}}">Courses</a></li>
+						<li><a href="{{url('ourteam')}}">Our Team</a></li>
+						<li><a href="{{url('interns')}}">Our Interns</a></li>
 						</li>
-						<li class="drop-link">
-							<a href="#">About Us</a>
-							<ul class="drop-level">
-								<li><a href="#">Our Team</a></li>
-								<li><a href="#">Our Interns</a></li>
-							</ul>
-						</li>
-							<li><a href="{{url('allcourses')}}">Courses</a></li>
-							<li><a href="#">Events</a></li>
-							<li><a href="#">Placements</a></li>
-							<li><a href="#">Contact Us</a></li>
+						<li><a href="{{url('placements')}}">Placements</a></li>
+						<li><a href="{{url('contact')}}">Contact Us</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -182,10 +178,11 @@
 							<div class="footer-widget subscribe-widget">
 								<h2>Newsletter</h2>
 								<p>Don’t miss anything, sign up now and keep informed about our company.</p>
-								<div class="newsletter-form">
-									<input class="form-control" type="email" name="EMAIL" placeholder="Enter Your E-mail" required="">
-									<input type="submit" value="Subscribe">
-								</div>
+									<form class="newsletter-form" method="post" action="{{url('subscribers_submit')}}" enctype="multipart/form-data">
+                                    @csrf
+									<input class="form-control" type="email" name="email" placeholder="Enter Your E-mail" required="">
+									<input type="submit" name="submit" value="Subscribe">
+								    </form>
 							</div>
 						</div>
 
@@ -229,7 +226,11 @@
 	<script type="text/javascript" src="{{url('js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
 	<script type="text/javascript" src="{{url('js/extensions/revolution.extension.navigation.min.js')}}"></script>
 	<script type="text/javascript" src="{{url('js/extensions/revolution.extension.parallax.min.js')}}"></script>
-
+    <script type="text/javascript">
+    $(document).ready(function(){
+    $('#mymodel').modal('show');
+  });
+    </script>
 	<script>
 		var tpj=jQuery;
 		var revapi202;

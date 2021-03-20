@@ -79,6 +79,14 @@
       <textarea type="text" class="form-control" name="address">{{$edit->address}}</textarea>
     </div>
     <div class="form-group">
+      <label>Timing:</label>
+      <input type="text" class="form-control" placeholder="Enter Opening Timings" name="timing" value="{{$edit->timing}}">
+    </div>
+    <div class="form-group">
+      <label>Map:</label>
+      <textarea type="text" class="form-control" placeholder="Enter Map Url" name="map">{{$edit->map}}</textarea>
+    </div>
+    <div class="form-group">
       <label>Facebook Url:</label>
       <input type="text" class="form-control" placeholder="Enter Facebook Url" name="facebook" value="{{$edit->facebook}}">
     </div>
