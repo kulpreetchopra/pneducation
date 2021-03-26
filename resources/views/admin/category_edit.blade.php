@@ -67,6 +67,13 @@
       <img src="{{ url('/course/'.$edit->image) }}" style="height: 120px; width: 120px; border-radius: 100%;">
       <input type="file" class="form-control" value="{{$edit->image}}" name="image">
     </div>
+    <div class="form-group">
+      <label>Status:</label>
+      <select name="c_status" class="form-control">
+        <option value="1">Active</option>
+        <option value="0">InActive</option>
+      </select>
+    </div>
     <input type="submit" class="btn btn-success" name="submit" value="Update">
   </form>
   <br>

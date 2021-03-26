@@ -14,7 +14,6 @@
 	<link rel="stylesheet" type="text/css" href="{{url('css/fonts/elegant-icons/style.css')}}" media="screen">
 	<link rel="stylesheet" type="text/css" href="{{url('css/fonts/iconfont/material-icons.css')}}" media="screen">
 	<link rel="stylesheet" type="text/css" href="{{url('css/style.css')}}">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
 </head>
 <body>
@@ -36,7 +35,8 @@
 							<div class="right-top-line">
 								<ul class="top-menu">
 									<li><a href="#">Purchase Now</a></li>
-									<li><a href="#">About</a></li>
+									<li><a href="{{url('about')}}">About</a></li>
+									<li><a href="{{url('contact')}}">Contact</a></li>
 								</ul>
 								<button class="search-icon">
 									<i class="material-icons open-search">search</i> 
@@ -80,14 +80,14 @@
 								<a class="active" href="{{url('/')}}">Home</a>
 							</li>
 							<li><a href="{{url('allcourses')}}">Courses</a></li>
+							<li><a href="{{url('workshop')}}">Workshops</a></li>
 							<li><a href="{{url('ourteam')}}">Our Team</a></li>
 							<li><a href="{{url('interns')}}">Our Interns</a></li>
 							<li><a href="{{url('placements')}}">Placements</a></li>
-							<li><a href="{{url('contact')}}">Contact Us</a></li>
 						</ul>
-						<a href="{{url('/user_login')}}" style="background-color:#1A237E" class="login-button"><i class="material-icons">perm_identity</i>Login</a>
+						<a href="{{url('/user_login')}}" style="background-color:#1A237E" class="login-button">Login</a>
 						&nbsp;&nbsp;
-						<a href="{{url('/signup')}}" style="background-color:#1A237E" class="login-button"><i class="material-icons">perm_identity</i>Signup</a>
+						<a href="{{url('/signup')}}" style="background-color:#1A237E" class="login-button">Signup</a>
 					</div>
 				</div>
 			</nav>
@@ -114,11 +114,13 @@
 					<ul class="mobile-menu-list">
 						<li><a class="active" href="{{url('/')}}">Home</a></li>
 						<li><a href="{{url('allcourses')}}">Courses</a></li>
+						<li><a href="{{url('workshop')}}">Workshops</a></li>
 						<li><a href="{{url('ourteam')}}">Our Team</a></li>
 						<li><a href="{{url('interns')}}">Our Interns</a></li>
 						</li>
 						<li><a href="{{url('placements')}}">Placements</a></li>
 						<li><a href="{{url('contact')}}">Contact Us</a></li>
+						<li><a href="{{url('about')}}">About Us</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -162,14 +164,14 @@
 							<div class="footer-widget quick-widget">
 								<h2>Quick Links</h2>
 								<ul class="quick-list">
-									<li><a href="about.html">About Us</a></li>
-									<li><a href="{{url('allcourses')}}">Courses</a></li>
-									<li><a href="pricing.html">Events</a></li>
-									<li><a href="courses.html">Our Team</a></li>
-									<li><a href="blog.html">Placements</a></li>
-									<li><a href="index.html">Interns</a></li>
-									<li><a href="#">Contact Us</a></li>
 									<li><a href="{{url('/')}}">Home</a></li>
+									<li><a href="{{url('placements')}}">Placements</a></li>
+									<li><a href="{{url('allcourses')}}">Courses</a></li>
+									<li><a href="{{url('about')}}">About Us</a></li>
+									<li><a href="{{url('ourteam')}}">Team</a></li>
+									<li><a href="{{url('contact')}}">Contact Us</a></li>
+									<li><a href="{{url('interns')}}">Interns</a></li>
+									<li><a href="{{url('workshop')}}">Workshops</a></li>
 								</ul>
 							</div>
 						</div>

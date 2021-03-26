@@ -57,7 +57,7 @@
               </div>
               <div class="card-body">
                    
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example1" class="table table-bordered table-striped table-responsive">
                 <thead>
                 <tr style="text-align: center;">
                   <th>Id</th>
@@ -84,14 +84,14 @@
                     <td>
                       <img src="{{ url('/front/'.$a->logo) }}" style="height: 120px; width: 120px; border-radius: 100%;">
                     </td>
-                    <td>{{$a->about}}</td>
-                    <td>{{$a->address}}</td>
+                    <td><?php echo substr($a->about,0,20);echo"..."?></td>
+                    <td><?php echo substr($a->address,0,20);echo"..."?></td>
                     <td>{{$a->timing}}</td>
-                    <td>{{$a->map}}</td>
-                    <td>{{$a->facebook}}</td>
-                    <td>{{$a->twitter}}</td>
-                    <td>{{$a->instagram}}</td>
-                    <td>{{$a->linkedin}}</td>
+                    <td><?php echo substr($a->map,0,20);echo"..."?></td>
+                    <td><?php echo substr($a->facebook,0,20);echo"..."?></td>
+                    <td><?php echo substr($a->twitter,0,20);echo"..."?></td>
+                    <td><?php echo substr($a->instagram,0,20);echo"..."?></td>
+                    <td><?php echo substr($a->linkedin,0,20);echo"..."?></td>
                     <td>
                       <a href="{{url('admin/navbar_edit/'.$a->id)}}"><p class="btn btn-success"><i class="fas fa-edit"></i></p></a>
                       <a href="{{url('admin/navbar_delete/'.$a->id)}}"><p class="btn btn-danger"><i class="fas fa-trash"></i></p></a>

@@ -432,7 +432,7 @@
 								<input type="hidden" name="course_price" value="{{$course->c_price}}">
 								<input type="hidden" name="image" value="{{$course->c_image}}">	
 								<a class="button-one" href="">
-								<input class="button-one" type="submit" name="submit" value="Add To Cart">
+								<input type="submit" name="submit" value="Add To Cart">
 								</a>
 								</form>
 								<a class="button-one" href="#">Buy This course</a>

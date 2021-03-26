@@ -86,7 +86,9 @@
 								<h2>Course categories</h2>
 								<ul class="category-list">
 									@foreach($categorylist as $a)
+									@if($a->c_status=='1')
 									<li><a href="{{url('allcategory/'.$a->id)}}">{{$a->c_name}}</a></li>
+									@endif
 									@endforeach
 								</ul>
 							</div>

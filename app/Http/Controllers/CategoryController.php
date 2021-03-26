@@ -41,21 +41,19 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $edit= Category::find($id);
-        return view("admin.category_edit",compact('edit'));
+        $status='1';
+        return view("admin.category_edit",compact('edit','status'));
     }
     public function update(Request $b)
     {
         if($b->hasFile('image'))
         {
-        $this->validate($b,[
-        "c_name"=>"required",
-        "image"=>"required",
-        ]);
         $file = $b->file('image');
         $filename = 'image'. time().'.'.$b->image->extension();
         $file->move("course/",$filename);
         $r =Category::find($b->id);
         $r->c_name=$b->c_name;
+        $r->c_status=$b->c_status;
         $r->image=$filename;
         $r->save();
         if($r){
@@ -66,11 +64,9 @@ class CategoryController extends Controller
         }
         }
         else{
-         $this->validate($b,[
-        "c_name"=>"required",
-        ]);
         $r =Category::find($b->id);
         $r->c_name=$b->c_name;
+        $r->c_status=$b->c_status;
         $r->save();
         if($r){
             return redirect('admin/category')->with('message','Updated Successfully'); //reduct rout of url

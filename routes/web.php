@@ -26,10 +26,15 @@ Route::get('placements','FrontendController@placements');
 Route::get('contact','FrontendController@contact');
 Route::post('contact_submit','FrontendController@contactsubmit');
 Route::post('subscribers_submit','FrontendController@subscribersubmit');
+Route::get('about','FrontendController@about');
+Route::get('workshop','FrontendController@workshop');
 
-//addtocart
+//addtocart [Cart Controller]
 Route::get('addtocart','CartController@cart');
 Route::post('cartsubmit','CartController@cartsubmit');
+
+//checkout [Cart Controller]
+Route::get('checkout','CartController@checkout');
 
 //Signup Controller
 Route::get('signup','SignupController@signup');
@@ -67,6 +72,20 @@ Route::get('admin/banner_edit/{id}','BannerController@edit');
 Route::post('admin/banner_update','BannerController@update');
 Route::get('admin/banner_delete/{id}','BannerController@delete');
 
+//Alert controller
+Route::get('admin/alert','AlertController@display');
+Route::post('admin/alert_submit','AlertController@submit');
+Route::get('admin/alert_edit/{id}','AlertController@edit');
+Route::post('admin/alert_update','AlertController@update');
+Route::get('admin/alert_delete/{id}','AlertController@delete');
+
+//Special controller
+Route::get('admin/special','SpecialController@display');
+Route::post('admin/special_submit','SpecialController@submit');
+Route::get('admin/special_edit/{id}','SpecialController@edit');
+Route::post('admin/special_update','SpecialController@update');
+Route::get('admin/special_delete/{id}','SpecialController@delete');
+
 //Navbar controller
 Route::get('admin/navbar','NavbarController@display');
 Route::post('admin/navbar_submit','NavbarController@submit');
@@ -94,4 +113,18 @@ Route::post('admin/placements_submit','PlacementController@submit');
 Route::get('admin/placements_edit/{id}','PlacementController@edit');
 Route::post('admin/placements_update','PlacementController@update');
 Route::get('admin/placements_delete/{id}','PlacementController@delete');
+
+//Workshop controller
+Route::get('admin/workshop','WorkshopController@display');
+Route::post('admin/workshop_submit','WorkshopController@submit');
+Route::get('admin/workshop_edit/{id}','WorkshopController@edit');
+Route::post('admin/workshop_update','WorkshopController@update');
+Route::get('admin/workshop_delete/{id}','WorkshopController@delete');
+
+//Coupan controller
+Route::get('admin/coupan','CoupanController@display');
+Route::post('admin/coupan_submit','CoupanController@submit');
+Route::get('admin/coupan_edit/{id}','CoupanController@edit');
+Route::post('admin/coupan_update','CoupanController@update');
+Route::get('admin/coupan_delete/{id}','CoupanController@delete');
 

@@ -19,7 +19,7 @@ class CreateCartsTable extends Migration
             $table->string('course_name');
             $table->string('course_price');
             $table->string('course_quantity')->nullable();
-            $table->integer('session_id')->nullable();
+            $table->string('session_id')->nullable();
             $table->string('user_email')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();

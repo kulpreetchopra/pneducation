@@ -73,7 +73,7 @@
                     <td>{{$a->id}}</td>
                     <td>{{$a->c_name}}</td>
                     <td> 
-                      <input data-id="{{$a->c_status}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $a->c_status ? 'checked' : '' }}>
+                      <input type="checkbox" data-id="{{ $a->id }}" name="c_status" class="js-switch" {{ $a->c_status == '1' ? 'checked' : '' }}>
                     </td>
                     <td>
                       <img src="{{ url('/course/'.$a->image) }}" style="height: 120px; width: 120px; border-radius: 100%;">

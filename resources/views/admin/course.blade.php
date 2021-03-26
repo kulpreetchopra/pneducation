@@ -1,5 +1,5 @@
 @extends("admin.master")
-@section("title","Category | PN-Education")
+@section("title","Courses | PN-Education")
 @section("content")
 
  <!-- Content Wrapper. Contains page content -->
@@ -78,8 +78,8 @@
                   <tr style="text-align: center;">
                     <td>{{$a->id}}</td>
                     <td>{{$a->c_name}}</td>
-                    <td>{{$a->c_discription}}</td>
-                    <td>{{$a->c_price}}</td>
+                    <td><?php echo substr($a->c_discription,0,20);echo"..."?></td>
+                    <td>₹{{$a->c_price}}</td>
                     <td>{{$a->c_details}}</td>
                     <td>{{$a->c_include}}</td>
                     <td>{{$a->c_containt}}</td>

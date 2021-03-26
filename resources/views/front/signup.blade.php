@@ -21,39 +21,6 @@
     border-right: 1px solid #EEEEEE
 }
 
-.facebook {
-    background-color: #3b5998;
-    color: #fff;
-    font-size: 18px;
-    padding-top: 5px;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    cursor: pointer
-}
-
-.twitter {
-    background-color: #1DA1F2;
-    color: #fff;
-    font-size: 18px;
-    padding-top: 5px;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    cursor: pointer
-}
-
-.linkedin {
-    background-color: #2867B2;
-    color: #fff;
-    font-size: 18px;
-    padding-top: 5px;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    cursor: pointer
-}
-
 .line {
     height: 1px;
     width: 45%;
@@ -165,22 +132,7 @@ a {
             </div>
             <div class="col-lg-6">
                 <div class="card2 card border-0 px-4 py-5">
-                    <div class="row mb-4 px-3">
-                        <h6 class="mb-0 mr-4 mt-2">Sign in with</h6>
-                        <div class="facebook text-center mr-3">
-                            <div class="fa fa-facebook"></div>
-                        </div>
-                        <div class="twitter text-center mr-3">
-                            <div class="fa fa-twitter"></div>
-                        </div>
-                        <div class="linkedin text-center mr-3">
-                            <div class="fa fa-linkedin"></div>
-                        </div>
-                    </div>
-                    <div class="row px-3 mb-4">
-                        <div class="line"></div> <small class="or text-center">Or</small>
-                        <div class="line"></div>
-                    </div>
+                    <br>
                     <form method="post" action="{{url('/submit')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="row px-3"> 

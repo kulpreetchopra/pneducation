@@ -8,13 +8,15 @@ use App\Signup;
 use App\Navbar;
 use App\Cart;
 use DB;
+use Session;
 
 class SignupController extends Controller
 {
     public function signup()
     {
+        $session_id = Session::getId();
     	$navbar = Navbar::all();
-        $cart = Cart::all();
+        $cart= Cart::where('session_id',$session_id)->get();
         return view("front.signup",compact('navbar','cart'));
     }
     public function submit(Request $a)
@@ -37,8 +39,9 @@ class SignupController extends Controller
         }
     }
     public function user_login(){
+        $session_id = Session::getId();
     	$navbar = Navbar::all();
-        $cart = Cart::all();
+        $cart= Cart::where('session_id',$session_id)->get();
         return view("front.login",compact('navbar','cart'));
     }
     public function login_submit(Request $b)

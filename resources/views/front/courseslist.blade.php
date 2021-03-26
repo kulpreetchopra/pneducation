@@ -40,7 +40,7 @@
                         @foreach($course as $a)
 						<div class="course-post list-style">
 							<div class="course-thumbnail-holder">
-								<a href="single-course.html">
+								<a href="{{url('courses/'.$a->id)}}">
 									<img src="{{ url('/course/'.$a->c_image) }}" alt="">
 								</a>
 							</div>
@@ -81,7 +81,9 @@
 								<h2>Course categories</h2>
 								<ul class="category-list">
 									@foreach($category as $a)
+									@if($a->c_status=='1')
 									<li><a href="{{url('allcategory/'.$a->id)}}">{{$a->c_name}}</a></li>
+									@endif
 									@endforeach
 								</ul>
 							</div>

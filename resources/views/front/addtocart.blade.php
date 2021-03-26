@@ -52,6 +52,12 @@
 										<td class="product-subtotal">₹{{($a->course_price)*$value}}</td>
 									</tr>
 									@endforeach
+									<tr class="coupon-line"> 
+										<td colspan="6" class="actions">
+											<input type="text" name="coupon_code" placeholder="Coupon code">
+											<button type="submit">Update cart</button>
+										</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
@@ -72,7 +78,7 @@
 										</tr>
 									</tbody>
 								</table>
-								<a href="checkout.html" class="checkout-button">Proceed to checkout</a>
+								<a href="{{url('checkout')}}" class="checkout-button">Proceed to checkout</a>
 							</div>
 						</div>
 					</div>

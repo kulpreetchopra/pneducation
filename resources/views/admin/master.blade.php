@@ -26,12 +26,13 @@
   <link rel="stylesheet" href="{{url('backend/plugins/summernote/summernote-bs4.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <!-- toggel button -->
-  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet"/>
   <!-- Data Table LINKs-- -->
   <link rel="stylesheet" href="{{url('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{url('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <!-- End Data Table-- -->
+  <!-- toggle -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -181,6 +182,12 @@
                   <p>Subscribers</p>
                 </a>
               </li>
+              <li class="nav-item" style="background-color: white">
+                <a href="{{url('admin/coupan')}}" class="nav-link ">
+                  <i class="fas fa-eye"></i>
+                  <p>Coupan</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item has-treeview menu-open">
@@ -199,9 +206,21 @@
                 </a>
               </li>
               <li class="nav-item" style="background-color: white">
+                <a href="{{url('admin/alert')}}" class="nav-link ">
+                  <i class="fas fa-eye"></i>
+                  <p>Alerts</p>
+                </a>
+              </li>
+              <li class="nav-item" style="background-color: white">
                 <a href="{{url('admin/banner')}}" class="nav-link ">
                   <i class="fas fa-eye"></i>
                   <p>Banner</p>
+                </a>
+              </li>
+              <li class="nav-item" style="background-color: white">
+                <a href="{{url('admin/special')}}" class="nav-link ">
+                  <i class="fas fa-eye"></i>
+                  <p>Features</p>
                 </a>
               </li>
               <li class="nav-item" style="background-color: white">
@@ -223,15 +242,9 @@
                 </a>
               </li>
               <li class="nav-item" style="background-color: white">
-                <a href="{{url('admin/contact')}}" class="nav-link ">
+                <a href="{{url('admin/workshop')}}" class="nav-link ">
                   <i class="fas fa-eye"></i>
-                  <p>ContactUs</p>
-                </a>
-              </li>
-              <li class="nav-item" style="background-color: white">
-                <a href="{{url('admin/subscribers')}}" class="nav-link ">
-                  <i class="fas fa-eye"></i>
-                  <p>Subscribers</p>
+                  <p>Workshops</p>
                 </a>
               </li>
             </ul>
@@ -328,6 +341,12 @@
       "autoWidth": false,
       "responsive": true,
     });
+  });
+</script>
+<script>
+  let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+  elems.forEach(function(html) {
+    let switchery = new Switchery(html,  { size: 'small' });
   });
 </script>
 <!-- End Data table--- -->
