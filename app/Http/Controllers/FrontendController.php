@@ -16,6 +16,10 @@ use App\Subscribe;
 use App\Special;
 use App\Alert;
 use App\Workshop;
+use App\User;
+use App\About;
+use App\Portfolio;
+use App\Rating;
 use Session;
 
 class FrontendController extends Controller
@@ -34,9 +38,10 @@ class FrontendController extends Controller
     public function courses($id){
         $session_id = Session::getId();
         $navbar = Navbar::all();
+        $rating = Rating::all();
         $course= Course::find($id);
         $cart= Cart::where('session_id',$session_id)->get();
-        return view("front.courses",compact('course','navbar','cart'));
+        return view("front.courses",compact('course','navbar','cart','rating'));
     }
     public function allcourses(){
         $session_id = Session::getId();
@@ -109,8 +114,14 @@ class FrontendController extends Controller
     public function about(){
         $session_id = Session::getId();
         $navbar = Navbar::all();
+        $about = About::all();
+        $portfolio = Portfolio::all();
+        $course = Course::all();
+        $signup = User::all();
+        $subscribe = Subscribe::all();
+        $placement = Placement::all();
         $cart= Cart::where('session_id',$session_id)->get();
-        return view("front.about",compact('navbar','cart'));
+        return view("front.about",compact('navbar','about','cart','course','signup','subscribe','placement','portfolio'));
     }
     public function contactsubmit(Request $a)
     {   
@@ -135,14 +146,40 @@ class FrontendController extends Controller
     }
     public function subscribersubmit(Request $a)
     {   
+        $this->validate($a,[
+        "email"=>"required",
+        ]);
         $r = new Subscribe;
         $r->email=$a->email;
         $r->save();
         if($r){
-            return redirect('/');
+            return redirect('/')->with('message','Subscribed Successfully');
         }
         else{
-            return redirect('/');
+            return redirect('/')->with('wmessage','Subscribed Unsuccessfully');
+        }
+    }
+    public function ratingsubmit(Request $a)
+    {   
+        $this->validate($a,[
+        "course_id"=>"required",
+        "course_name"=>"required",
+        "rating"=>"required",
+        "review"=>"required",
+        ]);
+        $r = new Rating;
+        $r->user_name=$a->user_name;
+        $r->user_email=$a->user_email;
+        $r->course_id=$a->course_id;
+        $r->course_name=$a->course_name;
+        $r->rating=$a->rating;
+        $r->review=$a->review;
+        $r->save();
+        if($r){
+            return redirect('allcourses')->with('message','Course Rated Successfully');
+        }
+        else{
+            return redirect('allcourses')->with('wmessage','Course Rated Unsuccessfully');
         }
     }
 }

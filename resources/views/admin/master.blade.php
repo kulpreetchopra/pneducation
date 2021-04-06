@@ -247,6 +247,18 @@
                   <p>Workshops</p>
                 </a>
               </li>
+              <li class="nav-item" style="background-color: white">
+                <a href="{{url('admin/about')}}" class="nav-link ">
+                  <i class="fas fa-eye"></i>
+                  <p>AboutUs</p>
+                </a>
+              </li>
+              <li class="nav-item" style="background-color: white">
+                <a href="{{url('admin/portfolio')}}" class="nav-link ">
+                  <i class="fas fa-eye"></i>
+                  <p>Portfolio</p>
+                </a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -261,6 +273,7 @@
             </a>
             </a>
           </li>
+          <br>
         </ul>
 
       </nav>

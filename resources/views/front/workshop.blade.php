@@ -24,7 +24,7 @@
 							<div class="filter-widget widget">
 								<h2>Filter Controls</h2>
 								<ul class="filter">
-									<li><a class="active" href="#" data-filter="*">All</a></li>
+									<li><a class="active" href="#" data-filter="*">All Workshops</a></li>
 									<li><a href="#" data-filter=".Rjit">Rjit College</a></li>
 									<li><a href="#" data-filter=".Mpct">Mpct College</a></li>
 									<li><a href="#" data-filter=".Xiaomi">Xiaomi MI Company</a></li>
@@ -40,7 +40,7 @@
 							<div class="project-post Rjit">
 								<div class="inner-project">
 									<div class="image-holder">
-										<img src="{{ url('/front/'.$a->image) }}" alt="" style="height:280px;width:280px">
+										<img src="{{ url('/front/'.$a->image) }}" alt="" style="height:220px;width:280px;">
 									</div>
 								</div>
 							</div>
@@ -49,7 +49,7 @@
 							<div class="project-post Mpct">
 								<div class="inner-project">
 									<div class="image-holder">
-										<img src="{{ url('/front/'.$a->image) }}" alt="" style="height:280px;width:280px">
+										<img src="{{ url('/front/'.$a->image) }}" alt="" style="height:220px;width:280px;">
 									</div>
 								</div>
 							</div>
@@ -58,7 +58,7 @@
 							<div class="project-post Xiaomi">
 								<div class="inner-project">
 									<div class="image-holder">
-										<img src="{{ url('/front/'.$a->image) }}" alt="" style="height:280px;width:280px">
+										<img src="{{ url('/front/'.$a->image) }}" alt="" style="height:220px;width:280px;">
 									</div>
 								</div>
 							</div>
@@ -67,7 +67,7 @@
 							<div class="project-post BentChair">
 								<div class="inner-project">
 									<div class="image-holder">
-										<img src="{{ url('/front/'.$a->image) }}" alt="" style="height:280px;width:280px">
+										<img src="{{ url('/front/'.$a->image) }}" alt="" style="height:220px;width:280px;">
 									</div>
 								</div>
 							</div>

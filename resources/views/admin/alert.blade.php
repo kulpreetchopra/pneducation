@@ -62,6 +62,9 @@
                 <tr style="text-align: center;">
                   <th>Id</th>
                   <th>Title</th>
+                  <th>Start_Date</th>
+                  <th>Start_Time</th>
+                  <th>End_Date</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -70,6 +73,9 @@
                   <tr style="text-align: center;">
                     <td>{{$a->id}}</td>
                     <td>{{$a->title}}</td>
+                    <td>{{$a->start_date}}</td>
+                    <td>{{$a->start_time}}</td>
+                    <td>{{$a->end_date}}</td>
                     <td>
                       <a href="{{url('admin/alert_edit/'.$a->id)}}"><p class="btn btn-success"><i class="fas fa-edit"></i></p></a>
                       <a href="{{url('admin/alert_delete/'.$a->id)}}"><p class="btn btn-danger"><i class="fas fa-trash"></i></p></a>
@@ -81,6 +87,9 @@
                 <tr style="text-align: center;">
                   <th>Id</th>
                   <th>Title</th>
+                  <th>Start_Date</th>
+                  <th>Start_Time</th>
+                  <th>End_Date</th>
                   <th>Action</th>
                 </tr>
                 </tfoot>
@@ -111,6 +120,18 @@
     <div class="form-group">
       <label>Title:</label>
       <input type="text" class="form-control" placeholder="Enter Banner Title" name="title">
+    </div>
+    <div class="form-group">
+      <label>Start Date:</label>
+      <input type="date" class="form-control" name="start_date">
+    </div>
+    <div class="form-group">
+      <label>Start Time:</label>
+      <input type="time" class="form-control" name="start_time">
+    </div>
+    <div class="form-group">
+      <label>End Date:</label>
+      <input type="date" class="form-control" name="end_date">
     </div>
     <input type="submit" class="btn btn-primary" name="submit" value="Submit">
   </form>

@@ -15,6 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="{{url('css/fonts/iconfont/material-icons.css')}}" media="screen">
 	<link rel="stylesheet" type="text/css" href="{{url('css/style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 </head>
 <body>
     @foreach($navbar as $a)
@@ -62,12 +63,23 @@
 					</button>
 				</div>
 			</form>
-
+			<center>
+			@if(session('message'))
+			<p class ="alert alert-success">
+			    {{session('message')}}
+			</p>
+			@endif
+			@if(session('wmessage'))
+			<p class ="alert alert-danger">
+				{{session('wmessage')}}
+		    </p>
+		    @endif
+		    </center>
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
 
-					<a class="navbar-brand" href="index.html">
-						<img src="{{ url('/front/'.$a->logo) }}" alt="">
+					<a class="navbar-brand" href="{{url('/')}}">
+						<img src="{{ url('/front/'.$a->logo) }}" width="176" height="38" alt="">
 					</a>
 
 					<a href="#" class="mobile-nav-toggle"> 
@@ -85,9 +97,11 @@
 							<li><a href="{{url('interns')}}">Our Interns</a></li>
 							<li><a href="{{url('placements')}}">Placements</a></li>
 						</ul>
-						<a href="{{url('/user_login')}}" style="background-color:#1A237E" class="login-button">Login</a>
+						<a href="{{url('user_login')}}" style="background-color:#1A237E" class="login-button">Login</a>
 						&nbsp;&nbsp;
-						<a href="{{url('/signup')}}" style="background-color:#1A237E" class="login-button">Signup</a>
+						<a href="{{url('user_logout')}}" style="background-color:#1A237E" class="login-button">Logout</a>
+						&nbsp;&nbsp;
+						<a href="{{url('signup')}}" style="background-color:#1A237E" class="login-button">Signup</a>
 					</div>
 				</div>
 			</nav>
@@ -127,6 +141,20 @@
 
 		</header>
 		<!-- End Header -->
+
+		<!-- Modal Body -->
+		<!-- small modal -->
+<div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" style="margin-top:220px!important;">
+	<center>
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" style="background-color:transparent;">
+        <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="VERTICAL" data-vanity="kulpreetchopra" data-version="v1">
+        <a class="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/kulpreetchopra?trk=profile-badge">Kulpreet Singh Chopra</a></div>
+    </div>
+  </div>
+</center>
+</div>
+		<!-- End Modal body -->
 
 	@section("content")
     @show
@@ -175,14 +203,22 @@
 								</ul>
 							</div>
 						</div>
-
 						<div class="col-lg-4 col-md-6">
 							<div class="footer-widget subscribe-widget">
 								<h2>Newsletter</h2>
 								<p>Don’t miss anything, sign up now and keep informed about our company.</p>
+							@if ($errors->any())
+							<div class="alert alert-danger">
+								<ul>
+									@foreach($errors->all() as $error)
+									<li>{{ $error }}</li>
+									@endforeach
+								</ul>
+							</div>
+							@endif
 									<form class="newsletter-form" method="post" action="{{url('subscribers_submit')}}" enctype="multipart/form-data">
                                     @csrf
-									<input class="form-control" type="email" name="email" placeholder="Enter Your E-mail" required="">
+									<input class="form-control" type="text" name="email" placeholder="Enter Your E-mail">
 									<input type="submit" name="submit" value="Subscribe">
 								    </form>
 							</div>

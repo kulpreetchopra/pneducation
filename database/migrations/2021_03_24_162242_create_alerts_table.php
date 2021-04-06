@@ -16,6 +16,9 @@ class CreateAlertsTable extends Migration
         Schema::create('alerts', function (Blueprint $table) {
             $table->id();
             $table->string("title");
+            $table->string("start_date");
+            $table->string("start_time");
+            $table->string("end_time");
             $table->timestamps();
         });
     }

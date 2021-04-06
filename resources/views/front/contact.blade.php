@@ -13,16 +13,6 @@
 			================================================== -->
 		<section class="contact-section">
 			<div class="container">
-				@if(session('message'))
-             <p class ="alert alert-success">
-                {{session('message')}}
-             </p>
-            @endif
-            @if(session('wmessage'))
-             <p class ="alert alert-danger">
-                {{session('wmessage')}}
-             </p>
-            @endif
             @if ($errors->any())
             <div class="alert alert-danger">
             <ul>
@@ -30,8 +20,8 @@
                 <li>{{ $error }}</li>
               @endforeach
             </ul>
-          </div>
-          @endif
+            </div>
+            @endif
 				<div class="contact-box">
 					<h1>Get in Touch</h1>
 					<p>Someone finds it difficult to understand your creative idea? There is a better visualisation. Share your views with us, we’re looking forward to hear from you.</p>

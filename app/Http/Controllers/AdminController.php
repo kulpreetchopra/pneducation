@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Contact;
 use App\Subscribe;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -13,7 +14,10 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
     public function index(){
-    	return view('admin.index');
+        $signup = User::all();
+        $subscribe = Subscribe::all();
+        $contact = Contact::all();
+    	return view('admin.index',compact('signup','subscribe','contact'));
     }
     public function contact(){
         $contact = Contact::all();
@@ -25,10 +29,10 @@ class AdminController extends Controller
         $d=Contact::find($id);
         $delete=$d->delete();
         if($delete){
-            return redirect('admin/contact')->with('message','Deleted Successfully');; //reduct rout of url
+            return redirect('admin/contact')->with('message','Deleted Successfully'); //reduct rout of url
         }
         else{
-            return redirect('admin/contact')->with('message','Deleted Unsuccessfully'); //reduct rout of url
+            return redirect('admin/contact')->with('wmessage','Deleted Unsuccessfully'); //reduct rout of url
         }
     }
     public function subscribers(){
@@ -41,10 +45,10 @@ class AdminController extends Controller
         $d=Subscribe::find($id);
         $delete=$d->delete();
         if($delete){
-            return redirect('admin/subscribers')->with('message','Deleted Successfully');; //reduct rout of url
+            return redirect('admin/subscribers')->with('message','Deleted Successfully'); //reduct rout of url
         }
         else{
-            return redirect('admin/subscribers')->with('message','Deleted Unsuccessfully'); //reduct rout of url
+            return redirect('admin/subscribers')->with('wmessage','Deleted Unsuccessfully'); //reduct rout of url
         }
     }
 }

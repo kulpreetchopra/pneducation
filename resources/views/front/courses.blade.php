@@ -34,7 +34,7 @@
 										<div class="info">
 											<span class="label">Teacher</span>
 											<div class="value">
-												<a href="single-teacher.html">{{$course->c_teacher}}</a>
+												{{$course->c_teacher}}
 											</div>
 										</div>
 									</div>
@@ -45,7 +45,7 @@
 										<div class="info">
 											<span class="label">Category</span>
 											<div class="value">
-												<a href="#">{{$course->c_category}}<span>/</span></a>
+												{{$course->c_category}}<span></span>
 											</div>
 										</div>
 									</div>
@@ -298,117 +298,175 @@
 										Student Reviews
 									</h3>
 								</div>
+								           <?php 
+											$i0=0;
+											$i1=0;
+											$i2=0;
+											$i3=0;
+											$i4=0;
+											$i5=0;
+											$per=0; 
+											$avg=0;
+											?>
 								<div class="course-reviews-inner">
 									<div class="ratings-box">
-										<div class="rating-average">
-											<p>Average rating</p>
-											<div class="average-box">
-												<span class="num">4.5</span>
-												<span class="ratings">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-half-o"></i>
-												</span>
-												<span class="txt">2 Ratings</span>
-											</div>
-										</div>
 										<div class="detailed-rating">
 											<p>Detailed Rating</p>
 											<div class="detailed-box">
 												<ul class="detailed-lines">
 													<li>
 														<span>5 Stars</span>
+														@foreach($rating as $a)
+														@if(($a->course_id)==($course->id))
+														@if($a->rating=='5')
+														<?php $i5++; ?>
+														@endif
+														@endif
+														@endforeach
+														<?php
+														$per=($i5*100)/$course->count(); 
+														?>
 														<div class="outer">
-															<span class="inner-fill" style="width: 50%"></span>
+															<span class="inner-fill" style="width: <?php echo$per ?>%"></span>
 														</div>
-														<span>1</span>
+														<span><?php echo$i5; ?></span>
 													</li>
 													<li>
 														<span>4 Stars</span>
+														@foreach($rating as $a)
+														@if(($a->course_id)==($course->id))
+														@if($a->rating=='4')
+														<?php $i4++; ?>
+														@endif
+														@endif
+														@endforeach
+														<?php
+														$per=($i4*100)/$course->count(); 
+														?>
 														<div class="outer">
-															<span class="inner-fill" style="width: 50%"></span>
+															<span class="inner-fill" style="width: <?php echo$per ?>%"></span>
 														</div>
-														<span>1</span>
+														<span><?php echo$i4; ?></span>
 													</li>
 													<li>
 														<span>3 Stars</span>
+														@foreach($rating as $a)
+														@if(($a->course_id)==($course->id))
+														@if($a->rating=='3')
+														<?php $i3++; ?>
+														@endif
+														@endif
+														@endforeach
+														<?php
+														$per=($i3*100)/$course->count(); 
+														?>
 														<div class="outer">
-															<span class="inner-fill"></span>
+															<span class="inner-fill" style="width: <?php echo$per ?>%"></span>
 														</div>
-														<span>0</span>
+														<span><?php echo$i3; ?></span>
 													</li>
 													<li>
 														<span>2 Stars</span>
+														@foreach($rating as $a)
+														@if(($a->course_id)==($course->id))
+														@if($a->rating=='2')
+														<?php $i2++; ?>
+														@endif
+														@endif
+														@endforeach
+														<?php
+														$per=($i2*100)/$course->count(); 
+														?>
 														<div class="outer">
-															<span class="inner-fill"></span>
+															<span class="inner-fill" style="width: <?php echo$per ?>%"></span>
 														</div>
-														<span>0</span>
+														<span><?php echo$i2; ?></span>
 													</li>
 													<li>
 														<span>1 Stars</span>
+														@foreach($rating as $a)
+														@if(($a->course_id)==($course->id))
+														@if($a->rating=='1')
+														<?php $i1++; ?>
+														@endif
+														@endif
+														@endforeach
+														<?php
+														$per=($i1*100)/$course->count(); 
+														?>
 														<div class="outer">
-															<span class="inner-fill"></span>
+															<span class="inner-fill" style="width: <?php echo$per ?>%"></span>
 														</div>
-														<span>0</span>
+														<span><?php echo$i1; ?></span>
 													</li>
 												</ul>
 											</div>
 										</div>
+										<div class="rating-average">
+											<p>Average rating</p>
+											<div class="average-box">
+												<?php
+												$avg=($i1*1)+($i2*2)+($i3*3)+($i4*4)+($i5*5);
+												$avg=$avg/($i1+$i2+$i3+$i4+$i5);
+												?>
+												<span class="num"><?php echo($avg); ?></span>
+												<span class="ratings">
+													@for($i=1;$i<=round($avg);$i++)
+													<i class="fa fa-star"></i>
+													@endfor
+												</span>
+												<span class="txt"><?php echo($avg); ?> Ratings</span>
+											</div>
+										</div>
 									</div>
 									<ul class="comments">
+										@foreach($rating as $a)
+							            @if(($a->course_id)==($course->id))
 										<li>
 											<div class="image-holder">
 												<img src="upload/blog/avatar4.jpg" alt="">
 											</div>
 											<div class="comment-content">
 												<h2>
-													Steven Smith
+													{{$a->user_name}} 
 													<span class="rating">
+														@for($i=1;$i<=($a->rating);$i++)
 														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-o"></i>
+														@endfor
 													</span>
 												</h2>
-												<p>top design</p>
+												<p>{{$a->review}}</p>
 											</div>
 										</li>
-										<li>
-											<div class="image-holder">
-												<img src="upload/blog/avatar4.jpg" alt="">
-											</div>
-											<div class="comment-content">
-												<h2>
-													Margaret
-													<span class="rating">
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-													</span>
-												</h2>
-												<p>Easy to install, reasonable price!</p>
-											</div>
-										</li>
+										@endif
+							            @endforeach
 									</ul>
-									<form class="add-review">
+									<form method="post" action="{{url('rating_submit')}}" enctype="multipart/form-data" class="add-review">
 										<h1>Add a Review</h1>
+										@if ($errors->any())
+										<div class="alert alert-danger">
+											<ul>
+												@foreach($errors->all() as $error)
+												<li>{{ $error }}</li>
+												@endforeach
+											</ul>
+										</div>
+										@endif
+										@csrf
+										<input type="hidden" name="course_id" value="{{$course->id}}">
+										<input type="hidden" name="course_name" value="{{$course->c_name}}">
 										<label>Your rating</label>
-										<select>
-											<option>Rate...</option>
-											<option>Perfect</option>
-											<option>Good</option>
-											<option>Average</option>
-											<option>Not that bad</option>
-											<option>Very Poor</option>
+										<select name="rating" class="form-control">
+											<option value="0">Rate...</option>
+											<option value="5">Perfect</option>
+											<option value="4">Good</option>
+											<option value="3">Average</option>
+											<option value="2">Not that bad</option>
+											<option value="1">Very Poor</option>
 										</select>
 										<label>Your Review</label>
-										<textarea></textarea>
-										<button type="submit">Submit</button>
+										<textarea type="text" class="form-control" placeholder="Enter Your Review" name="review"></textarea>
+										<button type="submit" name="submit">Submit</button>
 									</form>
 								</div>
 							</div>
@@ -431,11 +489,11 @@
 								<input type="hidden" name="course_name" value="{{$course->c_name}}">
 								<input type="hidden" name="course_price" value="{{$course->c_price}}">
 								<input type="hidden" name="image" value="{{$course->c_image}}">	
-								<a class="button-one" href="">
-								<input type="submit" name="submit" value="Add To Cart">
-								</a>
+								<input class="btn btn-block btn-outline-primary" type="submit" name="submit" value="Add To Cart">
 								</form>
-								<a class="button-one" href="#">Buy This course</a>
+								<br>
+								<a class="btn btn-block btn-outline-success" href="{{url('checkout')}}">Buy This course</a>
+								<br>
 								<div class="product-meta-info-list">
 									<h3>Course Features</h3>
 									<div class="meta-info-unit">

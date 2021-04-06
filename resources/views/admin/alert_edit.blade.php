@@ -61,6 +61,18 @@
       <label>Title:</label>
       <input type="text" class="form-control" placeholder="Enter Banner Title" name="title" value="{{$edit->title}}">
       </div>
+      <div class="form-group">
+      <label>Start Date:</label>
+      <input type="date" class="form-control" name="start_date" value="{{$edit->start_date}}">
+    </div>
+    <div class="form-group">
+      <label>Start Time:</label>
+      <input type="time" class="form-control" name="start_time" value="{{$edit->start_time}}">
+    </div>
+    <div class="form-group">
+      <label>End Date:</label>
+      <input type="date" class="form-control" name="end_date" value="{{$edit->end_date}}">
+    </div>
       <input type="submit" class="btn btn-success" name="submit" value="Update">
   </form>
   <br>

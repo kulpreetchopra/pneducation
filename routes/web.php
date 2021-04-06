@@ -24,14 +24,16 @@ Route::get('ourteam','FrontendController@ourteam');
 Route::get('interns','FrontendController@interns');
 Route::get('placements','FrontendController@placements');
 Route::get('contact','FrontendController@contact');
-Route::post('contact_submit','FrontendController@contactsubmit');
-Route::post('subscribers_submit','FrontendController@subscribersubmit');
 Route::get('about','FrontendController@about');
 Route::get('workshop','FrontendController@workshop');
+Route::post('contact_submit','FrontendController@contactsubmit');
+Route::post('subscribers_submit','FrontendController@subscribersubmit');
+Route::post('rating_submit','FrontendController@ratingsubmit');
 
 //addtocart [Cart Controller]
 Route::get('addtocart','CartController@cart');
 Route::post('cartsubmit','CartController@cartsubmit');
+Route::get('coursequantity_update/{id}/{course_quantity}','CartController@coursequantity_update');
 
 //checkout [Cart Controller]
 Route::get('checkout','CartController@checkout');
@@ -41,7 +43,7 @@ Route::get('signup','SignupController@signup');
 Route::post('submit','SignupController@submit');
 Route::get('user_login','SignupController@user_login');
 Route::post('login_submit','SignupController@login_submit');
-
+Route::get('user_logout','SignupController@user_logout');
 Auth::routes();
 
 //Admin controller
@@ -128,3 +130,19 @@ Route::get('admin/coupan_edit/{id}','CoupanController@edit');
 Route::post('admin/coupan_update','CoupanController@update');
 Route::get('admin/coupan_delete/{id}','CoupanController@delete');
 
+//About controller -About
+Route::get('admin/about','AboutController@display');
+Route::post('admin/about_submit','AboutController@submit');
+Route::get('admin/about_edit/{id}','AboutController@edit');
+Route::post('admin/about_update','AboutController@update');
+Route::get('admin/about_delete/{id}','AboutController@delete');
+
+//Portfolio controller -About
+Route::get('admin/portfolio','AboutController@display1');
+Route::post('admin/portfolio_submit','AboutController@submit1');
+Route::get('admin/portfolio_edit/{id}','AboutController@edit1');
+Route::post('admin/portfolio_update','AboutController@update1');
+Route::get('admin/portfolio_delete/{id}','AboutController@delete1');
+
+//Home Controller -Admin
+Route::get('home','AdminController@index');

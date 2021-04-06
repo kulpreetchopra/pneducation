@@ -23,7 +23,7 @@
 						@foreach($placements as $a)
 						<div class="col-lg-3 col-md-6">
 							<div class="teacher-post">
-								<a href="#">
+								<a href="#" data-toggle="modal" data-target="#smallModal">
 									<img src="{{url('front/'.$a->image)}}" alt="">
 									<div class="hover-post">
 										<h2>{{$a->name}}</h2>
