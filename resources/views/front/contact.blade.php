@@ -27,7 +27,31 @@
 					<p>Someone finds it difficult to understand your creative idea? There is a better visualisation. Share your views with us, we’re looking forward to hear from you.</p>
 					<form id="contact-form" method="post" action="{{url('contact_submit')}}" enctype="multipart/form-data">
                     @csrf
-						<div class="row">
+                    <?php 
+                    if(Auth::check()){
+                    	$fname=Auth::User()->fname;
+                    	$lname=Auth::User()->lname;
+                    	$name=$fname." ".$lname;
+                    	$email=Auth::User()->email;
+                    	$phone=Auth::User()->phone;
+                    	?>
+                    	<div class="row">
+							<div class="col-md-6">
+								<label for="name">Your Name (required)</label>
+								<input name="name" id="name" type="text" value="<?php echo$name ?>">
+							</div>
+							<div class="col-md-6">
+								<label for="mail">Your Email (required)</label>
+								<input name="email" id="mail" type="text" value="<?php echo$email ?>">
+							</div>
+						</div>
+						<label for="tel-number">Your Phone Number</label>
+						<input name="contact" id="tel-number" type="text" value="<?php echo$phone ?>">
+                    	<?php
+                    }
+                    else{
+                    	?>
+                    	<div class="row">
 							<div class="col-md-6">
 								<label for="name">Your Name (required)</label>
 								<input name="name" id="name" type="text">
@@ -39,6 +63,9 @@
 						</div>
 						<label for="tel-number">Your Phone Number</label>
 						<input name="contact" id="tel-number" type="text">
+                    	<?php
+                    }
+                    ?>
 						<label for="comment">Your Message (required)</label>
 						<textarea name="comment" id="comment"></textarea>
 						<input type="submit" class="btn btn-primary" name="submit" value="Submit Contact">
@@ -63,7 +90,7 @@
 								</div>
 								<div class="info-content">
 									<p>
-										Tel: <a href="tel:{{$a->contact}}">{{$a->contact}}</a> <br>
+										Mob: <a href="tel:{{$a->contact}}">{{$a->contact}}</a> <br>
 										E-Mail: <a href="mailto:{{$a->email}}">{{$a->email}}</a>
 									</p>
 								</div>

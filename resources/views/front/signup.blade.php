@@ -132,37 +132,61 @@ a {
             </div>
             <div class="col-lg-6">
                 <div class="card2 card border-0 px-4 py-5">
-                    <br>
+                    @if($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                    @endif
                     <form method="post" action="{{url('/submit')}}" enctype="multipart/form-data">
                     @csrf
-                    <div class="row px-3"> 
+                    <div class="row">
+                    <div class="col-md-6 px-3"> 
                       <label class="mb-1">
-                        <h6 class="mb-0 text-sm">Name</h6>
+                        <h6 class="mb-0 text-sm">First Name</h6>
                       </label> 
-                      <input class="mb-4" type="text" name="name" placeholder="Enter Your Name">
+                      <input class="mb-4" type="text" name="fname" placeholder="Enter Your First Name">
                     </div>
-                    <div class="row px-3"> 
+                    <div class="col-md-6 px-3"> 
+                      <label class="mb-1">
+                        <h6 class="mb-0 text-sm">Last Name</h6>
+                      </label> 
+                      <input class="mb-4" type="text" name="lname" placeholder="Enter Your Last Name">
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-12 px-3"> 
                       <label class="mb-1">
                         <h6 class="mb-0 text-sm">Email</h6>
                       </label> 
                       <input class="mb-4" type="email" name="email" placeholder="Enter Email Address">
                     </div>
-                    <div class="row px-3"> 
+                    <div class="col-md-12 px-3"> 
+                      <label class="mb-1">
+                        <h6 class="mb-0 text-sm">Phone</h6>
+                      </label> 
+                      <input class="mb-4" type="tel" name="phone" placeholder="Enter 10 Digit Phone Number">
+                    </div>
+                    <div class="col-md-12 px-3"> 
                       <label class="mb-1">
                         <h6 class="mb-0 text-sm">Password</h6>
                       </label> 
                       <input type="password" name="password" placeholder="Enter password"> 
                     </div>
-                    <div class="row px-3 mb-4">
+                    <div class="col-md-12 px-3 mb-4">
                         <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input"> 
                           <label for="chk1" class="custom-control-label text-sm">Remember me</label> </div> 
                           <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a>
                     </div>
-                    <div class="row mb-3 px-3"> 
+                    <div class="mb-3 px-3"> 
                       <input type="submit" class="btn btn-blue text-center" name="submit" value="Login">
                     </form> 
                     </div>
-                    <div class="row mb-4 px-3"> <small class="font-weight-bold">Already have an account? <a href="{{url('user_login')}}" class="text-danger">Login</a></small> </div>
+                    <div class="mb-4 px-3"> <small class="font-weight-bold">Already have an account? <a href="{{url('user_login')}}" class="text-danger">Login</a></small> </div>
+                </div>
                 </div>
             </div>
         </div>

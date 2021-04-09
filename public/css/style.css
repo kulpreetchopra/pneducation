@@ -116,7 +116,7 @@ header {
     display: inline-block;
     margin-right: 25px;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.75);
+    color: white;
     padding: 18px 0;
     margin-bottom: 0; }
     .top-line p i {
@@ -137,13 +137,13 @@ header {
         .top-line .right-top-line ul li a {
           font-size: 14px;
           font-weight: 400;
-          color: rgba(255, 255, 255, 0.75); }
+          color: white; }
     .top-line .right-top-line button {
       display: inline-block;
       width: 56px;
       heght: 56px;
       text-align: center;
-      color: rgba(255, 255, 255, 0.75);
+      color: white;
       background-color: rgba(0, 0, 0, 0.15);
       border: none;
       outline: none;
@@ -1688,7 +1688,7 @@ section.testimonial-section {
         color: #2f2f32;
         font-size: 22px; }
 
-.sidebar .cart-widget a {
+.sidebar .cart-widget input {
   color: #fff;
   text-align: center;
   border: 0;
@@ -1699,7 +1699,31 @@ section.testimonial-section {
   font-size: 16px;
   text-shadow: none;
   display: inline-block;
-  background-color: #f9a134;
+  background-color:#1A237E;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  border-radius: 50px;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  cursor: pointer; }
+  .sidebar .cart-widget a:hover {
+    opacity: 0.86; }
+
+  .sidebar .cart-widget a {
+  color: #fff;
+  text-align: center;
+  border: 0;
+  padding: 10px 22px;
+  width: 100%;
+  vertical-align: bottom;
+  font-weight: 400;
+  font-size: 16px;
+  text-shadow: none;
+  display: inline-block;
+  background-color:#1A237E;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   -ms-border-radius: 50px;

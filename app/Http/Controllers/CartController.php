@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Navbar;
 use App\Cart;
 use App\Checkout;
+use App\Courseorder;
+use App\Course_order_product;
 use DB;
 use Session;
 use Auth;
@@ -20,6 +22,10 @@ class CartController extends Controller
         // print_r($session_id);
         // die;
     	$r = new Cart;
+        if(Auth::check()){
+        $user_email=Auth::User()->email;
+        $r->user_email=$user_email;
+        }
     	$r->course_id=$a->course_id;
     	$r->course_name=$a->course_name;
     	$r->course_price=$a->course_price;
@@ -33,6 +39,18 @@ class CartController extends Controller
     	}
     	else{
         	return redirect('allcourse')->with('wmessage','Added To Cart Unsuccessfully');
+        }
+    }
+    public function delete($id)
+    {
+        echo $id;
+        $d=Cart::find($id);
+        $delete=$d->delete();
+        if($delete){
+            return redirect('addtocart')->with('message','Cart Deleted Successfully'); //reduct rout of url
+        }
+        else{
+            return redirect('addtocart')->with('message','Cart Deleted Unsuccessfully'); //reduct rout of url
         }
     }
     public function cart(){
@@ -53,13 +71,76 @@ class CartController extends Controller
         // echo $id;
         // echo $course_quantity;
         DB::table('carts')->where('id',$id)->increment('course_quantity',$course_quantity);
-        return redirect('addtocart');
+        return redirect('addtocart')->with('message','Quantity Updated Successfully');;
     }
     public function checkout(){
         $session_id = Session::getId();
         $navbar = Navbar::all();
-        $cart= Cart::where('session_id',$session_id)->get();
         $checkout= Checkout::all();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
         return view("front.checkout",compact('navbar','cart','checkout'));
     } 
+
+    //checkout
+    public function checkoutsubmit(Request $a)
+    {
+        $this->validate($a,[
+        "fname"=>"required",
+        "lname"=>"required",
+        "user_email"=>"required",
+        // "country"=>"required",
+        // "address"=>"required",
+        // "city"=>"required",
+        // "state"=>"required",
+        // "pincode"=>"required",
+        // "phone"=>"required",
+        // "order_note"=>"required",
+        // "order_status"=>"required",
+        // "payment_methode"=>"required",
+        // "coupan_code"=>"required",
+        // "coupan_amount"=>"required",
+        // "total"=>"required",
+        ]);
+        $r = new Courseorder;
+        $r->user_id=$a->user_id;
+        $r->fname=$a->fname;
+        $r->lname=$a->lname;
+        $r->user_email=$a->user_email;
+        $r->country=$a->country;
+        $r->address=$a->address;
+        $r->city=$a->city;
+        $r->state=$a->state;
+        $r->pincode=$a->pincode;
+        $r->phone=$a->phone;
+        $r->order_note=$a->order_note;
+        $r->order_status=$a->order_status;
+        $r->payment_methode=$a->payment_methode;
+        $r->coupan_code=$a->coupan_code;
+        $r->coupan_amount=$a->coupan_amount;
+        $r->total=$a->total;
+        $r->save();
+        $order_id=$a->
+        $cartproduct=DB::table('carts')->where(['user_email'=>$a->user_email])->get();
+        foreach($cartproduct as $c){
+            $cp= new Course_order_product;
+            $cp->course_order_id=$c->
+        }
+        // print_r($cartproduct);
+        // if($r){
+        //     return redirect('checkout')->with('message','Submitted Successfully');  //reduct rout of url
+        // }
+        // else{
+        //     return redirect('checkout')->with('wmessage','Submitted Unsuccessfully');
+        // } 
+
+    }
 }

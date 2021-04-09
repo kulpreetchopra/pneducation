@@ -34,9 +34,11 @@ Route::post('rating_submit','FrontendController@ratingsubmit');
 Route::get('addtocart','CartController@cart');
 Route::post('cartsubmit','CartController@cartsubmit');
 Route::get('coursequantity_update/{id}/{course_quantity}','CartController@coursequantity_update');
+Route::get('cart_delete/{id}','CartController@delete');
 
 //checkout [Cart Controller]
 Route::get('checkout','CartController@checkout');
+Route::post('checkout_submit','CartController@checkoutsubmit');
 
 //Signup Controller
 Route::get('signup','SignupController@signup');

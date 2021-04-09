@@ -29,8 +29,27 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-6">
-							<p><i class="material-icons">phone</i> <span>{{$a->contact}}</span></p>
-							<p><i class="material-icons">email</i> <span>{{$a->email}}</span></p>
+							<p class="drop-link">
+								<img src="{{url('backend/dist/img/avatar5.png')}}" alt="" class="brand-image img-circle" style="height:25px;width:25px;">&nbsp;
+							 <span>
+								<?php 
+								if(Auth::check()){
+								$email=Auth::User()->email;
+								$fname=Auth::User()->fname;
+								$lname=Auth::User()->lname;
+							    }
+								else{
+								$email="pninfosys@gmail.com";
+								$fname="You are not";
+								$lname="logged in!!";
+								}
+								echo$fname;
+								?>
+								<span> </span>
+								<?php echo$lname; ?>
+							</span>
+						</p>
+							<p><i class="material-icons">email</i> <span><?php echo$email;?></span></p>
 						</div>
 						<div class="col-lg-6">
 							<div class="right-top-line">
@@ -97,10 +116,13 @@
 							<li><a href="{{url('interns')}}">Our Interns</a></li>
 							<li><a href="{{url('placements')}}">Placements</a></li>
 						</ul>
+						@if(!Auth::check('login'))
 						<a href="{{url('user_login')}}" style="background-color:#1A237E" class="login-button">Login</a>
 						&nbsp;&nbsp;
+						@else
 						<a href="{{url('user_logout')}}" style="background-color:#1A237E" class="login-button">Logout</a>
 						&nbsp;&nbsp;
+						@endif
 						<a href="{{url('signup')}}" style="background-color:#1A237E" class="login-button">Signup</a>
 					</div>
 				</div>
@@ -218,7 +240,19 @@
 							@endif
 									<form class="newsletter-form" method="post" action="{{url('subscribers_submit')}}" enctype="multipart/form-data">
                                     @csrf
-									<input class="form-control" type="text" name="email" placeholder="Enter Your E-mail">
+                                    <?php 
+								    if(Auth::check()){
+								    	$email=Auth::User()->email;
+								    	?>
+								    	<input class="form-control" type="text" name="email" placeholder="Enter Your E-mail" value="<?php echo$email ?>">
+								    	<?php
+								    }
+								    else{
+								    	?>
+								    	<input class="form-control" type="text" name="email" placeholder="Enter Your E-mail">
+								    	<?php
+								    }
+								    ?>
 									<input type="submit" name="submit" value="Subscribe">
 								    </form>
 							</div>

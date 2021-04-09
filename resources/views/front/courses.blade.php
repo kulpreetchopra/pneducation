@@ -307,6 +307,7 @@
 											$i5=0;
 											$per=0; 
 											$avg=0;
+											$sum=0;
 											?>
 								<div class="course-reviews-inner">
 									<div class="ratings-box">
@@ -407,21 +408,26 @@
 											<div class="average-box">
 												<?php
 												$avg=($i1*1)+($i2*2)+($i3*3)+($i4*4)+($i5*5);
-												$avg=$avg/($i1+$i2+$i3+$i4+$i5);
+												$sum=$i1+$i2+$i3+$i4+$i5;
+												if($sum==0){
+                                                   $sum=1;
+												}
+												$avg=$avg/$sum;
 												?>
-												<span class="num"><?php echo($avg); ?></span>
+												<span class="num"><?php echo number_format($avg,1); ?></span>
 												<span class="ratings">
 													@for($i=1;$i<=round($avg);$i++)
 													<i class="fa fa-star"></i>
 													@endfor
 												</span>
-												<span class="txt"><?php echo($avg); ?> Ratings</span>
+												<span class="txt"><?php echo number_format($avg,1); ?> Ratings</span>
 											</div>
 										</div>
 									</div>
 									<ul class="comments">
 										@foreach($rating as $a)
 							            @if(($a->course_id)==($course->id))
+							            @if(($a->user_name)!="Unknown User")
 										<li>
 											<div class="image-holder">
 												<img src="upload/blog/avatar4.jpg" alt="">
@@ -439,6 +445,7 @@
 											</div>
 										</li>
 										@endif
+										@endif
 							            @endforeach
 									</ul>
 									<form method="post" action="{{url('rating_submit')}}" enctype="multipart/form-data" class="add-review">
@@ -455,6 +462,20 @@
 										@csrf
 										<input type="hidden" name="course_id" value="{{$course->id}}">
 										<input type="hidden" name="course_name" value="{{$course->c_name}}">
+										<?php 
+								if(Auth::check()){
+								$email=Auth::User()->email;
+								$fname=Auth::User()->fname;
+								$lname=Auth::User()->lname;
+								$name=$fname." ".$lname;
+							    }
+								else{
+								$email="Unknown Email";
+								$name="Unknown User";
+								}
+								?>
+										<input type="hidden" name="user_email" value="<?php echo$email ?>">
+										<input type="hidden" name="user_name" value="<?php echo$name ?>">
 										<label>Your rating</label>
 										<select name="rating" class="form-control">
 											<option value="0">Rate...</option>

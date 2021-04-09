@@ -67,7 +67,7 @@
                           @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">
-                                <img src="{{url('front/image1614265947.jpg')}}" class="img-circle elevation-2" width="30" height="30" alt="User Image">&nbsp;&nbsp;
+                                <i class="fas fa-user"></i>&nbsp;&nbsp;
                                 {{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
@@ -80,7 +80,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                  <img src="{{url('front/image1614265947.jpg')}}" class="img-circle" width="30" height="30" alt="User Image">&nbsp;&nbsp;
+                                  <i class="fas fa-user"></i>&nbsp;&nbsp;
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -107,18 +107,16 @@
     <a href="{{url('admin')}}" class="brand-link">
       <img src="{{url('backend/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span style="color: white" class="brand-text font-weight-light"><b>{{ Auth::user()->role }}</b></span>
+      <span style="color: white" class="brand-text font-weight-light"><b>{{ Auth::user()->name }}</b></span>
     </a>
     <p style="border-bottom-style: ridge;border-bottom-color: white;"></p>
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{url('front/image1614265947.jpg')}}" class="img-circle elevation-2" alt="User Image">
-        </div>
+      <div class="user-panel pb-3 d-flex">
         <div class="info">
-          <a style="color: white;font-size:18px" href="{{url('admin')}}" class="d-block">{{ Auth::user()->name }}</a>
+          <a style="color: white;font-size:18px" href="{{url('admin')}}" class="d-block"><i class="fas fa-envelope"></i>&nbsp; {{ Auth::user()->email }}</a>
+          <a style="color: white;font-size:18px" href="{{url('admin')}}" class="d-block"><i class="fas fa-user"></i>&nbsp; {{ Auth::user()->role }}</a>
         </div>
       </div>
       <p style="border-bottom-style: ridge;border-bottom-color: white;"></p>

@@ -40,7 +40,7 @@
 									?>
 									<tr>
 										<td class="product-remove">
-											<a href="#" class="remove">×</a>
+											<a href="{{url('cart_delete/'.$a->id)}}" class="remove">×</a>
 										</td>
 										<td class="product-thumbnail">
 											<a href="#"><img src="{{ url('/course/'.$a->image) }}" alt=""></a>
@@ -84,7 +84,12 @@
 										</tr>
 									</tbody>
 								</table>
+								@if(!Auth::check('login'))
 								<a href="{{url('user_login')}}" class="checkout-button" style="background-color:#1A237E">Proceed to checkout</a>
+								@else
+								<a href="{{url('checkout')}}" class="checkout-button" style="background-color:#1A237E">Proceed to checkout</a>
+
+								@endif
 							</div>
 						</div>
 					</div>

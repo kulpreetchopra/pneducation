@@ -17,33 +17,55 @@ class SignupController extends Controller
     {
         $session_id = Session::getId();
     	$navbar = Navbar::all();
-        $cart= Cart::where('session_id',$session_id)->get();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
         return view("front.signup",compact('navbar','cart'));
     }
     public function submit(Request $a)
     {   
         $this->validate($a,[
-        'name' => ['required', 'string', 'max:255'],
+        'fname' => ['required', 'string', 'max:255'],
+        'lname' => ['required', 'string', 'max:255'],
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'phone' => ['required', 'string', 'max:10'],
         'password' => ['required', 'string', 'min:5'],
         ]);
     	$r = new User;
-    	$r->name=$a->name;
+    	$r->fname=$a->fname;
+        $r->lname=$a->lname;
     	$r->email=$a->email;
+        $r->phone=$a->phone;
         $r->role="User";
     	$r->password=Hash::make($a->password);
     	$r->save();
     	if($r){
-    		return redirect('/')->with('message','Registered Successfully');  //reduct rout of url
+    		return redirect('user_login')->with('message','Registered Successfully');  //reduct rout of url
     	}
     	else{
-        	return redirect('/')->with('wmessage','Registered Unsuccessfully');
+        	return redirect('signup')->with('wmessage','Registered Unsuccessfully');
         }
     }
     public function user_login(){
         $session_id = Session::getId();
     	$navbar = Navbar::all();
-        $cart= Cart::where('session_id',$session_id)->get();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
         return view("front.login",compact('navbar','cart'));
     }
     public function login_submit(Request $b)

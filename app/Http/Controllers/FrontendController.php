@@ -21,6 +21,7 @@ use App\About;
 use App\Portfolio;
 use App\Rating;
 use Session;
+use Auth;
 
 class FrontendController extends Controller
 {
@@ -31,8 +32,17 @@ class FrontendController extends Controller
     	$banner = Banner::all();
     	$category = Category::all();
     	$course = Course::all();
-        $cart= Cart::where('session_id',$session_id)->get();
         $special = Special::all();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
     	return view("front.index",compact('banner','alert','category','course','navbar','cart','special'));
     }
     public function courses($id){
@@ -40,7 +50,16 @@ class FrontendController extends Controller
         $navbar = Navbar::all();
         $rating = Rating::all();
         $course= Course::find($id);
-        $cart= Cart::where('session_id',$session_id)->get();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
         return view("front.courses",compact('course','navbar','cart','rating'));
     }
     public function allcourses(){
@@ -48,7 +67,16 @@ class FrontendController extends Controller
         $navbar = Navbar::all();
         $allcourse= Course::all();
         $category = Category::all();
-        $cart= Cart::where('session_id',$session_id)->get();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
         return view("front.allcourses",compact('allcourse','navbar','category','cart'));
     }
     public function courseslist(){
@@ -56,7 +84,16 @@ class FrontendController extends Controller
         $navbar = Navbar::all();
         $course= Course::all();
         $category = Category::all();
-        $cart= Cart::where('session_id',$session_id)->get();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
         return view("front.courseslist",compact('course','navbar','category','cart'));
     }
     public function allcategory($id){
@@ -65,7 +102,16 @@ class FrontendController extends Controller
         $course= Course::all();
         $allcategory = Category::all();
         $category = Category::find($id);
-        $cart= Cart::where('session_id',$session_id)->get();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
         return view("front.allcategory",compact('course','navbar','category','allcategory','cart'));
     }
     public function categorylist($id){
@@ -74,41 +120,95 @@ class FrontendController extends Controller
         $course= Course::all();
         $categorylist = Category::all();
         $category = Category::find($id);
-        $cart= Cart::where('session_id',$session_id)->get();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
         return view("front.categorylist",compact('course','navbar','category','categorylist','cart'));
     }
     public function ourteam(){
         $session_id = Session::getId();
         $navbar = Navbar::all();
         $team = Team::all();
-        $cart= Cart::where('session_id',$session_id)->get();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
         return view("front.ourteam",compact('navbar','team','cart'));
     }
     public function interns(){
         $session_id = Session::getId();
         $navbar = Navbar::all();
         $interns = Intern::all();
-        $cart= Cart::where('session_id',$session_id)->get();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
         return view("front.interns",compact('navbar','interns','cart'));
     }
     public function placements(){
         $session_id = Session::getId();
         $navbar = Navbar::all();
         $placements = Placement::all();
-        $cart= Cart::where('session_id',$session_id)->get();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
         return view("front.placements",compact('navbar','placements','cart'));
     }
     public function workshop(){
         $session_id = Session::getId();
         $navbar = Navbar::all();
         $workshop = Workshop::all();
-        $cart= Cart::where('session_id',$session_id)->get();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
         return view("front.workshop",compact('navbar','workshop','cart'));
     }
     public function contact(){
         $session_id = Session::getId();
         $navbar = Navbar::all();
-        $cart= Cart::where('session_id',$session_id)->get();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
         return view("front.contact",compact('navbar','cart'));
     }
     public function about(){
@@ -120,7 +220,16 @@ class FrontendController extends Controller
         $signup = User::all();
         $subscribe = Subscribe::all();
         $placement = Placement::all();
-        $cart= Cart::where('session_id',$session_id)->get();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
         return view("front.about",compact('navbar','about','cart','course','signup','subscribe','placement','portfolio'));
     }
     public function contactsubmit(Request $a)
