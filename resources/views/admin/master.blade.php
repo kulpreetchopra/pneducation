@@ -81,7 +81,7 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                   <i class="fas fa-user"></i>&nbsp;&nbsp;
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->fname }}&nbsp;{{ Auth::user()->lname }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -107,7 +107,7 @@
     <a href="{{url('admin')}}" class="brand-link">
       <img src="{{url('backend/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span style="color: white" class="brand-text font-weight-light"><b>{{ Auth::user()->name }}</b></span>
+      <span style="color: white" class="brand-text font-weight-light"><b>{{ Auth::user()->fname }}&nbsp;{{ Auth::user()->lname }}</b></span>
     </a>
     <p style="border-bottom-style: ridge;border-bottom-color: white;"></p>
     <!-- Sidebar -->

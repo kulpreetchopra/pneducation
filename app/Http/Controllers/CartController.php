@@ -128,19 +128,28 @@ class CartController extends Controller
         $r->coupan_amount=$a->coupan_amount;
         $r->total=$a->total;
         $r->save();
-        $order_id=$a->
+        $order_id=DB::getPdo()->lastinsertID();
+        // print_r($order_id);
+        // die;
         $cartproduct=DB::table('carts')->where(['user_email'=>$a->user_email])->get();
         foreach($cartproduct as $c){
             $cp= new Course_order_product;
-            $cp->course_order_id=$c->
+            $cp->course_order_id=$order_id;
+            $cp->user_id=$a->user_id;
+            $cp->user_email=$a->user_email;
+            $cp->course_id=$c->course_id;
+            $cp->course_name=$c->course_name;
+            $cp->course_price=$c->course_price;
+            $cp->course_quantity=$c->course_quantity;
+            $cp->course_image=$c->image;
+            $cp->save();
         }
         // print_r($cartproduct);
-        // if($r){
-        //     return redirect('checkout')->with('message','Submitted Successfully');  //reduct rout of url
-        // }
-        // else{
-        //     return redirect('checkout')->with('wmessage','Submitted Unsuccessfully');
-        // } 
-
+        if($r){
+            return redirect('checkout')->with('message','Submitted Successfully');  //reduct rout of url
+        }
+        else{
+            return redirect('checkout')->with('wmessage','Submitted Unsuccessfully');
+        } 
     }
 }

@@ -17,6 +17,7 @@ class CreateCourseOrderProductsTable extends Migration
             $table->id();
             $table->string('course_order_id')->nullable();
             $table->string('user_id')->nullable();
+            $table->string('user_email')->nullable();
             $table->string('course_id')->nullable();
             $table->string('course_name')->nullable();
             $table->string('course_price')->nullable();

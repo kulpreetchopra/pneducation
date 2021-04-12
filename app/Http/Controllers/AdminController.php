@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Contact;
 use App\Subscribe;
 use App\User;
+use App\Course_order_product;
 
 class AdminController extends Controller
 {
@@ -17,7 +18,8 @@ class AdminController extends Controller
         $signup = User::all();
         $subscribe = Subscribe::all();
         $contact = Contact::all();
-    	return view('admin.index',compact('signup','subscribe','contact'));
+        $order = Course_order_product::all();
+    	return view('admin.index',compact('signup','subscribe','contact','order'));
     }
     public function contact(){
         $contact = Contact::all();
