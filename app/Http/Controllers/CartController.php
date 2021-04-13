@@ -145,11 +145,28 @@ class CartController extends Controller
             $cp->save();
         }
         // print_r($cartproduct);
-        if($r){
-            return redirect('checkout')->with('message','Submitted Successfully');  //reduct rout of url
+        if($cp){
+            return redirect('thanks')->with('message','Submitted Successfully');  //reduct rout of url
         }
         else{
-            return redirect('checkout')->with('wmessage','Submitted Unsuccessfully');
+            return redirect('thanks')->with('wmessage','Submitted Unsuccessfully');
         } 
+    }
+    public function thanks()
+    {
+        $navbar = Navbar::all();
+        $user_email=Auth::User()->email;
+        DB::table('carts')->where('user_email',$user_email)->delete();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
+        return view('front.thanks',Compact('navbar','cart'))->with('message','Course Purchased Successfully');
     }
 }

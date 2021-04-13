@@ -35,6 +35,7 @@ Route::get('addtocart','CartController@cart');
 Route::post('cartsubmit','CartController@cartsubmit');
 Route::get('coursequantity_update/{id}/{course_quantity}','CartController@coursequantity_update');
 Route::get('cart_delete/{id}','CartController@delete');
+Route::get('thanks','CartController@thanks');
 
 //checkout [Cart Controller]
 Route::get('checkout','CartController@checkout');
