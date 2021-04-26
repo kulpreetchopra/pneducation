@@ -7,6 +7,8 @@ use App\Contact;
 use App\Subscribe;
 use App\User;
 use App\Course_order_product;
+use App\Navbar;
+use App\Courseorder;
 
 class AdminController extends Controller
 {
@@ -41,6 +43,14 @@ class AdminController extends Controller
         $subscriber = Subscribe::all();
         return view("admin.subscriber",compact('subscriber'));
     }
+    public function orders(){
+        $orders = Courseorder::all();
+        return view("admin.orders",compact('orders'));
+    }
+    public function users(){
+        $users = User::all();
+        return view("admin.users",compact('users'));
+    }
     public function subscriberdelete($id)
     {
         echo $id;
@@ -52,5 +62,17 @@ class AdminController extends Controller
         else{
             return redirect('admin/subscribers')->with('wmessage','Deleted Unsuccessfully'); //reduct rout of url
         }
+    }
+    public function bill($id){
+        $navbar = Navbar::all();
+        $corder = Courseorder::all();
+        $corderd = Course_order_product::all();
+        return view("admin.bill",compact('navbar','corder','corderd','id'));
+    }
+    public function billprint($id){
+        $navbar = Navbar::all();
+        $corder = Courseorder::all();
+        $corderd = Course_order_product::all();
+        return view("admin.billprint",compact('navbar','corder','corderd','id'));
     }
 }

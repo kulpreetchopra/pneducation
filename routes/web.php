@@ -55,6 +55,8 @@ Route::get('admin/contact','AdminController@contact');
 Route::get('admin/contact_delete/{id}','AdminController@delete');
 Route::get('admin/subscribers','AdminController@subscribers');
 Route::get('admin/subscribers_delete/{id}','AdminController@subscriberdelete');
+Route::get('admin/orders','AdminController@orders');
+Route::get('admin/users','AdminController@users');
 
 //Category controller
 Route::get('admin/category','CategoryController@display');
@@ -146,6 +148,10 @@ Route::post('admin/portfolio_submit','AboutController@submit1');
 Route::get('admin/portfolio_edit/{id}','AboutController@edit1');
 Route::post('admin/portfolio_update','AboutController@update1');
 Route::get('admin/portfolio_delete/{id}','AboutController@delete1');
+
+//Bill
+Route::get('admin/bill/{id}','AdminController@bill');
+Route::get('admin/billprint/{id}','AdminController@billprint');
 
 //Home Controller -Admin
 Route::get('home','AdminController@index');

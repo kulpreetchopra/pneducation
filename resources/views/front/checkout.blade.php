@@ -22,25 +22,33 @@
 					<div class="col-lg-8">
 						<div class="cart-box">
 							<h2>Billing details</h2>
+							@if ($errors->any())
+							<div class="alert alert-danger">
+								<ul>
+									@foreach($errors->all() as $error)
+									<li>{{ $error }}</li>
+									@endforeach
+								</ul>
+							</div>
+							@endif
 							<form class="billing-details" method="post" action="{{url('checkout_submit')}}" enctype="multipart/form-data">
                              @csrf
-							<form > 
                         @if(Auth::check())
                                 <input type="hidden" name="user_id" value="{{Auth::User()->id}}">
 								<div class="row">
 									<div class="col-lg-6">
 										<label for="first-name">First Name*</label>
-										<input type="text" name="fname" id="first-name" value="{{Auth::User()->fname}}" />
+										<input type="text" name="fname" id="first-name" value="{{Auth::User()->fname}}" readonly/>
 									</div>
 									<div class="col-lg-6">
 										<label for="last-name">Last Name*</label>
-										<input type="text" name="lname" id="last-name" value="{{Auth::User()->lname}}" />
+										<input type="text" name="lname" id="last-name" value="{{Auth::User()->lname}}" readonly/>
 									</div>
 								</div>
 								<label for="phone-name">Phone*</label>
-								<input type="text" name="phone" id="phone-name" value="{{Auth::User()->phone}}" />
+								<input type="text" name="phone" id="phone-name" value="{{Auth::User()->phone}}" readonly/>
 								<label for="email-address">Email Address*</label>
-								<input type="text" name="user_email" id="email-address" value="{{Auth::User()->email}}" />
+								<input type="text" name="user_email" id="email-address" value="{{Auth::User()->email}}" readonly/>
                                @else
                     	        <div class="row">
 									<div class="col-lg-6">
@@ -63,12 +71,12 @@
 									<option value="Albania">Albania</option>
 									<option value="USA">USA</option>
 									<option value="Canada">Canada</option>
-									<option value="4">Brazil</option>
-									<option value="5">Germany</option>
-									<option value="6">England</option>
-									<option value="7">France</option>
-									<option value="8">Italy</option>
-									<option value="9">Australia</option>
+									<option value="India">India</option>
+									<option value="Germany">Germany</option>
+									<option value="England">England</option>
+									<option value="France">France</option>
+									<option value="Italy">Italy</option>
+									<option value="Australia">Australia</option>
 								</select>
 								<label for="street-name">Address *</label>
 								<input type="text" name="address" id="street-name" placeholder="House number and street name" />
@@ -110,6 +118,7 @@
 										<tr class="order-total">
 											<th>Total</th>
 											<td class="total-price">₹<?php echo$total_amount; ?></td>
+											<input type="hidden" name="total" value="<?php echo$total_amount; ?>">
 										</tr>
 									</tbody>
 								</table>

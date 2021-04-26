@@ -12,5 +12,13 @@
 				{{session('wmessage')}}
 		    </h1>
 		    @endif
+		    <br>
+		    @foreach($corder as $a)
+		    @if($user_id==$a->user_id)
+		    <a href="{{url('admin/billprint/'.$a->id)}}" target="_blank" class="btn btn-success">Print Your Bill ({{$a->created_at}})</a>
+		    <br><br>
+		    @endif
+		    @endforeach
+		    <br>
 		    </center>
 @endsection

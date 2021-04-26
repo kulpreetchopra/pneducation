@@ -97,18 +97,18 @@ class CartController extends Controller
         "fname"=>"required",
         "lname"=>"required",
         "user_email"=>"required",
-        // "country"=>"required",
-        // "address"=>"required",
-        // "city"=>"required",
-        // "state"=>"required",
-        // "pincode"=>"required",
-        // "phone"=>"required",
+        "country"=>"required",
+        "address"=>"required",
+        "city"=>"required",
+        "state"=>"required",
+        "pincode"=>"required",
+        "phone"=>"required",
         // "order_note"=>"required",
         // "order_status"=>"required",
         // "payment_methode"=>"required",
         // "coupan_code"=>"required",
         // "coupan_amount"=>"required",
-        // "total"=>"required",
+        //"total"=>"required",
         ]);
         $r = new Courseorder;
         $r->user_id=$a->user_id;
@@ -146,16 +146,18 @@ class CartController extends Controller
         }
         // print_r($cartproduct);
         if($cp){
-            return redirect('thanks')->with('message','Submitted Successfully');  //reduct rout of url
+            return redirect('thanks')->with('message','Order Submitted Successfully');  //reduct rout of url
         }
         else{
-            return redirect('thanks')->with('wmessage','Submitted Unsuccessfully');
+            return redirect('thanks')->with('wmessage','Order Submitted Unsuccessfully');
         } 
     }
     public function thanks()
     {
         $navbar = Navbar::all();
+        $corder = Courseorder::all();
         $user_email=Auth::User()->email;
+        $user_id=Auth::User()->id;
         DB::table('carts')->where('user_email',$user_email)->delete();
         if(Auth::check()){
             $user_email=Auth::User()->email;
@@ -167,6 +169,6 @@ class CartController extends Controller
             // die;
             $cart= Cart::where('session_id',$session_id)->get();
         }
-        return view('front.thanks',Compact('navbar','cart'))->with('message','Course Purchased Successfully');
+        return view('front.thanks',Compact('navbar','cart','corder','user_id'))->with('message','Course Purchased Successfully');
     }
 }

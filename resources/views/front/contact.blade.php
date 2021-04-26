@@ -38,15 +38,15 @@
                     	<div class="row">
 							<div class="col-md-6">
 								<label for="name">Your Name (required)</label>
-								<input name="name" id="name" type="text" value="<?php echo$name ?>">
+								<input name="name" id="name" type="text" value="<?php echo$name ?>" readonly>
 							</div>
 							<div class="col-md-6">
 								<label for="mail">Your Email (required)</label>
-								<input name="email" id="mail" type="text" value="<?php echo$email ?>">
+								<input name="email" id="mail" type="text" value="<?php echo$email ?>" readonly>
 							</div>
 						</div>
 						<label for="tel-number">Your Phone Number</label>
-						<input name="contact" id="tel-number" type="text" value="<?php echo$phone ?>">
+						<input name="contact" id="tel-number" type="text" value="<?php echo$phone ?>" readonly>
                     	<?php
                     }
                     else{

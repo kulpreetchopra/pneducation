@@ -1,20 +1,19 @@
 @extends("admin.master")
-@section("title","ContactUs | PN-Education")
+@section("title","Orders | PN-Education")
 @section("content")
-
- <!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">ContactUs</h1>
+            <h1 class="m-0 text-dark">All Orders</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{url('admin')}}">Home</a></li>
-              <li class="breadcrumb-item active">ContactUs</li>
+              <li class="breadcrumb-item active">All Orders</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -49,33 +48,47 @@
             <!-- Default box -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Display ContactUs</h3>
+                <h3 class="card-title">Display All Orders</h3>
               </div>
               <div class="card-body">
                    
-              <table id="example1" class="table table-bordered table-hover table-responsive">
+              <table id="example1" style="width:100%" class="table table-bordered table-striped table-responsive display">
                 <thead>
                 <tr style="text-align: center;">
                   <th>Id</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Contact</th>
-                  <th>Comment</th>
-                  <th>Date</th>
+                  <th>Customer Id</th>
+                  <th>Customer Name</th>
+                  <th>Customer Email</th>
+                  <th>Customer Phone</th>
+                  <th>Customer Address</th>
+                  <th>Order Note</th>
+                  <th>Order Status</th>
+                  <th>Payment Methode</th>
+                  <th>Coupan Code</th>
+                  <th>Coupan Amount</th>
+                  <th>Total Amount</th>
+                  <th>Payment Date</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach($contact as $a)
+                  @foreach($orders as $a)
                   <tr style="text-align: center;">
                     <td>{{$a->id}}</td>
-                    <td>{{$a->name}}</td>
-                    <td>{{$a->email}}</td>
-                    <td>{{$a->contact}}</td>
-                    <td>{{$a->comment}}</td>
+                    <td>{{$a->user_id}}</td>
+                    <td>{{$a->fname}} {{$a->lname}}</td>
+                    <td>{{$a->user_email}}</td>
+                    <td>{{$a->phone}}</td>
+                    <td>{{$a->address}},{{$a->city}},{{$a->pincode}},{{$a->state}},{{$a->country}}</td>
+                    <td>{{$a->order_note}}</td>
+                    <td>{{$a->order_status}}</td>
+                    <td>{{$a->payment_methode}}</td>
+                    <td>{{$a->coupan_code}}</td>
+                    <td>{{$a->coupan_amount}}</td>
+                    <td>₹{{$a->total}}</td>
                     <td>{{$a->created_at}}</td>
                     <td>
-                      <a href="{{url('admin/contact_delete/'.$a->id)}}"><p class="btn btn-danger"><i class="fas fa-trash"></i></p></a>
+                      <a href="{{url('admin/bill/'.$a->id)}}"><p class="btn btn-info"><i class="fas fa-print"></i></p></a>
                     </td>
                   </tr>
                   @endforeach
@@ -83,11 +96,18 @@
                 <tfoot>
                 <tr style="text-align: center;">
                   <th>Id</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Contact</th>
-                  <th>Comment</th>
-                  <th>Date</th>
+                  <th>Customer Id</th>
+                  <th>Customer Name</th>
+                  <th>Customer Email</th>
+                  <th>Customer Phone</th>
+                  <th>Customer Address</th>
+                  <th>Order Note</th>
+                  <th>Order Status</th>
+                  <th>Payment Methode</th>
+                  <th>Coupan Code</th>
+                  <th>Coupan Amount</th>
+                  <th>Total Amount</th>
+                  <th>Payment Date</th>
                   <th>Action</th>
                 </tr>
                 </tfoot>
@@ -105,5 +125,4 @@
 <!-- ------End Data Table------- -->
   </div>
   <!-- /.content-wrapper -->
-
 @endsection

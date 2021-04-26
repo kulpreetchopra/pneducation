@@ -15,7 +15,6 @@
 	<link rel="stylesheet" type="text/css" href="{{url('css/fonts/iconfont/material-icons.css')}}" media="screen">
 	<link rel="stylesheet" type="text/css" href="{{url('css/style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 </head>
 <body>
     @foreach($navbar as $a)
@@ -244,7 +243,7 @@
 								    if(Auth::check()){
 								    	$email=Auth::User()->email;
 								    	?>
-								    	<input class="form-control" type="text" name="email" placeholder="Enter Your E-mail" value="<?php echo$email ?>">
+								    	<input class="form-control" type="text" name="email" placeholder="Enter Your E-mail" value="<?php echo$email ?>" readonly>
 								    	<?php
 								    }
 								    else{
