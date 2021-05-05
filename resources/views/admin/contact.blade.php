@@ -53,7 +53,7 @@
               </div>
               <div class="card-body">
                    
-              <table id="example1" class="table table-bordered table-hover table-responsive">
+              <table id="example1" class="table table-bordered table-hover table-striped table-responsive">
                 <thead>
                 <tr style="text-align: center;">
                   <th>Id</th>
@@ -61,6 +61,7 @@
                   <th>Email</th>
                   <th>Contact</th>
                   <th>Comment</th>
+                  <th>Reply</th>
                   <th>Date</th>
                   <th>Action</th>
                 </tr>
@@ -73,8 +74,10 @@
                     <td>{{$a->email}}</td>
                     <td>{{$a->contact}}</td>
                     <td>{{$a->comment}}</td>
+                    <td>{{$a->reply}}</td>
                     <td>{{$a->created_at}}</td>
                     <td>
+                      <a href="{{url('admin/contact_reply/'.$a->id)}}"><p class="btn btn-info"><i class="fas fa-reply"></i></p></a>
                       <a href="{{url('admin/contact_delete/'.$a->id)}}"><p class="btn btn-danger"><i class="fas fa-trash"></i></p></a>
                     </td>
                   </tr>
@@ -87,6 +90,7 @@
                   <th>Email</th>
                   <th>Contact</th>
                   <th>Comment</th>
+                  <th>Reply</th>
                   <th>Date</th>
                   <th>Action</th>
                 </tr>
@@ -100,7 +104,7 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-    </section>
+</section>
     </div>
 <!-- ------End Data Table------- -->
   </div>

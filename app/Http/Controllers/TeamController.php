@@ -23,6 +23,7 @@ class TeamController extends Controller
         "name"=>"required",
         "image"=>"required",
         "about"=>"required",
+        "comment"=>"required",
         ]);
         $file = $a->file('image');
         $filename = 'image'. time().'.'.$a->image->extension();
@@ -31,6 +32,7 @@ class TeamController extends Controller
     	$r->name=$a->name;
     	$r->image=$filename;
     	$r->about=$a->about;
+        $r->comment=$a->comment;
     	$r->save();
     	if($r){
     		return redirect('admin/ourteam')->with('message','Submitted Successfully');  //reduct rout of url
@@ -55,6 +57,7 @@ class TeamController extends Controller
         $e->image=$filename;
         $e->name=$b->name;
         $e->about=$b->about;
+        $e->comment=$b->comment;
         $e->save();
         if($e){
             return redirect('admin/ourteam')->with('message','Updated Successfully');  //reduct rout of url
@@ -67,6 +70,7 @@ class TeamController extends Controller
         $e = Team::find($b->id);
         $e->name=$b->name;
         $e->about=$b->about;
+        $e->comment=$b->comment;
         $e->save();
         if($e){
             return redirect('admin/ourteam')->with('message','Updated Successfully');  //reduct rout of url

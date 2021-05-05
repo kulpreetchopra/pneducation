@@ -23,13 +23,13 @@
 						@foreach($team as $a)
 						<div class="col-lg-3 col-md-6">
 							<div class="teacher-post">
-								<a href="#" data-toggle="modal" data-target="#smallModal">
+								<!-- <a href="#"> -->
 									<img src="{{url('front/'.$a->image)}}" alt="">
 									<div class="hover-post">
 										<h2>{{$a->name}}</h2>
 										<span>{{$a->about}}</span>
 									</div>
-								</a>
+								<!-- </a> -->
 							</div>
 						</div>
 						@endforeach

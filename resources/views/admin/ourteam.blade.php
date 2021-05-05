@@ -57,13 +57,14 @@
               </div>
               <div class="card-body">
                    
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example1" class="table table-bordered table-hover table-striped table-responsive-sm">
                 <thead>
                 <tr style="text-align: center;">
                   <th>Id</th>
                   <th>Name</th>
                   <th>Image</th>
                   <th>About</th>
+                  <th>Comment</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -76,6 +77,7 @@
                       <img src="{{ url('/front/'.$a->image) }}" style="height: 120px; width: 120px; border-radius: 100%;">
                     </td>
                     <td>{{$a->about}}</td>
+                    <td>{{$a->comment}}</td>
                     <td>
                       <a href="{{url('admin/ourteam_edit/'.$a->id)}}"><p class="btn btn-success"><i class="fas fa-edit"></i></p></a>
                       <a href="{{url('admin/ourteam_delete/'.$a->id)}}"><p class="btn btn-danger"><i class="fas fa-trash"></i></p></a>
@@ -89,6 +91,7 @@
                   <th>Name</th>
                   <th>Image</th>
                   <th>About</th>
+                  <th>Comment</th>
                   <th>Action</th>
                 </tr>
                 </tfoot>
@@ -127,6 +130,10 @@
     <div class="form-group">
       <label>About:</label>
       <textarea type="text" class="form-control" placeholder="Enter About" name="about"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Comment:</label>
+      <textarea type="text" class="form-control" placeholder="Enter Comment" name="comment"></textarea>
     </div>
     <input type="submit" class="btn btn-primary" name="submit" value="Submit">
   </form>

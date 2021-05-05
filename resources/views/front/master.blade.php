@@ -15,6 +15,9 @@
 	<link rel="stylesheet" type="text/css" href="{{url('css/fonts/iconfont/material-icons.css')}}" media="screen">
 	<link rel="stylesheet" type="text/css" href="{{url('css/style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+    <!-- DataTables -->
+  <link rel="stylesheet" href="{{url('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{url('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
 </head>
 <body>
     @foreach($navbar as $a)
@@ -28,8 +31,8 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-6">
-							<p class="drop-link">
-								<img src="{{url('backend/dist/img/avatar5.png')}}" alt="" class="brand-image img-circle" style="height:25px;width:25px;">&nbsp;
+							<p>
+							<i class="material-icons">account_circle</i>
 							 <span>
 								<?php 
 								if(Auth::check()){
@@ -38,7 +41,7 @@
 								$lname=Auth::User()->lname;
 							    }
 								else{
-								$email="pninfosys@gmail.com";
+								$email="";
 								$fname="You are not";
 								$lname="logged in!!";
 								}
@@ -48,12 +51,20 @@
 								<?php echo$lname; ?>
 							</span>
 						</p>
-							<p><i class="material-icons">email</i> <span><?php echo$email;?></span></p>
+						@if(Auth::check())
+						<p><i class="material-icons">email</i> <span><?php echo$email; ?></span></p>
+						@endif
 						</div>
 						<div class="col-lg-6">
 							<div class="right-top-line">
 								<ul class="top-menu">
-									<li><a href="#">Purchase Now</a></li>
+								    @if(Auth::check())
+									<li>
+										<a href="{{url('account')}}">
+											User Account
+										</a>
+									</li>
+									@endif
 									<li><a href="{{url('about')}}">About</a></li>
 									<li><a href="{{url('contact')}}">Contact</a></li>
 								</ul>
@@ -66,6 +77,11 @@
 									<i style="color:white" class="material-icons">shopping_cart</i>
 									<span class="studiare-cart-number">{{$cart->count()}}</span>
 									</a>
+								</button>
+								<button class="contact-info-icon">
+									<a href="https://api.whatsapp.com/send?phone=+91 6266060879&text=Hey PN-Education, I'd like to chat with you">
+									<i style="color:white" class="material-icons">phone_android</i>
+								    </a>
 								</button>
 							</div>
 						</div>
@@ -142,7 +158,17 @@
 						Cart
 						<span class="studiare-cart-number">{{$cart->count()}}</span>
 					</a>
-					<a href="{{url('/user_login')}}" class="login-button"><i class="material-icons">perm_identity</i>Login</a>
+					@if(Auth::check())
+					<a href="{{url('account')}}">
+						<i class="material-icons">account_circle</i>
+						User Account
+					</a>
+					@endif
+					@if(!Auth::check('login'))
+					<a href="{{url('user_login')}}" class="login-button"><i class="material-icons">perm_identity</i>Login</a>
+					@else
+					<a href="{{url('user_logout')}}" class="login-button"><i class="material-icons">perm_identity</i>Logout</a>
+					@endif
 					<a href="{{url('/signup')}}"  class="login-button"><i class="material-icons">perm_identity</i>Signup</a>
 				</div>
 				<nav class="mobile-nav">
@@ -156,6 +182,10 @@
 						<li><a href="{{url('placements')}}">Placements</a></li>
 						<li><a href="{{url('contact')}}">Contact Us</a></li>
 						<li><a href="{{url('about')}}">About Us</a></li>
+						<li><a href="https://api.whatsapp.com/send?phone=+91 6266060879&text=Hey PN-Education, I'd like to chat with you">
+						<i style="color:white" class="material-icons">phone_android</i> Whatsp Us
+						</a>
+					</li>
 					</ul>
 				</nav>
 			</div>
@@ -163,23 +193,8 @@
 		</header>
 		<!-- End Header -->
 
-		<!-- Modal Body -->
-		<!-- small modal -->
-<div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" style="margin-top:220px!important;">
-	<center>
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content" style="background-color:transparent;">
-        <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="VERTICAL" data-vanity="kulpreetchopra" data-version="v1">
-        <a class="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/kulpreetchopra?trk=profile-badge">Kulpreet Singh Chopra</a></div>
-    </div>
-  </div>
-</center>
-</div>
-		<!-- End Modal body -->
-
 	@section("content")
     @show
-
     <!-- footer 
 			================================================== -->
 		<footer>
@@ -284,7 +299,13 @@
 	</div>
 	<!-- End Container -->
 
-	
+	<script type="text/javascript">
+	$(document).ready(function() {
+    $('#example').DataTable();
+    } );
+	</script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 	<script src="{{url('js/studiare-plugins.min.js')}}"></script>
 	<script src="{{url('js/jquery.countTo.js')}}"></script>
 	<script src="{{url('js/popper.js')}}"></script>
@@ -406,6 +427,26 @@
 			}
 		}); /*ready*/
 	</script>	
+	<!-- Data Tables Scripts -->
+	<script src="{{url('backend/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+	<script src="{{url('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+	<script src="{{url('backend/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+	<script src="{{url('backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+      "responsive": true,
+      "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+      "iDisplayLength": 5
+    });
+  });
+</script>
 
 @endforeach	
 </body>

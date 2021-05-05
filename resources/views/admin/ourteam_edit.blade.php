@@ -70,6 +70,10 @@
       <label>About:</label>
       <textarea type="text" class="form-control" placeholder="Enter About" name="about">{{$edit->about}}</textarea>
     </div>
+    <div class="form-group">
+      <label>Comment:</label>
+      <textarea type="text" class="form-control" placeholder="Enter Comment" name="comment">{{$edit->comment}}</textarea>
+    </div>
       <input type="submit" class="btn btn-success" name="submit" value="Update">
   </form>
   <br>

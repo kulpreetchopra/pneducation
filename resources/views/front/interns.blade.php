@@ -23,14 +23,14 @@
 						@foreach($interns as $a)
 						<div class="col-lg-3 col-md-6">
 							<div class="teacher-post">
-								<a href="#" data-toggle="modal" data-target="#smallModal">
+								<!-- <a href="#" data-toggle="modal" data-target="#smallModal"> -->
 									<img src="{{url('front/'.$a->image)}}" alt="">
 									<div class="hover-post">
 										<h2>{{$a->name}}</h2>
 										<span>{{$a->company}} | </span>
 										<span>{{$a->designation}}</span>
 									</div>
-								</a>
+								<!-- </a> -->
 							</div>
 						</div>
 						@endforeach

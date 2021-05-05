@@ -7,7 +7,7 @@ use App\Banner;
 use App\Category;
 use App\Course;
 use App\Navbar;
-use App\cart;
+use App\Cart;
 use App\Team;
 use App\Intern;
 use App\Placement;
@@ -20,6 +20,8 @@ use App\User;
 use App\About;
 use App\Portfolio;
 use App\Rating;
+use App\Courseorder;
+use App\Course_order_product;
 use Session;
 use Auth;
 
@@ -33,6 +35,7 @@ class FrontendController extends Controller
     	$category = Category::all();
     	$course = Course::all();
         $special = Special::all();
+        $team = Team::all();
         if(Auth::check()){
             $user_email=Auth::User()->email;
             $cart= Cart::where('user_email',$user_email)->get();
@@ -43,7 +46,7 @@ class FrontendController extends Controller
             // die;
             $cart= Cart::where('session_id',$session_id)->get();
         }
-    	return view("front.index",compact('banner','alert','category','course','navbar','cart','special'));
+    	return view("front.index",compact('banner','alert','category','course','navbar','cart','special','team'));
     }
     public function courses($id){
         $session_id = Session::getId();
@@ -236,7 +239,7 @@ class FrontendController extends Controller
     {   
         $this->validate($a,[
         "name"=>"required",
-        "email"=>"required",
+        "email"=>['required', 'string', 'email', 'max:255'],
         "contact"=>"required",
         "comment"=>"required",
         ]);
@@ -256,7 +259,7 @@ class FrontendController extends Controller
     public function subscribersubmit(Request $a)
     {   
         $this->validate($a,[
-        "email"=>"required",
+        "email"=>['required', 'string', 'email', 'max:255', 'unique:users'],
         ]);
         $r = new Subscribe;
         $r->email=$a->email;
@@ -290,5 +293,94 @@ class FrontendController extends Controller
         else{
             return redirect('allcourses')->with('wmessage','Course Rated Unsuccessfully');
         }
+    }
+    public function account(){
+        $session_id = Session::getId();
+        $navbar = Navbar::all();
+        $team = Team::all();
+        $user = User::all();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
+        return view("front.account",compact('user','navbar','team','cart'));
+    }
+    public function account_cart(){
+        $session_id = Session::getId();
+        $navbar = Navbar::all();
+        $team = Team::all();
+        $user = User::all();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
+        return view("front.account_cart",compact('user','navbar','team','cart'));
+    }
+    public function account_bill(){
+        $session_id = Session::getId();
+        $navbar = Navbar::all();
+        $team = Team::all();
+        $user = User::all();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+            $bill = Courseorder::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
+        return view("front.account_bill",compact('user','navbar','team','cart','bill'));
+    }
+    public function account_order(){
+        $session_id = Session::getId();
+        $navbar = Navbar::all();
+        $team = Team::all();
+        $user = User::all();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+            $bill = Course_order_product::where('user_email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+            $bill = Courseorder::all();
+        }
+        return view("front.account_order",compact('user','navbar','team','cart','bill'));
+    }
+    public function account_contact(){
+        $session_id = Session::getId();
+        $navbar = Navbar::all();
+        $team = Team::all();
+        $user = User::all();
+        if(Auth::check()){
+            $user_email=Auth::User()->email;
+            $cart= Cart::where('user_email',$user_email)->get();
+            $contact = Contact::where('email',$user_email)->get();
+        }
+        else{
+            $session_id = Session::getId();
+            // print_r($session_id);
+            // die;
+            $cart= Cart::where('session_id',$session_id)->get();
+        }
+        return view("front.account_contact",compact('user','navbar','team','cart','contact'));
     }
 }

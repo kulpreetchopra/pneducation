@@ -57,7 +57,7 @@
               </div>
               <div class="card-body">
                    
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example1" class="table table-bordered table-hover table-striped table-responsive-sm">
                 <thead>
                 <tr>
                   <th>Id</th>
@@ -80,9 +80,9 @@
                     <td>{{$a->c_name}}</td>
                     <td><?php echo substr($a->c_discription,0,20);echo"..."?></td>
                     <td>₹{{$a->c_price}}</td>
-                    <td>{{$a->c_details}}</td>
-                    <td>{{$a->c_include}}</td>
-                    <td>{{$a->c_containt}}</td>
+                    <td><?php echo substr($a->c_details,0,20);echo"..."?></td>
+                    <td><?php echo substr($a->c_include,0,20);echo"..."?></td>
+                    <td><?php echo substr($a->c_containt,0,20);echo"..."?></td>
                     <td>
                       <img src="{{ url('/course/'.$a->c_image) }}" style="height: 120px; width: 120px; border-radius: 100%;">
                     </td>

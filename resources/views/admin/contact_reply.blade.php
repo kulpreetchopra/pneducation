@@ -1,5 +1,5 @@
 @extends("admin.master")
-@section("title","Subscribers | PN-Education")
+@section("title","Reply | PN-Education")
 @section("content")
 
  <!-- Content Wrapper. Contains page content -->
@@ -9,12 +9,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Subscribers</h1>
+            <h1 class="m-0 text-dark">Reply</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{url('admin')}}">Home</a></li>
-              <li class="breadcrumb-item active">Subscribers</li>
+              <li class="breadcrumb-item"><a href="{{url('admin/contact')}}">Contact</a></li>
+              <li class="breadcrumb-item active">Reply</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -39,51 +40,31 @@
           @endif
       </div><!-- /.container-fluid -->
     </div>
-    <!-- /.content-header -->
-
-<!------------ Data Table---- -->
-<section class="content">
+    <section class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
             <!-- Default box -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Display Subscribers</h3>
+                <h3 class="card-title">Reply To : {{$edit->name}}</h3>
+                <div class="card-tools">
+                  <a class="btn btn-info btn-sm" href="{{url('admin/contact')}}">View Contact</a>
+               </div>
               </div>
               <div class="card-body">
-                   
-              <table id="example1" class="table table-bordered table-hover table-striped table-responsive-sm">
-                <thead>
-                <tr style="text-align: center;">
-                  <th>Id</th>
-                  <th>Email</th>
-                  <th>Date</th>
-                  <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                  @foreach($subscriber as $a)
-                  <tr style="text-align: center;">
-                    <td>{{$a->id}}</td>
-                    <td>{{$a->email}}</td>
-                    <td>{{$a->created_at}}</td>
-                    <td>
-                      <a href="{{url('admin/subscribers_delete/'.$a->id)}}"><p class="btn btn-danger"><i class="fas fa-trash"></i></p></a>
-                    </td>
-                  </tr>
-                  @endforeach
-                </tbody>
-                <tfoot>
-                <tr style="text-align: center;">
-                  <th>Id</th>
-                  <th>Email</th>
-                  <th>Date</th>
-                  <th>Action</th>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
+    <!-- /.content-header -->
+      <form method="post" action="{{url('admin/contact_update')}}" enctype="multipart/form-data">
+      @csrf
+      <input type="hidden" name="id" value="{{$edit->id}}">
+    <div class="form-group">
+      <label>Reply To Message :</label> {{$edit->comment}}
+      <textarea type="text" class="form-control" name="reply">{{$edit->reply}}</textarea> 
+    </div>
+      <input type="submit" class="btn btn-success" name="submit" value="Send Reply">
+  </form>
+  <br>
+  </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
@@ -92,7 +73,7 @@
       </div>
       <!-- /.row -->
     </section>
-    </div>
+  </div>
 <!-- ------End Data Table------- -->
   </div>
   <!-- /.content-wrapper -->

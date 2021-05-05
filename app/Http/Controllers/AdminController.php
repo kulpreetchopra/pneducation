@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contact;
+use App\Team;
 use App\Subscribe;
 use App\User;
 use App\Course_order_product;
@@ -26,6 +27,23 @@ class AdminController extends Controller
     public function contact(){
         $contact = Contact::all();
     	return view("admin.contact",compact('contact'));
+    }
+    public function reply($id)
+    {
+        $edit= Contact::find($id);
+        return view("admin.contact_reply",compact('edit'));
+    }
+    public function update(Request $b)
+    {
+        $e = Contact::find($b->id);
+        $e->reply=$b->reply;
+        $e->save();
+        if($e){
+            return redirect('admin/contact')->with('message','Reply Send Successfully');  //reduct rout of url
+        }
+        else{
+            return redirect('admin/alert')->with('wmessage','Reply Send Unsuccessfully');
+        }
     }
     public function delete($id)
     {

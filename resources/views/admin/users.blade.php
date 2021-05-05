@@ -52,17 +52,15 @@
               </div>
               <div class="card-body">
                    
-              <table id="example1" class="table table-bordered table-striped table-responsive">
+              <table id="example1" class="table table-bordered table-hover table-striped table-responsive-sm">
                 <thead>
                 <tr style="text-align: center;">
                   <th>Id</th>
                   <th>Name</th>
                   <th>Email</th>
                   <th>Phone</th>
-                  <th>Password</th>
                   <th>Role</th>
                   <th>Date</th>
-                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -72,12 +70,8 @@
                     <td>{{$a->fname}} {{$a->lname}}</td>
                     <td>{{$a->email}}</td>
                     <td>{{$a->phone}}</td>
-                    <td>{{$a->password}}</td>
                     <td>{{$a->role}}</td>
                     <td>{{$a->created_at}}</td>
-                    <td>
-                      <a href="{{url('admin/bill/'.$a->id)}}"><p class="btn btn-info"><i class="fas fa-print"></i></p></a>
-                    </td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -87,10 +81,8 @@
                   <th>Name</th>
                   <th>Email</th>
                   <th>Phone</th>
-                  <th>Password</th>
                   <th>Role</th>
                   <th>Date</th>
-                  <th>Action</th>
                 </tr>
                 </tfoot>
               </table>

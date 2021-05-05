@@ -30,6 +30,13 @@ Route::post('contact_submit','FrontendController@contactsubmit');
 Route::post('subscribers_submit','FrontendController@subscribersubmit');
 Route::post('rating_submit','FrontendController@ratingsubmit');
 
+//Account user
+Route::get('account','FrontendController@account');
+Route::get('account/cart','FrontendController@account_cart');
+Route::get('account/bill','FrontendController@account_bill');
+Route::get('account/order','FrontendController@account_order');
+Route::get('account/contact','FrontendController@account_contact');
+
 //addtocart [Cart Controller]
 Route::get('addtocart','CartController@cart');
 Route::post('cartsubmit','CartController@cartsubmit');
@@ -52,6 +59,8 @@ Auth::routes();
 //Admin controller
 Route::get('admin','AdminController@index');
 Route::get('admin/contact','AdminController@contact');
+Route::get('admin/contact_reply/{id}','AdminController@reply');
+Route::post('admin/contact_update','AdminController@update');
 Route::get('admin/contact_delete/{id}','AdminController@delete');
 Route::get('admin/subscribers','AdminController@subscribers');
 Route::get('admin/subscribers_delete/{id}','AdminController@subscriberdelete');
