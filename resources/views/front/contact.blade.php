@@ -46,7 +46,7 @@
 							</div>
 						</div>
 						<label for="tel-number">Your Phone Number</label>
-						<input name="contact" id="tel-number" type="text" value="<?php echo$phone ?>" readonly>
+						<input name="contact" id="tel-number" type="text" value="<?php echo$phone ?>">
                     	<?php
                     }
                     else{

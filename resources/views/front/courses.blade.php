@@ -487,7 +487,7 @@
 										</select>
 										<label>Your Review</label>
 										<textarea type="text" class="form-control" placeholder="Enter Your Review" name="review"></textarea>
-										<button type="submit" name="submit">Submit</button>
+										<button style="background-color:#1A237E" type="submit" name="submit">Submit</button>
 									</form>
 								</div>
 							</div>

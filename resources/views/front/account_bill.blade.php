@@ -13,8 +13,8 @@ if(Auth::check()){
   <div class="row border border-primary shadow-lg p-4 mb-4 bg-white">
     <div class="col-md-6">
         <h3><b>Name :</b> {{$a->fname}} {{$a->lname}}</h3>
-        <h3><b>Email :</b> {{$a->email}}</h3>
-        <h3><b>Phone :</b> {{$a->phone}}</h3>
+        <h3><b>Email :</b> {{$a->email}} <a href="#" data-toggle="modal" data-target="#password"><i class="material-icons">vpn_key</i></a></h3>
+        <h3><b>Phone :</b> {{$a->phone}} <a href="#" data-toggle="modal" data-target="#phone"><i class="material-icons">edit</i></a></h3>
     </div>
     <div class="col-md-6">
       <div class="clearfix">

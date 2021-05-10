@@ -179,6 +179,7 @@
 								Learn More
 							</a>
 						</li>
+						<!-- slide2 -->
                      @endforeach
 					</ul>
 					<div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
@@ -330,7 +331,7 @@
 								<p>“{{$a->comment}}”</p>
 								<div class="profile-test">
 									<div class="avatar-holder">
-										<img src="{{ url('/front/'.$a->image) }}" alt="">
+										<img src="{{ url('/front/'.$a->image) }}" alt="" style="height: 100px;width: 120px;">
 									</div>
 									<div class="profile-data">
 										<h2>{{$a->name}}</h2>

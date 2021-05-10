@@ -30,6 +30,9 @@ Route::post('contact_submit','FrontendController@contactsubmit');
 Route::post('subscribers_submit','FrontendController@subscribersubmit');
 Route::post('rating_submit','FrontendController@ratingsubmit');
 
+//search
+Route::post('search','FrontendController@search');
+
 //Account user
 Route::get('account','FrontendController@account');
 Route::get('account/cart','FrontendController@account_cart');
@@ -51,10 +54,24 @@ Route::post('checkout_submit','CartController@checkoutsubmit');
 //Signup Controller
 Route::get('signup','SignupController@signup');
 Route::post('submit','SignupController@submit');
+Route::post('update_password','SignupController@update_password');
+Route::post('update_phone','SignupController@update_phone');
 Route::get('user_login','SignupController@user_login');
 Route::post('login_submit','SignupController@login_submit');
 Route::get('user_logout','SignupController@user_logout');
+
 Auth::routes();
+//google login
+Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
+Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
+
+//facebook login
+Route::get('auth/facebook', 'Auth\FacebookController@redirectToFacebook');
+Route::get('auth/facebook/callback', 'Auth\FacebookController@handleFacebookCallback');
+
+//linkedin login
+Route::get('auth/linkedin', 'Auth\LinkedinController@redirectToLinkedin');
+Route::get('auth/linkedin/callback', 'Auth\LinkedinController@handleLinkedinCallback');
 
 //Admin controller
 Route::get('admin','AdminController@index');

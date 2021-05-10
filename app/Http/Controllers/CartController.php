@@ -94,8 +94,6 @@ class CartController extends Controller
     public function checkoutsubmit(Request $a)
     {
         $this->validate($a,[
-        "fname"=>"required",
-        "lname"=>"required",
         "user_email"=>"required",
         "country"=>"required",
         "address"=>"required",

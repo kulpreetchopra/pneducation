@@ -34,7 +34,19 @@
 							<form class="billing-details" method="post" action="{{url('checkout_submit')}}" enctype="multipart/form-data">
                              @csrf
                         @if(Auth::check())
-                                <input type="hidden" name="user_id" value="{{Auth::User()->id}}">
+                        <input type="hidden" name="user_id" value="{{Auth::User()->id}}">
+                        @if(Auth::User()->google_id != NULL)
+                  		        <div class="row">
+									<div class="col-lg-12">
+										<label for="first-name">Full Name*</label>
+										<input type="text" name="fname" id="first-name" value="{{Auth::User()->fname}}" readonly/>
+									</div>
+								</div>
+								<label for="phone-name">Phone*</label>
+								<input type="text" name="phone" id="phone-name" value="{{Auth::User()->phone}}"/>
+								<label for="email-address">Email Address*</label>
+								<input type="text" name="user_email" id="email-address" value="{{Auth::User()->email}}" readonly/>
+                                @elseif(Auth::User()->google_id == NULL)
 								<div class="row">
 									<div class="col-lg-6">
 										<label for="first-name">First Name*</label>
@@ -49,6 +61,7 @@
 								<input type="text" name="phone" id="phone-name" value="{{Auth::User()->phone}}" readonly/>
 								<label for="email-address">Email Address*</label>
 								<input type="text" name="user_email" id="email-address" value="{{Auth::User()->email}}" readonly/>
+								@endif
                                @else
                     	        <div class="row">
 									<div class="col-lg-6">

@@ -30,9 +30,10 @@
 								</a>
 								<span>Showing all {{$course->count('id')}} results</span>
 							</div>
-							<form class="search-course">
-								<input type="search" name="search" id="search_course" placeholder="Search Courses..." />
-								<button type="submit">
+							<form class="search-course" method="post" action="{{url('search')}}" enctype="multipart/form-data">
+								@csrf
+								<input type="search" name="search" id="search_course" placeholder="Search Courses..." name="search"/>
+								<button type="submit" class="submit" name="submit">
 									<i class="material-icons">search</i>
 								</button>
 							</form>

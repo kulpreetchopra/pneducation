@@ -383,4 +383,18 @@ class FrontendController extends Controller
         }
         return view("front.account_contact",compact('user','navbar','team','cart','contact'));
     }
+    public function search(Request $s)
+    {   
+        echo$search = $s->search;
+        $course = Course::where('c_name',$search)->get();
+        foreach($course as $a){
+        if($search==$a->c_name){
+            return redirect('courses/'.$a->id)->with('message','Course Available to Subscribe');
+        }
+        else{
+            return redirect('allcourses')->with('wmessage','No Such Course Avalible');
+        } 
+        }
+        return redirect('allcourses')->with('wmessage','No Such Course Avalible');
+    }
 }

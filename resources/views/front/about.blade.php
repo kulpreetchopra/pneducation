@@ -22,12 +22,11 @@
 				<div class="about-article">
 					<div class="row">
 						<div class="col-lg-6">
-							<img src="{{url('front/'.$a->image)}}" alt="" style="height:305px">
+							<img src="{{url('front/'.$a->image)}}" alt="" style="height:330px">
 						</div>
 						<div class="col-lg-6">
 							<div class="article-content">
-								<i class="{{$a->icon}}"></i>
-								<h2>{{$a->title}}</h2>
+								<h2><i style="color:#1A237E" class="{{$a->icon}}"></i> {{$a->title}}</h2>
 								<p>{{$a->about}}</p>
 							</div>
 						</div>
@@ -80,7 +79,7 @@
 			<div class="container">
 				<div class="clients-box">
 					<h1>Our Portfolio</h1>
-					<p>PN-Infosys | PN-Education</p>
+					<p>PN-Education | PN-Infosys</p>
 					<ul class="clients-list">
 						@foreach($portfolio as $a)
 						<li>

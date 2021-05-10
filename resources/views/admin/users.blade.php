@@ -60,6 +60,7 @@
                   <th>Email</th>
                   <th>Phone</th>
                   <th>Role</th>
+                  <th>Google Id</th>
                   <th>Date</th>
                 </tr>
                 </thead>
@@ -71,6 +72,7 @@
                     <td>{{$a->email}}</td>
                     <td>{{$a->phone}}</td>
                     <td>{{$a->role}}</td>
+                    <td>{{$a->google_id}}</td>
                     <td>{{$a->created_at}}</td>
                   </tr>
                   @endforeach
@@ -82,6 +84,7 @@
                   <th>Email</th>
                   <th>Phone</th>
                   <th>Role</th>
+                  <th>Google Id</th>
                   <th>Date</th>
                 </tr>
                 </tfoot>

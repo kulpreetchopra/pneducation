@@ -78,21 +78,24 @@
 									<span class="studiare-cart-number">{{$cart->count()}}</span>
 									</a>
 								</button>
+								@foreach($navbar as $a)
 								<button class="contact-info-icon">
-									<a href="https://api.whatsapp.com/send?phone=+91 6266060879&text=Hey PN-Education, I'd like to chat with you">
+									<a href="https://api.whatsapp.com/send?phone=+91 {{$a->contact}}&text=Hey PN-Education, I'd like to chat with you!!">
 									<i style="color:white" class="material-icons">phone_android</i>
 								    </a>
 								</button>
+								@endforeach
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<form class="search_bar">
+			<form class="search_bar" method="post" action="{{url('search')}}" enctype="multipart/form-data">
+				@csrf
 				<div class="container">
-					<input type="search" class="search-input" placeholder="What are you looking for...">
-					<button type="submit" class="submit">
+					<input type="search" class="search-input" placeholder="What are you looking for..." name="search">
+					<button type="submit" class="submit" name="submit">
 						<i class="material-icons">search</i>
 					</button>
 				</div>
@@ -145,9 +148,10 @@
 
 			<div class="mobile-menu">
 				<div class="search-form-box">
-					<form class="search-form">
-						<input type="search" class="search-field" placeholder="Enter keyword...">
-						<button type="submit" class="search-submit">
+					<form class="search-form" method="post" action="{{url('search')}}" enctype="multipart/form-data">
+						@csrf
+						<input type="search" class="search-field" placeholder="Enter keyword..." name="search">
+						<button type="submit" class="search-submit" name="submit">
 							<i class="material-icons open-search">search</i> 
 						</button>
 					</form>
@@ -182,10 +186,12 @@
 						<li><a href="{{url('placements')}}">Placements</a></li>
 						<li><a href="{{url('contact')}}">Contact Us</a></li>
 						<li><a href="{{url('about')}}">About Us</a></li>
-						<li><a href="https://api.whatsapp.com/send?phone=+91 6266060879&text=Hey PN-Education, I'd like to chat with you">
+						@foreach($navbar as $a)
+						<li><a href="https://api.whatsapp.com/send?phone=+91 {{$a->contact}}&text=Hey PN-Education, I'd like to chat with you">
 						<i style="color:white" class="material-icons">phone_android</i> Whatsp Us
 						</a>
-					</li>
+					    </li>
+					    @endforeach
 					</ul>
 				</nav>
 			</div>
@@ -195,6 +201,65 @@
 
 	@section("content")
     @show
+    @if(Auth::check())
+    <!--password Modal -->
+  <div class="modal fade" id="password" role="dialog" style="margin-top:220px!important;">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color:#1A237E;color:white;">
+        <h4 class="modal-title" id="myModalLabel"><i class="material-icons">vpn_key</i> Change Password</h4>
+        <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+          <form method="post" action="{{url('update_password')}}" enctype="multipart/form-data">
+          	@csrf
+          	<input type="hidden" name="id" value="{{Auth::User()->id}}">
+          	<div class="form-group">
+          		<label>Password:</label>
+          		<input type="text" class="form-control" placeholder="Enter New Password" name="password">
+          	</div>
+          	<input type="submit" class="btn btn-success" name="submit" value="Update">
+           </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--phone Modal -->
+  <div class="modal fade" id="phone" role="dialog" style="margin-top:220px!important;">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color:#1A237E;color:white;">
+        <h4 class="modal-title" id="myModalLabel"><i class="material-icons">vpn_key</i> Upadate Phone</h4>
+        <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+          <form method="post" action="{{url('update_phone')}}" enctype="multipart/form-data">
+          	@csrf
+          	<input type="hidden" name="id" value="{{Auth::User()->id}}">
+          	<div class="form-group">
+          		<label>Phone:</label>
+          		<input type="tel" class="form-control" placeholder="Enter New Phone" name="phone" value="{{Auth::User()->phone}}">
+          	</div>
+          	<input type="submit" class="btn btn-success" name="submit" value="Update">
+           </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@endif
     <!-- footer 
 			================================================== -->
 		<footer>

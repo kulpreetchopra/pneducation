@@ -13,8 +13,8 @@
 
 .image {
     margin-top: 30px;
-    width: 400px;
-    height: 300px
+    width: 530px;
+    height: 400px
 }
 
 .border-line {
@@ -116,6 +116,9 @@ a {
         border-right: none
     }
 
+    .card1 {
+        display: none!important;
+    }
     .card2 {
         border-top: 1px solid #EEEEEE !important;
         margin: 0px 15px
@@ -132,7 +135,6 @@ a {
             </div>
             <div class="col-lg-6">
                 <div class="card2 card border-0 px-4 py-5">
-                    <br>
                     <form method="post" action="{{url('/login_submit')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="row px-3"> <label class="mb-1">
@@ -152,7 +154,20 @@ a {
                       <input type="submit" class="btn btn-blue text-center" name="submit" value="Login">
                     </form> 
                     </div>
-                    <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a href="{{url('signup')}}" class="text-danger">Register</a></small> </div>
+                    <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a href="{{url('signup')}}" class="text-danger">Signup</a></small> </div>
+            <center>
+              <hr>
+              <h3><b>OR LOGIN WITH</b></h3> 
+              <h3>
+                <a class="icon" style="color:white;background-color: red;" href="{{ url('auth/google') }}"><i class="fa fa-google"></i></a>
+                &nbsp;
+                <a class="icon" style="color:white;background-color: #3b5998;" href="{{ url('auth/facebook') }}"><i class="fa fa-facebook-f"></i></a>
+                &nbsp;
+                <a class="icon" style="color:white;background-color: #2867B2;" href="{{ url('auth/linkedin') }}"><i class="fa fa-linkedin"></i></a>
+              </h3>
+            </center>
+
+                                
                 </div>
             </div>
         </div>

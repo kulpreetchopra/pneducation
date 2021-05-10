@@ -53,6 +53,36 @@ class SignupController extends Controller
         	return redirect('signup')->with('wmessage','Registered Unsuccessfully');
         }
     }
+    public function update_password(Request $b)
+    {
+        $this->validate($b,[
+        'password' => ['required', 'string', 'min:5'],
+        ]);
+        $e = User::find($b->id);
+        $e->password = Hash::make($b->password);
+        $e->save();
+        if($e){
+            return redirect('account')->with('message','Updated Successfully');  //reduct rout of url
+        }
+        else{
+            return redirect('account')->with('wmessage','Updated Unsuccessfully');
+        }
+    }
+    public function update_phone(Request $b)
+    {
+        $this->validate($b,[
+        'phone' => ['required', 'string', 'max:10'],
+        ]);
+        $e = User::find($b->id);
+        $e->phone = $b->phone;
+        $e->save();
+        if($e){
+            return redirect('account')->with('message','Updated Successfully');  //reduct rout of url
+        }
+        else{
+            return redirect('account')->with('wmessage','Updated Unsuccessfully');
+        }
+    }
     public function user_login(){
         $session_id = Session::getId();
     	$navbar = Navbar::all();

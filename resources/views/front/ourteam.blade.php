@@ -24,7 +24,7 @@
 						<div class="col-lg-3 col-md-6">
 							<div class="teacher-post">
 								<!-- <a href="#"> -->
-									<img src="{{url('front/'.$a->image)}}" alt="">
+									<img src="{{url('front/'.$a->image)}}" alt="" style="height: 280px;">
 									<div class="hover-post">
 										<h2>{{$a->name}}</h2>
 										<span>{{$a->about}}</span>

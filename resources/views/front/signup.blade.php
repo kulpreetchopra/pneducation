@@ -13,8 +13,8 @@
 
 .image {
     margin-top: 30px;
-    width: 400px;
-    height: 380px
+    width: 530px;
+    height: 400px
 }
 
 .border-line {
@@ -112,6 +112,10 @@ a {
         height: 220px
     }
 
+    .card1 {
+        display: none!important;
+    }
+
     .border-line {
         border-right: none
     }
@@ -182,7 +186,7 @@ a {
                           <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a>
                     </div>
                     <div class="mb-3 px-3"> 
-                      <input type="submit" class="btn btn-blue text-center" name="submit" value="Login">
+                      <input type="submit" class="btn btn-blue text-center" name="submit" value="Signup">
                     </form> 
                     </div>
                     <div class="mb-4 px-3"> <small class="font-weight-bold">Already have an account? <a href="{{url('user_login')}}" class="text-danger">Login</a></small> </div>
