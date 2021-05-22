@@ -46,7 +46,7 @@ if(Auth::check()){
                 <tbody>
                   @foreach($bill as $a)
                   <tr style="text-align: center;">
-                    <td>{{$a->course_order_id}}</td>
+                    <td>{{$a->order_id}}</td>
                     <td>{{$a->course_id}}</td>
                     <td>{{$a->course_name}}</td>
                     <td>

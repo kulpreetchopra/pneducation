@@ -10,6 +10,9 @@ use App\User;
 use App\Course_order_product;
 use App\Navbar;
 use App\Courseorder;
+use App\Coupan;
+use App\Course;
+use App\Category;
 
 class AdminController extends Controller
 {
@@ -85,12 +88,26 @@ class AdminController extends Controller
         $navbar = Navbar::all();
         $corder = Courseorder::all();
         $corderd = Course_order_product::all();
-        return view("admin.bill",compact('navbar','corder','corderd','id'));
+        $coupan = Coupan::all();
+        return view("admin.bill",compact('navbar','corder','corderd','id','coupan'));
     }
     public function billprint($id){
         $navbar = Navbar::all();
         $corder = Courseorder::all();
         $corderd = Course_order_product::all();
-        return view("admin.billprint",compact('navbar','corder','corderd','id'));
+        $coupan = Coupan::all();
+        return view("admin.billprint",compact('navbar','corder','corderd','id','coupan'));
+    }
+
+    public function print($name){
+        $navbar = Navbar::all();
+        $users = User::all();
+        $contact = Contact::all();
+        $subscriber = Subscribe::all();
+        $orders = Courseorder::all();
+        $coupan = Coupan::all();
+        $course = Course::all();
+        $category = Category::all();
+        return view("admin.print",compact('navbar','users','name','contact','subscriber','orders','coupan','course','category'));
     }
 }

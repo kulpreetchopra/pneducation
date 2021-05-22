@@ -38,8 +38,10 @@ if(Auth::check()){
                   <th>Order Note</th>
                   <th>Order Status</th>
                   <th>Payment Methode</th>
+                  <th>Transaction Id</th>
+                  <th>Subtotal Amount</th>
                   <th>Coupan Code</th>
-                  <th>Coupan Amount</th>
+                  <th>Coupan Discount(%)</th>
                   <th>Total Amount</th>
                   <th>Payment Date</th>
                   <th>Bill Print</th>
@@ -48,16 +50,18 @@ if(Auth::check()){
                 <tbody>
                   @foreach($bill as $a)
                   <tr style="text-align: center;">
-                    <td>{{$a->id}}</td>
+                    <td>{{$a->order_id}}</td>
                     <td>{{$a->order_note}}</td>
                     <td>{{$a->order_status}}</td>
                     <td>{{$a->payment_methode}}</td>
+                    <td>{{$a->transaction_id}}</td>
+                    <td>₹{{$a->subtotal}}</td>
                     <td>{{$a->coupan_code}}</td>
-                    <td>{{$a->coupan_amount}}</td>
+                    <td>{{$a->coupan_discount}}</td>
                     <td>₹{{$a->total}}</td>
                     <td>{{$a->created_at}}</td>
                     <td>
-                      <a href="{{url('admin/billprint/'.$a->id)}}"><p class="btn btn-info"><i class="material-icons">file_download</i></p></a>
+                      <a href="{{url('admin/billprint/'.$a->id)}}" target="_blank"><p class="btn btn-info"><i class="material-icons">file_download</i></p></a>
                     </td>
                   </tr>
                   @endforeach
@@ -68,8 +72,10 @@ if(Auth::check()){
                   <th>Order Note</th>
                   <th>Order Status</th>
                   <th>Payment Methode</th>
+                  <th>Transaction Id</th>
+                  <th>Subtotal Amount</th>
                   <th>Coupan Code</th>
-                  <th>Coupan Amount</th>
+                  <th>Coupan Discount</th>
                   <th>Total Amount</th>
                   <th>Payment Date</th>
                   <th>Bill Print</th>

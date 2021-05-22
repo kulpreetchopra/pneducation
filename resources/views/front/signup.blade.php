@@ -97,6 +97,7 @@ a {
 
 .btn-blue:hover {
     background-color: #000;
+    color: white;
     cursor: pointer
 }
 
@@ -181,11 +182,9 @@ a {
                       <input type="password" name="password" placeholder="Enter password"> 
                     </div>
                     <div class="col-md-12 px-3 mb-4">
-                        <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input"> 
-                          <label for="chk1" class="custom-control-label text-sm">Remember me</label> </div> 
                           <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a>
                     </div>
-                    <div class="mb-3 px-3"> 
+                    <div class="mb-3 px-3 mb-4"> 
                       <input type="submit" class="btn btn-blue text-center" name="submit" value="Signup">
                     </form> 
                     </div>

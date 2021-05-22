@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Courses</h1>
+            <h1 class="m-0 text-dark">Courses <a href="{{url('admin/print/course')}}"><p class="btn btn-info"><i class="fas fa-print"></i> Print To PDF</p></a></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -74,7 +74,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach($display2 as $a)
+                  @foreach($course as $a)
                   <tr style="text-align: center;">
                     <td>{{$a->id}}</td>
                     <td>{{$a->c_name}}</td>
@@ -165,8 +165,8 @@
     <div class="form-group">
       <label>Course Category:</label>
       <select name="c_category" class="form-control">
-        @foreach($display1 as $category)
-        <option value="{{$category->c_name}}">{{$category->c_name}}</option>
+        @foreach($category as $cat)
+        <option value="{{$cat->c_name}}">{{$cat->c_name}}</option>
         @endforeach
       </select>
     </div>

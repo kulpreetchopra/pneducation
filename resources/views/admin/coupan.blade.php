@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Coupan</h1>
+            <h1 class="m-0 text-dark">Coupan <a href="{{url('admin/print/coupan')}}"><p class="btn btn-info"><i class="fas fa-print"></i> Print To PDF</p></a></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -62,30 +62,18 @@
                 <tr style="text-align: center;">
                   <th>Id</th>
                   <th>Coupan_Code</th>
-                  <th>Amount</th>
-                  <th>Amount_Type</th>
+                  <th>Discount</th>
                   <th>Status</th>
                   <th>Expiry_Date</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach($display as $a)
+                  @foreach($coupan as $a)
                   <tr style="text-align: center;">
                     <td>{{$a->id}}</td>
                     <td>{{$a->coupan_code}}</td>
-                    <?php
-                    $i='₹';
-                    $j='%';
-                    if($a->amount_type=="Percentage"){
-                      $i="";
-                    }
-                    elseif($a->amount_type=="Fixed"){
-                      $j="";
-                    }
-                    ?>
-                    <td><?php echo$i; ?>{{$a->amount}}<?php echo$j; ?></td>
-                    <td>{{$a->amount_type}}</td>
+                    <td>{{$a->discount}}%</td>
                     <td>
                       <input type="checkbox" data-id="{{ $a->id }}" name="status" class="js-switch" {{ $a->status == '1' ? 'checked' : '' }}>
                     </td>
@@ -101,8 +89,7 @@
                 <tr style="text-align: center;">
                   <th>Id</th>
                   <th>Coupan_Code</th>
-                  <th>Amount</th>
-                  <th>Amount_Type</th>
+                  <th>Discount</th>
                   <th>Status</th>
                   <th>Expiry_Date</th>
                   <th>Action</th>
@@ -137,15 +124,8 @@
       <input type="text" class="form-control" placeholder="Enter Coupan Code" name="coupan_code">
     </div>
     <div class="form-group">
-      <label>Amount:</label>
-      <input type="text" class="form-control" placeholder="Enter Coupan Amount" name="amount">
-    </div>
-    <div class="form-group">
-      <label>Amount_Type:</label>
-      <select name="amount_type" class="form-control">
-        <option value="Fixed">Fixed</option>
-        <option value="Percentage">Percentage</option>
-      </select>
+      <label>Discount(%):</label>
+      <input type="text" class="form-control" placeholder="Enter Coupan Discount" name="discount">
     </div>
     <div class="form-group">
       <label>Status:</label>

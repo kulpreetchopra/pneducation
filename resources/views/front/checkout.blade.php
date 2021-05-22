@@ -35,7 +35,7 @@
                              @csrf
                         @if(Auth::check())
                         <input type="hidden" name="user_id" value="{{Auth::User()->id}}">
-                        @if(Auth::User()->google_id != NULL)
+                        @if(Auth::User()->google_id != NULL || Auth::User()->facebook_id != NULL)
                   		        <div class="row">
 									<div class="col-lg-12">
 										<label for="first-name">Full Name*</label>
@@ -46,7 +46,7 @@
 								<input type="text" name="phone" id="phone-name" value="{{Auth::User()->phone}}"/>
 								<label for="email-address">Email Address*</label>
 								<input type="text" name="user_email" id="email-address" value="{{Auth::User()->email}}" readonly/>
-                                @elseif(Auth::User()->google_id == NULL)
+                                @elseif(Auth::User()->google_id == NULL || Auth::User()->facebook_id == NULL)
 								<div class="row">
 									<div class="col-lg-6">
 										<label for="first-name">First Name*</label>
@@ -99,7 +99,14 @@
 								<input type="text" name="state" id="state-name" />
 								<label for="postcode-name">Postcode / Zip*</label>
 								<input type="text" name="pincode" id="postcode-name" />
+								<label for="payment">Payment Methode*</label>
+                                <input class="cod" type="radio" name="payment_methode"value="Cash On Dilevery"/> Cash On Dilevery
+                                <br>
+                                <input class="paytm" type="radio" name="payment_methode"value="Paytm"/> Paytm
+                                <br><br>
 								<h2>Additional information</h2>
+								<label for="coupan">Coupan Code (optional)</label>
+								<input type="text" name="coupan_code" placeholder="Coupon code">
 								<label for="notes">Order notes (optional)</label>
 								<textarea name="order_note" id="notes" placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
 						</div>
@@ -127,6 +134,7 @@
 										<tr class="order-total">
 											<th>Subtotal</th>
 											<td>₹<?php echo$total_amount; ?></td>
+											<input type="hidden" name="subtotal" value="<?php echo$total_amount; ?>">
 										</tr>
 										<tr class="order-total">
 											<th>Total</th>
@@ -135,7 +143,7 @@
 										</tr>
 									</tbody>
 								</table>
-								<input class="checkout-button" type="submit" name="submit" value="Proceed to Complete">
+								<input class="checkout-button" type="submit" name="submit" value="Proceed to Complete" onclick="return selectpaymentmethode();">
 							</div>
 						</div>
 					</div>

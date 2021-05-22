@@ -20,6 +20,7 @@ use App\User;
 use App\About;
 use App\Portfolio;
 use App\Rating;
+use App\Coupan;
 use App\Courseorder;
 use App\Course_order_product;
 use Session;
@@ -36,6 +37,8 @@ class FrontendController extends Controller
     	$course = Course::all();
         $special = Special::all();
         $team = Team::all();
+        $rating = Rating::all();
+        $c_order= Course_order_product::all();
         if(Auth::check()){
             $user_email=Auth::User()->email;
             $cart= Cart::where('user_email',$user_email)->get();
@@ -46,7 +49,7 @@ class FrontendController extends Controller
             // die;
             $cart= Cart::where('session_id',$session_id)->get();
         }
-    	return view("front.index",compact('banner','alert','category','course','navbar','cart','special','team'));
+    	return view("front.index",compact('banner','alert','category','course','navbar','cart','special','team','rating','c_order'));
     }
     public function courses($id){
         $session_id = Session::getId();
@@ -70,6 +73,8 @@ class FrontendController extends Controller
         $navbar = Navbar::all();
         $allcourse= Course::all();
         $category = Category::all();
+        $rating = Rating::all();
+        $c_order= Course_order_product::all();
         if(Auth::check()){
             $user_email=Auth::User()->email;
             $cart= Cart::where('user_email',$user_email)->get();
@@ -80,13 +85,15 @@ class FrontendController extends Controller
             // die;
             $cart= Cart::where('session_id',$session_id)->get();
         }
-        return view("front.allcourses",compact('allcourse','navbar','category','cart'));
+        return view("front.allcourses",compact('allcourse','navbar','category','cart','rating','c_order'));
     }
     public function courseslist(){
         $session_id = Session::getId();
         $navbar = Navbar::all();
         $course= Course::all();
         $category = Category::all();
+        $rating = Rating::all();
+        $c_order= Course_order_product::all();
         if(Auth::check()){
             $user_email=Auth::User()->email;
             $cart= Cart::where('user_email',$user_email)->get();
@@ -97,7 +104,7 @@ class FrontendController extends Controller
             // die;
             $cart= Cart::where('session_id',$session_id)->get();
         }
-        return view("front.courseslist",compact('course','navbar','category','cart'));
+        return view("front.courseslist",compact('course','navbar','category','cart','rating','c_order'));
     }
     public function allcategory($id){
         $session_id = Session::getId();
@@ -396,5 +403,12 @@ class FrontendController extends Controller
         } 
         }
         return redirect('allcourses')->with('wmessage','No Such Course Avalible');
+    }
+    public function billprint($id){
+        $navbar = Navbar::all();
+        $corder = Courseorder::all();
+        $corderd = Course_order_product::all();
+        $coupan = Coupan::all();
+        return view("admin.billprint",compact('navbar','corder','corderd','id','coupan'));
     }
 }

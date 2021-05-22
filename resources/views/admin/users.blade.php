@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">All Users</h1>
+            <h1 class="m-0 text-dark">All Users <a href="{{url('admin/print/users')}}"><p class="btn btn-info"><i class="fas fa-print"></i> Print To PDF</p></a></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -61,6 +61,7 @@
                   <th>Phone</th>
                   <th>Role</th>
                   <th>Google Id</th>
+                  <th>Facebook Id</th>
                   <th>Date</th>
                 </tr>
                 </thead>
@@ -73,6 +74,7 @@
                     <td>{{$a->phone}}</td>
                     <td>{{$a->role}}</td>
                     <td>{{$a->google_id}}</td>
+                    <td>{{$a->facebook_id}}</td>
                     <td>{{$a->created_at}}</td>
                   </tr>
                   @endforeach
@@ -85,6 +87,7 @@
                   <th>Phone</th>
                   <th>Role</th>
                   <th>Google Id</th>
+                  <th>Facebook Id</th>
                   <th>Date</th>
                 </tr>
                 </tfoot>

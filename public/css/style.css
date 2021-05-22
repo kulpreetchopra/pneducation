@@ -1012,7 +1012,7 @@ section.courses-section {
         color: #adb5bd;
         margin-right: 8px; }
       .course-post .course-content-main .course-rating-teacher a.course-loop-teacher {
-        color: #4783f3;
+        color: green;
         display: inline-flex;
         font-size: 14px; }
         .course-post .course-content-main .course-rating-teacher a.course-loop-teacher:before {
@@ -2670,7 +2670,7 @@ section.single-course-section {
           section.single-course-section .product-single-top-part .product-info-before-gallery .before-gallery-unit .info div.value a:hover {
             color: #4783f3; }
         section.single-course-section .product-single-top-part .product-info-before-gallery .before-gallery-unit span.rating {
-          background-color: #8bca48;
+          background-color: green;
           color: #fff;
           padding: 3px 6px;
           margin-right: 8px;

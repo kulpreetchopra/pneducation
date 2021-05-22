@@ -50,9 +50,16 @@
 										</div>
 									</div>
 									<div class="course-rating before-gallery-unit">
+										<?php $vote=0; ?>
 										<div class="star-rating has-ratings">
-											<span class="rating">4.50</span>
-											<span class="votes-number">2 Votes</span>
+											@foreach($rating as $r)
+											@if($r->course_name==$course->c_name)
+											<?php $vote++; ?>
+											@endif
+											@endforeach
+											<div class="star-rating has-ratings" title="<?php echo$vote; ?> Users Subscribed To This Course">
+											<p><span class="rating"><?php echo$vote; ?></span><span> Votes</span></p>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -510,10 +517,8 @@
 								<input type="hidden" name="course_name" value="{{$course->c_name}}">
 								<input type="hidden" name="course_price" value="{{$course->c_price}}">
 								<input type="hidden" name="image" value="{{$course->c_image}}">	
-								<input class="btn btn-block btn-outline-primary" type="submit" name="submit" value="Add To Cart">
+								<input class="btn btn-block btn-outline-success" type="submit" name="submit" value="Add To Cart">
 								</form>
-								<br>
-								<a class="btn btn-block btn-outline-success" href="{{url('checkout')}}">Buy This course</a>
 								<br>
 								<div class="product-meta-info-list">
 									<h3>Course Features</h3>

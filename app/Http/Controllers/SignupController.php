@@ -47,7 +47,7 @@ class SignupController extends Controller
     	$r->password=Hash::make($a->password);
     	$r->save();
     	if($r){
-    		return redirect('user_login')->with('message','Registered Successfully');  //reduct rout of url
+    		return redirect('user_login')->with('message','Registered Successfully Now Login First');  //reduct rout of url
     	}
     	else{
         	return redirect('signup')->with('wmessage','Registered Unsuccessfully');
@@ -102,10 +102,17 @@ class SignupController extends Controller
     { 
         $session_id = Session::getId();
         $data=$b->all();
+        echo$cart= Cart::where('user_email',$b->email)->get();
         if(Auth::attempt(['email'=>$data['email'],'password'=>$data['password'],'role'=>"User"])){
-            
             Cart::where('session_id',$session_id)->update(['user_email'=>$data['email']]);
-            return redirect("addtocart")->with('message','Login Successfully');
+            if($cart!='[]'){
+                // echo"true";
+                return redirect("addtocart")->with('message','Login Successfully');
+            }
+            else{
+                // echo"false";
+                return redirect("/")->with('message','Login Successfully');
+            }
         }
         else{
             return redirect("user_login")->with('wmessage','Login Unsuccessfully');

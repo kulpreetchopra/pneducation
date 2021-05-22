@@ -15,9 +15,9 @@ class CourseController extends Controller
     }
     public function display()
     {
-        $display1 = Category::all();
-        $display2 = Course::all(); 
-    	return view("admin.course",compact('display1','display2'));
+        $category = Category::all();
+        $course = Course::all(); 
+    	return view("admin.course",compact('category','course'));
     }
     public function submit(Request $a)
     {   

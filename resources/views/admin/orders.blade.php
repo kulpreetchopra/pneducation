@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">All Orders</h1>
+            <h1 class="m-0 text-dark">All Orders <a href="{{url('admin/print/orders')}}"><p class="btn btn-info"><i class="fas fa-print"></i> Print To PDF</p></a></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -61,11 +61,14 @@
                   <th>Customer Email</th>
                   <th>Customer Phone</th>
                   <th>Customer Address</th>
+                  <th>Order Id</th>
                   <th>Order Note</th>
                   <th>Order Status</th>
                   <th>Payment Methode</th>
+                  <th>Transaction Id</th>
+                  <th>Subtotal Amount</th>
                   <th>Coupan Code</th>
-                  <th>Coupan Amount</th>
+                  <th>Coupan Discount(%)</th>
                   <th>Total Amount</th>
                   <th>Payment Date</th>
                   <th>Action</th>
@@ -80,11 +83,14 @@
                     <td>{{$a->user_email}}</td>
                     <td>{{$a->phone}}</td>
                     <td>{{$a->address}},{{$a->city}},{{$a->pincode}},{{$a->state}},{{$a->country}}</td>
+                    <td>{{$a->order_id}}</td>
                     <td>{{$a->order_note}}</td>
                     <td>{{$a->order_status}}</td>
                     <td>{{$a->payment_methode}}</td>
+                    <td>{{$a->transaction_id}}</td>
+                    <td>₹{{$a->subtotal}}</td>
                     <td>{{$a->coupan_code}}</td>
-                    <td>{{$a->coupan_amount}}</td>
+                    <td>{{$a->coupan_discount}}</td>
                     <td>₹{{$a->total}}</td>
                     <td>{{$a->created_at}}</td>
                     <td>
@@ -101,11 +107,14 @@
                   <th>Customer Email</th>
                   <th>Customer Phone</th>
                   <th>Customer Address</th>
+                  <th>Order Id</th>
                   <th>Order Note</th>
                   <th>Order Status</th>
                   <th>Payment Methode</th>
+                  <th>Transaction Id</th>
+                  <th>Subtotal Amount</th>
                   <th>Coupan Code</th>
-                  <th>Coupan Amount</th>
+                  <th>Coupan Discount(%)</th>
                   <th>Total Amount</th>
                   <th>Payment Date</th>
                   <th>Action</th>

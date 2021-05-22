@@ -63,15 +63,8 @@
       <input type="text" class="form-control" placeholder="Enter Coupan Code" name="coupan_code" value="{{$edit->coupan_code}}">
     </div>
     <div class="form-group">
-      <label>Amount:</label>
-      <input type="text" class="form-control" placeholder="Enter Coupan Amount" name="amount" value="{{$edit->amount}}">
-    </div>
-    <div class="form-group">
-      <label>Amount_Type:</label>
-      <select name="amount_type" class="form-control">
-        <option value="Fixed" @if($edit->amount_type=="Fixed") selected @endif>Fixed</option>
-        <option value="Percentage" @if($edit->amount_type=="Percentage") selected @endif>Percentage</option>
-      </select>
+      <label>Discount(%):</label>
+      <input type="text" class="form-control" placeholder="Enter Coupan Discount" name="discount" value="{{$edit->discount}}">
     </div>
     <div class="form-group">
       <label>Status:</label>

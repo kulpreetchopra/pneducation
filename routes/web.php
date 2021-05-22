@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Forgot Password Routes
+// Route::get('forget-password', 'Auth\ForgotPasswordController@getEmail');
+// Route::post('forget-password','Auth\ForgotPasswordController@postEmail');
+
+// Reset Password Routes
+// Route::get('reset-password/{token}', 'Auth\ResetPasswordController@getPassword');
+// Route::post('reset-password', 'Auth\ResetPasswordController@updatePassword');
 
 //Frontend Controller
 Route::get('/','FrontendController@index');
@@ -51,6 +58,11 @@ Route::get('thanks','CartController@thanks');
 Route::get('checkout','CartController@checkout');
 Route::post('checkout_submit','CartController@checkoutsubmit');
 
+//paytm gateway
+Route::post('/paytm-callback','CartController@paytmCallback');
+Route::get('payment-success','CartController@paymentsuccess');
+Route::get('payment-fail','CartController@paymentfail');
+
 //Signup Controller
 Route::get('signup','SignupController@signup');
 Route::post('submit','SignupController@submit');
@@ -66,12 +78,8 @@ Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
 Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
 
 //facebook login
-Route::get('auth/facebook', 'Auth\FacebookController@redirectToFacebook');
-Route::get('auth/facebook/callback', 'Auth\FacebookController@handleFacebookCallback');
-
-//linkedin login
-Route::get('auth/linkedin', 'Auth\LinkedinController@redirectToLinkedin');
-Route::get('auth/linkedin/callback', 'Auth\LinkedinController@handleLinkedinCallback');
+Route::get('auth/facebook', 'FacebookController@redirectToFacebook');
+Route::get('auth/facebook/callback','FacebookController@handleFacebookCallback');
 
 //Admin controller
 Route::get('admin','AdminController@index');
@@ -178,6 +186,10 @@ Route::get('admin/portfolio_delete/{id}','AboutController@delete1');
 //Bill
 Route::get('admin/bill/{id}','AdminController@bill');
 Route::get('admin/billprint/{id}','AdminController@billprint');
+Route::get('front/billprint/{id}','FrontendController@billprint');
+
+//User
+Route::get('admin/print/{name}','AdminController@print');
 
 //Home Controller -Admin
 Route::get('home','AdminController@index');

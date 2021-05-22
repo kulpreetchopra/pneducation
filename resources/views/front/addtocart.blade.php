@@ -58,12 +58,6 @@
 										<td class="product-subtotal">₹{{($a->course_price)*($a->course_quantity)}}</td>
 									</tr>
 									@endforeach
-									<tr class="coupon-line"> 
-										<td colspan="6" class="actions">
-											<input type="text" name="coupon_code" placeholder="Coupon code">
-											<button type="submit">Update cart</button>
-										</td>
-									</tr>
 								</tbody>
 							</table>
 						</div>

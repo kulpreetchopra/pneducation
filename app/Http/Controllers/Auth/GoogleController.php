@@ -7,6 +7,7 @@ use Socialite;
 use Auth;
 use Exception;
 use App\User;
+use App\Cart;
   
 class GoogleController extends Controller
 {
@@ -32,12 +33,21 @@ class GoogleController extends Controller
             $user = Socialite::driver('google')->stateless()->user();
      
             $finduser = User::where('google_id', $user->id)->first();
+
+            $cart= Cart::where('user_email',$user->email)->get();
      
             if($finduser){
      
                 Auth::login($finduser);
     
-                return redirect('/addtocart');
+                if($cart!='[]'){
+                    // echo"true";
+                    return redirect("addtocart")->with('message','Login Successfully');
+                }
+                else{
+                    // echo"false";
+                    return redirect("/")->with('message','Login Successfully');
+                }
      
             }else{
                 $newUser = User::create([
@@ -49,7 +59,14 @@ class GoogleController extends Controller
     
                 Auth::login($newUser);
      
-                return redirect('/addtocart');
+                if($cart!='[]'){
+                    // echo"true";
+                    return redirect("addtocart")->with('message','Login Successfully');
+                }
+                else{
+                    // echo"false";
+                    return redirect("/")->with('message','Login Successfully');
+                }
             }
     
         } catch (Exception $e) {

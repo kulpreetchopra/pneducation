@@ -67,7 +67,7 @@
                   <address>
                     <strong>{{$a->fname}} {{$a->lname}}</strong><br>
                     {{$a->address}}<br>
-                    {{$a->city}}, {{$a->state}}<br>
+                    {{$a->city}}, {{$a->pincode}}, {{$a->state}}, {{$a->country}}<br>
                     Phone: {{$a->phone}}<br>
                     Email: {{$a->user_email}}
                   </address>
@@ -75,12 +75,22 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                  <b>Bill ID: <?php echo uniqid('PN'); ?></b><br>
+                  @if($a->payment_methode=="Cash On Dilevery")
                   <br>
-                  <b>Order ID:</b> {{$a->id}}<br>
+                  @endif
+                  <b>Bill ID:</b> <?php echo uniqid('PN'); ?><br>
+                  <b>Order ID:</b> {{$a->order_id}}<br>
+                  @if($a->payment_methode!="Cash On Dilevery")
+                  <b>Transaction ID:</b> {{$a->transaction_id}}<br>
+                  @endif
                   <b>Payment Date:</b> {{$a->created_at}}<br>
                   <b>Payment Methode:</b> {{$a->payment_methode}}<br>
-                  <b>Coupan Code:</b> {{$a->coupan_code}}
+                  <b>Payment Status:</b> {{$a->order_status}} 
+                  @if($a->order_status=="Complete")
+                  <i class="fas fa-check-circle text-success"></i>
+                  @else 
+                  <i class="fas fa-spinner text-primary"></i>
+                  @endif
                 </div>
                 <!-- /.col -->
               </div>
@@ -132,30 +142,31 @@
                   <img src="{{url('backend/dist/img/credit/mastercard.png')}}" alt="Mastercard">
                   <img src="{{url('backend/dist/img/credit/american-express.png')}}" alt="American Express')}}">
                   <img src="{{url('backend/dist/img/credit/paypal2.png')}}" alt="Paypal">
-
+                  <img style="border: 1px solid orange;width:10%;height:12%" src="{{url('backend/dist/img/credit/paytm.jpg')}}" alt="Paypal">
+                  <br><br>
                   <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem
-                    plugg
-                    dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+                    PN INFOSYS provides the best service possible to its customers because for us, our client’s happiness is important. Whatever we choose to do, we do it an exorbitant manner. PN INFOSYS Company provides a full range of maintenance and compliance services for Government and Commercial facilities.
                   </p>
+                  @foreach($navbar as $n)
+                  <img src="{{ url('/front/'.$n->logo) }}" alt=""></a>
+                  @endforeach
                 </div>
                 <!-- /.col -->
                 <div class="col-6">
                   <p class="lead">Amount Due: {{$a->created_at}}</p>
-
                   <div class="table-responsive">
                     <table class="table">
                       <tr>
                         <th style="width:50%">Subtotal:</th>
-                        <td>₹{{$a->total}}</td>
+                        <td>₹{{$a->subtotal}}</td>
                       </tr>
                       <tr>
-                        <th>Tax (9.3%)</th>
-                        <td>$10.34</td>
+                        <th>Coupan Code:</th>
+                        <td>{{$a->coupan_code}}</td>
                       </tr>
                       <tr>
-                        <th>Shipping:</th>
-                        <td>$5.80</td>
+                        <th>Coupan Discount:</th>
+                        <td>{{$a->coupan_discount}}% Off</td>
                       </tr>
                       <tr>
                         <th>Total:</th>
@@ -171,13 +182,7 @@
               <!-- this row will not appear when printing -->
               <div class="row no-print">
                 <div class="col-12">
-                  <a href="{{url('admin/billprint/'.$a->id)}}" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-                  <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
-                    Payment
-                  </button>
-                  <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                    <i class="fas fa-download"></i> Generate PDF
-                  </button>
+                  <a href="{{url('admin/billprint/'.$a->id)}}" target="_blank" class="btn btn-primary float-right" style="margin-right: 5px;"><i class="fas fa-print"></i> Generate PDF</a>
                 </div>
               @endif
               @endforeach

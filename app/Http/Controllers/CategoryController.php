@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use DB;
+use PDF;
 
 class CategoryController extends Controller
 {
@@ -14,8 +15,8 @@ class CategoryController extends Controller
     }
     public function display()
     {
-        $display = Category::all(); 
-    	return view("admin.category",compact('display'));
+        $category = Category::all(); 
+    	return view("admin.category",compact('category'));
     }
     public function submit(Request $a)
     {   

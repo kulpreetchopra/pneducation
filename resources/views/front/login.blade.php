@@ -97,6 +97,7 @@ a {
 
 .btn-blue:hover {
     background-color: #000;
+    color: white;
     cursor: pointer
 }
 
@@ -145,11 +146,11 @@ a {
                             <h6 class="mb-0 text-sm">Password</h6>
                         </label> 
                         <input type="password" name="password" placeholder="Enter password"> </div>
-                    <div class="row px-3 mb-4">
-                        <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input"> 
-                          <label for="chk1" class="custom-control-label text-sm">Remember me</label> </div> 
-                          <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a>
-                    </div>
+                        @if (Route::has('password.request'))
+                        <a href="{{route('password.request')}}" class="ml-auto mb-0 text-md text-danger">Forgot Password?</a>
+                        @endif
+                    <br>
+                    <br>
                     <div class="row mb-3 px-3"> 
                       <input type="submit" class="btn btn-blue text-center" name="submit" value="Login">
                     </form> 
@@ -159,11 +160,15 @@ a {
               <hr>
               <h3><b>OR LOGIN WITH</b></h3> 
               <h3>
-                <a class="icon" style="color:white;background-color: red;" href="{{ url('auth/google') }}"><i class="fa fa-google"></i></a>
-                &nbsp;
-                <a class="icon" style="color:white;background-color: #3b5998;" href="{{ url('auth/facebook') }}"><i class="fa fa-facebook-f"></i></a>
-                &nbsp;
-                <a class="icon" style="color:white;background-color: #2867B2;" href="{{ url('auth/linkedin') }}"><i class="fa fa-linkedin"></i></a>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a style="color:white;background-color: red;" class="btn btn-block btn-outline-success" href="{{ url('auth/google') }}"><i class="fa fa-google"></i> Login With Google Account</a>
+                        <br>
+                    </div>
+                    <div class="col-md-6">
+                        <a style="color:white;background-color: #3b5998;" class="btn btn-block btn-outline-success" href="{{ url('auth/facebook') }}"><i class="fa fa-facebook-f"></i> Login With Facebook Account</a>
+                    </div>     
+                </div>
               </h3>
             </center>
 
