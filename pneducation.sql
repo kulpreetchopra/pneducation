@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2021 at 09:18 AM
+-- Generation Time: Jun 02, 2021 at 01:14 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -45,18 +45,6 @@ INSERT INTO `abouts` (`id`, `title`, `icon`, `image`, `about`, `created_at`, `up
 (1, 'Who We Are', 'fa fa-file-text-o', 'image1620632411.jpg', 'PN INFOSYS provides the best service possible to its customers because for us, our client’s happiness is important. Whatever we choose to do, we do it an exorbitant manner. PN INFOSYS Company provides a full range of maintenance and compliance services for Government and Commercial facilities.', '2021-03-30 05:10:44', '2021-05-10 02:15:18'),
 (2, 'Our Education', 'fa fa-university', 'image1620632468.jpg', 'We have capability to train even novice students, students who don’t have any experience with coding can work efficiently in our training sessions. You will have the experience to work on Live Projects, which will ameliorate your portfolio. Basically through these training sessions, we want to help students to grow.', '2021-03-30 05:26:20', '2021-05-10 02:18:08'),
 (3, 'Our Story', 'fa fa-umbrella', 'image1620632514.jpg', 'PN INFOSYS is a leading global business consulting and IT service company. We provides a full range of maintenance and compliance services for Government and Commercial facilities both large and small. Whether you need to run your business more efficiently or accelerate revenue growth, PN INFOSYS can get you there.', '2021-03-30 05:28:19', '2021-05-10 02:11:54');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admins`
---
-
-CREATE TABLE `admins` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -126,16 +114,6 @@ CREATE TABLE `carts` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `carts`
---
-
-INSERT INTO `carts` (`id`, `course_id`, `course_name`, `course_price`, `course_quantity`, `session_id`, `user_email`, `image`, `created_at`, `updated_at`) VALUES
-(4, 2, 'HTML, CSS, JS', '35', '1', 'm2O4TMCSzfVES5NIixctxt9IzCYp433CAE1brWXM', 'kulpreetchopra0128@gmail.com', 'c_image1620453060.png', '2021-05-21 00:27:51', '2021-05-21 00:27:51'),
-(5, 1, 'Python', '4', '2', 'Fy38J9G3GVxxZMtetjcXia31rBo1KwmJCZqDSZd4', 'apneet.chopramba201820@gmail.com', 'c_image1614838508.jpg', '2021-05-21 04:01:04', '2021-05-21 04:01:04'),
-(19, 1, 'Python', '4', '2', 'DgOxrf9vuPLvTjeczL0jMlg2ZyqAfcGJT71eAFGX', 'kulpreetsingh0128@gmail.com', 'c_image1614838508.jpg', '2021-05-22 01:27:15', '2021-05-22 01:27:15'),
-(20, 1, 'Python', '4', '1', 'DgOxrf9vuPLvTjeczL0jMlg2ZyqAfcGJT71eAFGX', 'kulpreetsingh0128@gmail.com', 'c_image1614838508.jpg', '2021-05-22 01:28:08', '2021-05-22 01:28:08');
-
 -- --------------------------------------------------------
 
 --
@@ -160,7 +138,7 @@ INSERT INTO `categories` (`id`, `c_name`, `c_status`, `image`, `created_at`, `up
 (2, 'Web Designing', '1', 'image1620457374.png', '2021-02-24 22:47:38', '2021-05-08 01:32:54'),
 (3, 'Machine Learning', '1', 'image1614837969.jpg', '2021-02-24 22:47:44', '2021-03-04 00:36:09'),
 (5, 'Data Analytics', '1', 'image1614837888.jpg', '2021-03-02 11:15:37', '2021-03-04 00:34:48'),
-(6, 'Mathametics', '0', 'image1614838080.jpg', '2021-03-03 23:29:25', '2021-05-08 00:24:27'),
+(6, 'Mathametics', '1', 'image1614838080.jpg', '2021-03-03 23:29:25', '2021-05-30 11:06:32'),
 (7, 'Management', '0', 'image1614838170.jpg', '2021-03-04 00:10:59', '2021-05-08 00:24:18'),
 (8, 'Amptitude And Reasoning', '1', 'image1614838244.png', '2021-03-04 00:18:52', '2021-03-04 00:40:44'),
 (10, 'Programming Languages', '1', 'image1620455332.jpg', '2021-05-07 11:17:16', '2021-05-08 00:58:52');
@@ -200,13 +178,13 @@ CREATE TABLE `contacts` (
 
 INSERT INTO `contacts` (`id`, `name`, `email`, `contact`, `comment`, `reply`, `created_at`, `updated_at`) VALUES
 (1, 'Kulpreet Chopra', 'kulpreetsingh0128@gmail.com', '6266060879', 'Thankyou!!', 'hiii', '2021-03-15 11:01:20', '2021-05-02 04:05:24'),
-(3, 'Janhavi Sahu', 'janhavi@gmail.com', '6266060879', 'Hello Everyone!!', NULL, '2021-03-28 02:36:27', '2021-03-28 02:36:27'),
-(4, 'Saloni Sheikh', 'saloni@0128.gmail.com', '97543689345', 'Hello Pn Education', NULL, '2021-04-01 22:32:05', '2021-04-01 22:32:05'),
+(3, 'Janhavi Sahu', 'janhavi@gmail.com', '6266060879', 'Hello Everyone!!', 'hello ji', '2021-03-28 02:36:27', '2021-05-29 02:28:50'),
 (5, 'Apneet Chopra', 'apnneet@gmail.com', '6266060879', 'HElllpppppppp', NULL, '2021-04-07 05:46:46', '2021-04-07 05:46:46'),
 (6, 'Gunjan Gupta', 'gg2354875@gmail.com', '6266060879', 'namastey', 'Thank', '2021-05-01 01:41:44', '2021-05-03 01:33:07'),
 (7, 'Anmol Chopra', 'anmol@gmail.com', '9074261533', 'Thankyou Pn Infosys', 'welcome', '2021-05-01 09:11:43', '2021-05-01 09:37:00'),
 (8, 'Anmol Chopra', 'anmol@gmail.com', '9074261533', 'namaskaram', NULL, '2021-05-01 09:38:07', '2021-05-01 09:38:07'),
-(9, 'KULPREET SINGH CHOPRA', 'kulpreetchopra0128@gmail.com', '6266060879', 'hiiiiiii', 'hello', '2021-05-07 10:58:18', '2021-05-07 22:24:43');
+(9, 'KULPREET SINGH CHOPRA', 'kulpreetchopra0128@gmail.com', '6266060879', 'hiiiiiii', 'hello', '2021-05-07 10:58:18', '2021-05-07 22:24:43'),
+(10, 'Janhavi Sahu', 'janhavi@gmail.com', '9074261533', 'Thankyou', NULL, '2021-05-31 03:28:51', '2021-05-31 03:28:51');
 
 -- --------------------------------------------------------
 
@@ -219,7 +197,7 @@ CREATE TABLE `coupans` (
   `coupan_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `discount` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `expiry_date` date DEFAULT NULL,
+  `expiry_date` varchar(350) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -229,10 +207,11 @@ CREATE TABLE `coupans` (
 --
 
 INSERT INTO `coupans` (`id`, `coupan_code`, `discount`, `status`, `expiry_date`, `created_at`, `updated_at`) VALUES
-(1, '1001', '50', '0', '2021-05-03', '2021-03-24 23:28:22', '2021-03-25 00:22:37'),
-(2, '1002', '26', '1', '2021-03-31', '2021-03-24 23:38:13', '2021-05-19 04:27:11'),
-(3, '1003', '100', '0', '2021-05-27', '2021-05-18 02:43:57', '2021-05-19 04:27:21'),
-(4, '1004', '40', '1', '2021-05-31', '2021-05-19 04:25:44', '2021-05-19 04:25:44');
+(1, '1001', '30', '1', '2021-12-31', '2021-03-24 23:28:22', '2021-06-02 04:37:55'),
+(2, '1002', '20', '1', '2021-03-31', '2021-03-24 23:38:13', '2021-06-02 04:03:58'),
+(3, '1003', '70', '0', '2021-05-27', '2021-05-18 02:43:57', '2021-05-31 04:34:36'),
+(4, '1004', '40', '1', '2021-05-31', '2021-05-19 04:25:44', '2021-05-19 04:25:44'),
+(5, '1005', '60', '1', '2021-08-11', '2021-06-01 23:44:57', '2021-06-01 23:44:57');
 
 -- --------------------------------------------------------
 
@@ -265,17 +244,6 @@ CREATE TABLE `courseorders` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `courseorders`
---
-
-INSERT INTO `courseorders` (`id`, `user_id`, `user_email`, `fname`, `lname`, `country`, `address`, `city`, `state`, `pincode`, `phone`, `order_note`, `order_status`, `order_id`, `transaction_id`, `payment_methode`, `subtotal`, `coupan_code`, `coupan_discount`, `total`, `created_at`, `updated_at`) VALUES
-(1, '11', 'janhavi@gmail.com', 'Janhavi', 'Sahu', 'India', 'Vinay Nagar Sec 4', 'Gwalior', 'Madhya Pradesh', '42789', '2345678902', NULL, 'Pending', '60a796201e327', NULL, 'Cash On Dilevery', '1600', NULL, NULL, '1600', '2021-05-21 05:44:40', '2021-05-21 05:44:40'),
-(2, '7', 'kulpreetchopra0128@gmail.com', 'Kulpreet Chopra', NULL, 'Germany', 'B-94 New Fort View Colony, Koteshwar Road', 'Gwalior', 'Madhya Pradesh', '474012', '06266060879', NULL, 'Complete', '60a79856e8003', '20210521111212800110168565002661134', 'Paytm', '35', '1002', '26', '25.9', '2021-05-21 05:54:07', '2021-05-21 05:54:26'),
-(3, '14', 'kulpreetsingh0128@gmail.com', 'Kulpreet Chopra', NULL, 'Albania', 'B94 New Fort View Colony Koteshwa', 'Gwalior', 'MADHYA PRADESH', '474012', '6266060879', NULL, 'Pending', '60a799c581cca', NULL, 'Paytm', '4', '1001', NULL, '4', '2021-05-21 06:00:13', '2021-05-21 06:00:13'),
-(4, '14', 'kulpreetsingh0128@gmail.com', 'Kulpreet Chopra', NULL, 'India', 'B-94 New Fort View Colony, Koteshwar Road', 'Gwalior', 'Madhya Pradesh', '474012', '06266060879', NULL, 'Pending', '60a8914563650', NULL, 'Cash On Dilevery', '4', '101', NULL, '4', '2021-05-21 23:36:13', '2021-05-21 23:36:13'),
-(5, '14', 'kulpreetsingh0128@gmail.com', 'Kulpreet Chopra', NULL, 'Canada', 'B-94 New Fort View Colony, Koteshwar Road', 'Gwalior', 'Madhya Pradesh', '474012', '6266060879', 'Thanks', 'Pending', '60a8abb009de3', NULL, 'Paytm', '12', '1001', NULL, '12', '2021-05-22 01:28:56', '2021-05-22 01:28:56');
-
 -- --------------------------------------------------------
 
 --
@@ -303,13 +271,13 @@ CREATE TABLE `courses` (
 
 INSERT INTO `courses` (`id`, `c_name`, `c_discription`, `c_price`, `c_details`, `c_include`, `c_containt`, `c_image`, `c_category`, `c_teacher`, `created_at`, `updated_at`) VALUES
 (1, 'Python', 'Improve your productivity, get things done, and find more time for what’s most important with Time Management Tips. This weekly series provides actionable time management techniques to help people better manage their time and ultimately become more productive. Time management expert Dave Crenshaw provides a new tip every Monday, touching on a wide variety of topics. Tune in to learn about everything from managing emails and calendars to setting priorities, collaborating with coworkers, reducing interruptions, crafting a “productivity mindset,” and creating a more comfortable and effective work environment.', '4', 'Improve your productivity, get things done, and find more time for what’s most important with Time Management Tips. This weekly series provides actionable time management techniques to help people better manage their time and ultimately become more productive. Time management expert Dave Crenshaw provides a new tip every Monday, touching on a wide variety of topics. Tune in to learn about everything from managing emails and calendars to setting priorities, collaborating with coworkers, reducing interruptions, crafting a “productivity mindset,” and creating a more comfortable and effective work environment.', 'Improve your productivity, get things done, and find more time for what’s most important with Time Management Tips. This weekly series provides actionable time management techniques to help people better manage their time and ultimately become more productive. Time management expert Dave Crenshaw provides a new tip every Monday, touching on a wide variety of topics. Tune in to learn about everything from managing emails and calendars to setting priorities, collaborating with coworkers, reducing interruptions, crafting a “productivity mindset,” and creating a more comfortable and effective work environment.', 'Improve your productivity, get things done, and find more time for what’s most important with Time Management Tips. This weekly series provides actionable time 1.management techniques to help people better manage their time and ultimately become more productive. Time management expert Dave Crenshaw provides a new tip \r\n2. every Monday, touching on a wide variety of topics. Tune in to learn about everything from managing emails and calendars to setting priorities, collaborating with \r\n3. coworkers, reducing interruptions, crafting a “productivity mindset,” and creating a more comfortable and effective work environment.', 'c_image1614838508.jpg', 'Programming Languages', 'Vikas Jain', '2021-02-24 22:48:20', '2021-05-07 11:18:59'),
-(2, 'HTML, CSS, JS', 'NaN', '35', 'NaN', 'NaN', 'NaN', 'c_image1620453060.png', 'Web Designing', 'Gunjan Gupta', '2021-03-03 01:32:50', '2021-05-08 00:21:00'),
-(3, 'React JS', 'NaN', '1600', 'NaN', 'NaN', 'NaN', 'c_image1620452190.jpg', 'Web Designing', 'Vikas Jain', '2021-03-04 23:17:29', '2021-05-08 00:06:30'),
+(2, 'Html Css Js', 'NaN', '35', 'NaN', 'NaN', 'NaN', 'c_image1620453060.png', 'Web Designing', 'Gunjan Gupta', '2021-03-03 01:32:50', '2021-05-30 23:40:57'),
+(3, 'React Js', 'NaN', '1600', 'NaN', 'NaN', 'NaN', 'c_image1620452190.jpg', 'Web Designing', 'Vikas Jain', '2021-03-04 23:17:29', '2021-05-30 23:36:50'),
 (4, 'Node Js', 'NAN', '1700', 'NAN', 'NAN', 'NAN', 'c_image1620452845.png', 'Web Designing', 'Vikas Jain', '2021-04-26 09:22:26', '2021-05-08 00:17:25'),
-(5, 'Core PHP', 'NAN', '1300', 'NAN', 'NAN', 'NAN', 'c_image1620452424.png', 'Web Developement', 'Vikas Jain', '2021-05-07 11:21:33', '2021-05-08 00:10:24'),
+(5, 'Core Php', 'NAN', '1300', 'NAN', 'NAN', 'NAN', 'c_image1620452424.png', 'Web Developement', 'Vikas Jain', '2021-05-07 11:21:33', '2021-05-30 23:38:03'),
 (6, 'Laravel', 'NAN', '19', 'NAN', 'NAN', 'NAN', 'c_image1620452299.png', 'Web Developement', 'Vikas Jain', '2021-05-07 11:23:13', '2021-05-08 00:08:19'),
 (7, 'Python Django', 'NAN', '1800', 'NAN', 'NAN', 'NAN', 'c_image1620457567.png', 'Web Developement', 'Vikas Jain', '2021-05-08 00:48:51', '2021-05-08 01:36:07'),
-(8, 'MySQL', 'NAN', '1200', 'NAN', 'NAN', 'NAN', 'c_image1620454890.png', 'Programming Languages', 'Gunjan Gupta', '2021-05-08 00:51:30', '2021-05-08 00:51:30');
+(8, 'Mysql', 'NAN', '1200', 'NAN', 'NAN', 'NAN', 'c_image1620454890.png', 'Programming Languages', 'Gunjan Gupta', '2021-05-08 00:51:30', '2021-05-30 23:38:36');
 
 -- --------------------------------------------------------
 
@@ -331,18 +299,6 @@ CREATE TABLE `course_order_products` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `course_order_products`
---
-
-INSERT INTO `course_order_products` (`id`, `course_order_id`, `order_id`, `user_id`, `user_email`, `course_id`, `course_name`, `course_price`, `course_quantity`, `course_image`, `created_at`, `updated_at`) VALUES
-(1, '1', '60a796201e327', '11', 'janhavi@gmail.com', '3', 'React JS', '1600', '1', 'c_image1620452190.jpg', '2021-05-21 05:44:40', '2021-05-21 05:44:40'),
-(2, '2', '60a79856e8003', '7', 'kulpreetchopra0128@gmail.com', '2', 'HTML, CSS, JS', '35', '1', 'c_image1620453060.png', '2021-05-21 05:54:07', '2021-05-21 05:54:07'),
-(3, '3', '60a799c581cca', '14', 'kulpreetsingh0128@gmail.com', '1', 'Python', '4', '1', 'c_image1614838508.jpg', '2021-05-21 06:00:13', '2021-05-21 06:00:13'),
-(4, '4', '60a8914563650', '14', 'kulpreetsingh0128@gmail.com', '1', 'Python', '4', '1', 'c_image1614838508.jpg', '2021-05-21 23:36:13', '2021-05-21 23:36:13'),
-(5, '5', '60a8abb009de3', '14', 'kulpreetsingh0128@gmail.com', '1', 'Python', '4', '2', 'c_image1614838508.jpg', '2021-05-22 01:28:56', '2021-05-22 01:28:56'),
-(6, '5', '60a8abb009de3', '14', 'kulpreetsingh0128@gmail.com', '1', 'Python', '4', '1', 'c_image1614838508.jpg', '2021-05-22 01:28:56', '2021-05-22 01:28:56');
 
 -- --------------------------------------------------------
 
@@ -438,7 +394,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2021_04_02_144324_create_ratings_table', 17),
 (25, '2021_04_07_035550_create_courseorders_table', 18),
 (26, '2021_04_07_040417_create_course_order_products_table', 18),
-(27, '2021_05_06_042658_google_id_column', 19);
+(27, '2021_05_06_042658_google_id_column', 19),
+(28, '2021_05_23_064411_create_checkouts_table', 20);
 
 -- --------------------------------------------------------
 
@@ -487,9 +444,7 @@ CREATE TABLE `password_resets` (
 --
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('kulpreetchopra0128@gmail.com', '$2y$10$uHCCuor6gqc/H31VLv9IReh7E53K0cs7J/Fmkcxte9HyFRlY4Yn3a', '2021-05-09 22:35:13'),
-('gunjan@gmail.com', '$2y$10$2uEqgH9qie1A2EtgZKr/YuFW6lbsm0V4qz0s2eAXHPOQL9Zqyzuqe', '2021-05-15 03:27:26'),
-('kulpreetsingh0128@gmail.com', '$2y$10$1WyCF67Rgu6QgPSanBgi6eX6okdap6mFmGvD0E.2SgOr1iJsF0mry', '2021-05-19 01:04:53');
+('gunjan@gmail.com', '$2y$10$2uEqgH9qie1A2EtgZKr/YuFW6lbsm0V4qz0s2eAXHPOQL9Zqyzuqe', '2021-05-15 03:27:26');
 
 -- --------------------------------------------------------
 
@@ -572,30 +527,13 @@ INSERT INTO `ratings` (`id`, `user_name`, `user_email`, `course_id`, `course_nam
 (7, 'Unknown User', 'Unknown Email', 2, 'JavaScript', '1', 'poor', '2021-04-07 11:25:06', '2021-04-07 11:25:06'),
 (8, 'Gunjan Gupta', 'gg2354875@gmail.com', 3, 'React JS', '4', 'Hahah!!', '2021-04-20 11:30:17', '2021-04-20 11:30:17'),
 (9, 'Kulpreet Chopra', 'kulpreetchopra0128@gmail.com', 3, 'React JS', '5', 'woow', '2021-05-08 00:22:46', '2021-05-08 00:22:46'),
-(10, 'Kulpreet Chopra', 'kulpreetsingh0128@gmail.com', 4, 'Node Js', '5', 'Owsm!', '2021-05-15 02:14:01', '2021-05-15 02:14:01');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `signups`
---
-
-CREATE TABLE `signups` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `signups`
---
-
-INSERT INTO `signups` (`id`, `name`, `email`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'Kulpreet Chopra', 'kulpreetsingh0128@gmail.com', '12345', '2021-03-07 22:47:06', '2021-03-07 22:47:06'),
-(2, 'Janhavi Sahu', 'janhavi@gmail.com', '$2y$10$csuD.HkcWeVsCucXYPIt5.oDilQpUxvuaPjpttmCPD40sYMY2U8kq', '2021-03-10 11:37:34', '2021-03-10 11:37:34');
+(10, 'Kulpreet Chopra', 'kulpreetsingh0128@gmail.com', 4, 'Node Js', '5', 'Owsm!', '2021-05-15 02:14:01', '2021-05-15 02:14:01'),
+(11, 'Unknown User', 'Unknown Email', 7, 'Python Django', '5', 'Owsm', '2021-05-28 03:47:03', '2021-05-28 03:47:03'),
+(12, 'Janhavi Sahu', 'janhavi@gmail.com', 1, 'Python', '4', 'Owsm', '2021-05-31 23:12:07', '2021-05-31 23:12:07'),
+(13, 'Kulpreet Singh Chopra', 'kulpreetsingh0128@gmail.com', 7, 'Python Django', '5', 'Mast!', '2021-06-01 10:39:23', '2021-06-01 10:39:23'),
+(14, 'Kulpreet Chopra', 'kulpreetchopra0128@gmail.com', 1, 'Python', '1', 'hy', '2021-06-01 11:07:31', '2021-06-01 11:07:31'),
+(15, 'Kulpreet Chopra', 'kulpreetchopra0128@gmail.com', 3, 'React Js', '3', 'hooooo', '2021-06-01 11:08:46', '2021-06-01 11:08:46'),
+(16, 'Kulpreet Singh Chopra', 'kulpreetsingh0128@gmail.com', 8, 'Mysql', '4', 'Nice Course', '2021-06-02 03:49:52', '2021-06-02 03:49:52');
 
 -- --------------------------------------------------------
 
@@ -643,7 +581,6 @@ INSERT INTO `subscribes` (`id`, `email`, `created_at`, `updated_at`) VALUES
 (6, 'apnneet567@gmail.com', '2021-03-28 02:03:48', '2021-03-28 02:03:48'),
 (7, 'janhavi@gmail.com', '2021-03-28 02:10:52', '2021-03-28 02:10:52'),
 (8, 'gg2354875@gmail.com', '2021-03-28 02:31:37', '2021-03-28 02:31:37'),
-(10, 'gg2354875@gmail.com', '2021-03-30 06:14:38', '2021-03-30 06:14:38'),
 (12, 'apnneet@gmail.com', '2021-04-07 05:38:47', '2021-04-07 05:38:47'),
 (13, 'kulpreetsingh0128@gmail.com', '2021-04-07 10:01:17', '2021-04-07 10:01:17'),
 (14, 'gg2354875@gmail.com', '2021-04-17 04:43:48', '2021-04-17 04:43:48');
@@ -699,12 +636,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `email_verified_at`, `phone`, `password`, `role`, `remember_token`, `created_at`, `updated_at`, `google_id`, `facebook_id`) VALUES
-(7, 'Kulpreet Chopra', NULL, 'kulpreetchopra0128@gmail.com', NULL, '9074261533', '$2y$10$kmhx51SR7n3Nu8jk7/1NR.EnTshkmhO6mOgYZwZN7idiwzLPDnDf6', 'User', NULL, '2021-05-11 01:24:08', '2021-05-16 00:10:51', '112509663998920954200', NULL),
-(10, 'Amrat', 'Chopra', 'amrat@gmail.com', NULL, '6266060879', '$2y$10$5/TOLNDRWIKsXo40s2x5QuLkA68EqZGi9B.xHEtTIgVptIwqrHKIu', 'User', NULL, '2021-05-15 02:24:57', '2021-05-15 02:24:57', NULL, NULL),
-(11, 'Janhavi', 'Sahu', 'janhavi@gmail.com', NULL, '2345678902', '$2y$10$0dVg9waO/GZJ25XDDi3M2.JUh7dexzkMqQpt0e6Edg7JUePNTxI1W', 'User', NULL, '2021-05-15 02:29:30', '2021-05-15 02:29:30', NULL, NULL),
-(13, 'Gunjan', 'Gupta', 'gunjan@gmail.com', NULL, '6266060879', '$2y$10$eZ1EgjBPZYStdiqqfFGT5OyCCa7YRUxwJ5J59dDx6idxBGzjYpedu', 'Admin', NULL, '2021-05-15 02:58:36', '2021-05-15 02:58:36', NULL, NULL),
-(14, 'Kulpreet Chopra', NULL, 'kulpreetsingh0128@gmail.com', NULL, '6266060879', 'eyJpdiI6IllNQzlCVXk0Rmt3SUVwdkw0SHVIZUE9PSIsInZhbHVlIjoiTWdueGIyK2dEK3FrUlppdnBza0x4bE43ZkFjekFOMS84SnhWYjU5aVBYdz0iLCJtYWMiOiJjNDhjY2U5ZDg3ZGFmZjA3ZGZkMmNjZWRjMjQ2MmYyNjI3NGQxYjBlMzI3OGNmZmY0ZTc2MTUzMTk2YTBhN2Q1In0=', 'User', NULL, '2021-05-19 22:13:33', '2021-05-19 22:15:24', NULL, '839265600302731'),
-(15, 'apneet chopra', NULL, 'apneet.chopramba201820@gmail.com', NULL, '9074261533', 'eyJpdiI6IkRzR1c3NUQ5NHRPUFYrMTh3MlptcHc9PSIsInZhbHVlIjoiaFNKT1VlWDB1VDhhbGl2a1NCUUtESDZEbHpaQ1hCRmJOMUYzVjFZS2FDaz0iLCJtYWMiOiJmOTQyZGE1MTE1YTFlOWJhZGI1NjgzMGQ4OTBhZDYzMDE2ZjhkMDBhYjU1YTAyOGQ4NDNlMzZmZTIxNDAwNzIwIn0=', 'User', NULL, '2021-05-21 03:58:54', '2021-05-21 04:00:00', '113792715249680961086', NULL);
+(1, 'Kulpreet Singh Chopra', NULL, 'kulpreetsingh0128@gmail.com', '2021-06-01 10:43:57', '6266060879', '$2y$10$aSeanuuVqe8iLrlYhxCUD.ciLg24VVLTqbhOa5c4rVD9V8TxORwyq', 'User', 'GXnKCVYlXh0q57iGZwa0KDa6P5Ki52OvBBM3gobvstp2ZaNy35r1DpRaqAvO', '2021-06-01 10:33:22', '2021-06-02 00:59:08', '100757936250775413206', NULL),
+(2, 'Kulpreet', 'Chopra', 'kulpreetchopra0128@gmail.com', '2021-06-01 10:48:18', '6266060879', '$2y$10$vBxSUqoeV4nlG7qS7kYIeu4qWZj6A8z4uIb/JbqanI9Tu4AV1Fu/u', 'User', NULL, '2021-06-01 10:47:40', '2021-06-01 10:48:18', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -726,7 +659,6 @@ CREATE TABLE `workshops` (
 
 INSERT INTO `workshops` (`id`, `title`, `image`, `created_at`, `updated_at`) VALUES
 (1, 'Mpct College', 'image1616656559.jpg', '2021-03-24 12:00:59', '2021-03-25 01:45:59'),
-(2, 'Rjit College', 'image1616656445.jpg', '2021-03-24 12:23:55', '2021-03-25 01:44:06'),
 (3, 'Xiaomi MI Company', 'image1616656517.jpg', '2021-03-24 12:24:12', '2021-03-25 01:45:17'),
 (4, 'BentChair Company', 'image1616656529.jpg', '2021-03-24 12:24:21', '2021-03-25 01:45:29'),
 (5, 'Rjit College', 'image1616656455.jpg', '2021-03-25 01:44:15', '2021-03-25 01:44:15');
@@ -739,12 +671,6 @@ INSERT INTO `workshops` (`id`, `title`, `image`, `created_at`, `updated_at`) VAL
 -- Indexes for table `abouts`
 --
 ALTER TABLE `abouts`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `admins`
---
-ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -862,12 +788,6 @@ ALTER TABLE `ratings`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `signups`
---
-ALTER TABLE `signups`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `specials`
 --
 ALTER TABLE `specials`
@@ -909,12 +829,6 @@ ALTER TABLE `abouts`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `admins`
---
-ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `alerts`
 --
 ALTER TABLE `alerts`
@@ -930,7 +844,7 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -948,19 +862,19 @@ ALTER TABLE `checkouts`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `coupans`
 --
 ALTER TABLE `coupans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `courseorders`
 --
 ALTER TABLE `courseorders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `courses`
@@ -972,7 +886,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `course_order_products`
 --
 ALTER TABLE `course_order_products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -996,7 +910,7 @@ ALTER TABLE `interns`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `navbars`
@@ -1020,13 +934,7 @@ ALTER TABLE `portfolios`
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `signups`
---
-ALTER TABLE `signups`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `specials`
@@ -1050,7 +958,7 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `workshops`
