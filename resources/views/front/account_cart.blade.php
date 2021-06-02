@@ -34,6 +34,7 @@ if(Auth::check()){
     <table id="example1" class="table table-bordered table-hover">
                 <thead>
                 <tr style="text-align: center;">
+                  <th>S.N.</th>
                   <th>Course Id</th>
                   <th>Course Name</th>
                   <th>Course Image</th>
@@ -44,6 +45,7 @@ if(Auth::check()){
                 <tbody>
                   @foreach($cart as $a)
                   <tr style="text-align: center;">
+                    <td>{{$a->id}}</td>
                     <td>{{$a->course_id}}</td>
                     <td>{{$a->course_name}}</td>
                     <td>
@@ -56,6 +58,7 @@ if(Auth::check()){
                 </tbody>
                 <tfoot>
                 <tr style="text-align: center;">
+                  <th>S.N.</th>
                   <th>Course Id</th>
                   <th>Course Name</th>
                   <th>Course Image</th>

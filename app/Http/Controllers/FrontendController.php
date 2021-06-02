@@ -38,6 +38,7 @@ class FrontendController extends Controller
         $special = Special::all();
         $team = Team::all();
         $rating = Rating::all();
+        $coupan =Coupan::all();
         $c_order= Course_order_product::all();
         if(Auth::check()){
             $user_email=Auth::User()->email;
@@ -49,7 +50,7 @@ class FrontendController extends Controller
             // die;
             $cart= Cart::where('session_id',$session_id)->get();
         }
-    	return view("front.index",compact('banner','alert','category','course','navbar','cart','special','team','rating','c_order'));
+    	return view("front.index",compact('banner','alert','category','course','navbar','cart','special','team','rating','c_order','coupan'));
     }
     public function courses($id){
         $session_id = Session::getId();
@@ -112,6 +113,8 @@ class FrontendController extends Controller
         $course= Course::all();
         $allcategory = Category::all();
         $category = Category::find($id);
+        $rating = Rating::all();
+        $c_order= Course_order_product::all();
         if(Auth::check()){
             $user_email=Auth::User()->email;
             $cart= Cart::where('user_email',$user_email)->get();
@@ -122,7 +125,7 @@ class FrontendController extends Controller
             // die;
             $cart= Cart::where('session_id',$session_id)->get();
         }
-        return view("front.allcategory",compact('course','navbar','category','allcategory','cart'));
+        return view("front.allcategory",compact('course','navbar','category','allcategory','cart','rating','c_order'));
     }
     public function categorylist($id){
         $session_id = Session::getId();
@@ -287,6 +290,7 @@ class FrontendController extends Controller
         "review"=>"required",
         ]);
         $r = new Rating;
+        $id=$a->course_id;
         $r->user_name=$a->user_name;
         $r->user_email=$a->user_email;
         $r->course_id=$a->course_id;
@@ -295,10 +299,10 @@ class FrontendController extends Controller
         $r->review=$a->review;
         $r->save();
         if($r){
-            return redirect('allcourses')->with('message','Course Rated Successfully');
+            return redirect('courses/'.$id)->with('message','Course Rated Successfully');
         }
         else{
-            return redirect('allcourses')->with('wmessage','Course Rated Unsuccessfully');
+            return redirect('courses/'.$id)->with('wmessage','Course Rated Unsuccessfully');
         }
     }
     public function account(){
@@ -393,6 +397,8 @@ class FrontendController extends Controller
     public function search(Request $s)
     {   
         echo$search = $s->search;
+        echo$search = strtolower($search);
+        echo$search = ucwords($search);
         $course = Course::where('c_name',$search)->get();
         foreach($course as $a){
         if($search==$a->c_name){

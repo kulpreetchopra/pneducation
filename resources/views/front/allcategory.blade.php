@@ -54,10 +54,16 @@
 												<a href="single-course.html">{{$a->c_name}}</a>
 											</h2>
 											<div class="course-rating-teacher">
-												<div class="star-rating has-ratings" title="Rated 5.00 out of 5">
+												<?php $vote=0; ?>
+													@foreach($rating as $r)
+													@if($r->course_name==$a->c_name)
+													<?php $vote++; ?>
+													@endif
+													@endforeach
+												<div class="star-rating has-ratings" title="<?php echo$vote; ?> Users Subscribed To This Course">
 													<span style="width:100%">
-														<span class="rating">5.00</span>
-														<span class="votes-number">1 Votes</span>
+														<span class="rating"><?php echo$vote; ?></span>
+													<span class="votes-number"> Votes</span>
 													</span>
 												</div>
 												<a href="#" class="course-loop-teacher">{{$a->c_teacher}}</a>
@@ -65,11 +71,17 @@
 										</div>
 										<div class="course-content-bottom">
 											<div class="course-students">
+												<?php $order=0; ?>
+													@foreach($c_order as $c)
+													@if($c->course_name==$a->c_name)
+													<?php $order++; ?>
+													@endif
+													@endforeach
 												<i class="material-icons">group</i>
-												<span>64</span>
+												<span><?php echo$order; ?></span>
 											</div>
 											<div class="course-price">
-												<span>{{$a->c_teacher}}</span>
+												<span>₹{{$a->c_price}}</span>
 											</div>
 										</div>
 									</div>

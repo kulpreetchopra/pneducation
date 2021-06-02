@@ -3,8 +3,9 @@
 @section("content")
 <style type="text/css">
 .card0 {
-    box-shadow: 0px 4px 8px 0px #757575;
-    border-radius: 0px
+    border-color: #1A237E;
+    box-shadow: 0px 4px 8px 4px #757575;
+    border-radius: 2%
 }
 
 .card2 {
@@ -146,7 +147,7 @@ a {
                                 </ul>
                             </div>
                     @endif
-                    <form method="post" action="{{url('/submit')}}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('register') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                     <div class="col-md-6 px-3"> 
@@ -175,14 +176,23 @@ a {
                       </label> 
                       <input class="mb-4" type="tel" name="phone" placeholder="Enter 10 Digit Phone Number">
                     </div>
-                    <div class="col-md-12 px-3"> 
+                    <div class="col-md-6 px-3"> 
                       <label class="mb-1">
                         <h6 class="mb-0 text-sm">Password</h6>
                       </label> 
-                      <input type="password" name="password" placeholder="Enter password"> 
+                      <input type="password" name="password" placeholder="Enter password" id="pass"><br>
+                        <a onclick="Password()"><span style="color:#1A237E" class="material-icons">visibility</span></a> Show Password 
+                    </div>
+                    <div class="col-md-6 px-3"> 
+                      <label class="mb-1">
+                        <h6 class="mb-0 text-sm">Confirm Password</h6>
+                      </label> 
+                      <input id="password-confirm" type="password" placeholder="Enter password" name="password_confirmation" autocomplete="new-password">
                     </div>
                     <div class="col-md-12 px-3 mb-4">
-                          <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a>
+                          @if (Route::has('password.request'))
+                        <a href="{{route('password.request')}}" class="ml-auto mb-0 text-md text-danger">Forgot Password?</a>
+                        @endif
                     </div>
                     <div class="mb-3 px-3 mb-4"> 
                       <input type="submit" class="btn btn-blue text-center" name="submit" value="Signup">

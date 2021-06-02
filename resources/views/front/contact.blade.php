@@ -68,7 +68,7 @@
                     ?>
 						<label for="comment">Your Message (required)</label>
 						<textarea name="comment" id="comment"></textarea>
-						<input type="submit" class="btn btn-primary" name="submit" value="Submit Contact">
+						<input type="submit" style="color:white;background-color:#1A237E" class="btn" name="submit" value="Submit Contact">
 						<div id="msg" class="message"></div>
 					</form>
 				</div>

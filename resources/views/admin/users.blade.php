@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">All Users <a href="{{url('admin/print/users')}}"><p class="btn btn-info"><i class="fas fa-print"></i> Print To PDF</p></a></h1>
+            <h1 class="m-0 text-dark">All Users <a href="" onclick="window.print()"><p class="btn btn-info"><i class="fas fa-print"></i> Print To PDF</p></a></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -58,8 +58,8 @@
                   <th>Id</th>
                   <th>Name</th>
                   <th>Email</th>
+                  <th>Email Verified@</th>
                   <th>Phone</th>
-                  <th>Role</th>
                   <th>Google Id</th>
                   <th>Facebook Id</th>
                   <th>Date</th>
@@ -71,8 +71,8 @@
                     <td>{{$a->id}}</td>
                     <td>{{$a->fname}} {{$a->lname}}</td>
                     <td>{{$a->email}}</td>
+                    <td>{{$a->email_verified_at}}</td>
                     <td>{{$a->phone}}</td>
-                    <td>{{$a->role}}</td>
                     <td>{{$a->google_id}}</td>
                     <td>{{$a->facebook_id}}</td>
                     <td>{{$a->created_at}}</td>
@@ -84,8 +84,8 @@
                   <th>Id</th>
                   <th>Name</th>
                   <th>Email</th>
+                  <th>Email Verified@</th>
                   <th>Phone</th>
-                  <th>Role</th>
                   <th>Google Id</th>
                   <th>Facebook Id</th>
                   <th>Date</th>

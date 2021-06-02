@@ -18,8 +18,19 @@
     <!-- DataTables -->
   <link rel="stylesheet" href="{{url('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{url('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+  <style type="text/css">
+  	#loading{
+  		position: fixed;
+  		width: 100%;
+  		height: 100vh;
+  		background: url('https://media.giphy.com/media/Bhh76pAsE51uTfMcxU/giphy.gif')
+  		no-repeat center;
+  		z-index: 99999;
+  	}
+  </style>
 </head>
-<body>
+<body onload="myFunction()">
+  <div id="loading"></div>
     @foreach($navbar as $a)
 	<!-- Container -->
 	<div id="container">
@@ -111,6 +122,11 @@
 				{{session('wmessage')}}
 		    </p>
 		    @endif
+		    @if (session('status'))
+		    <div class="alert alert-success" role="alert">
+		    	{{ session('status') }}
+		    </div>
+            @endif
 		    </center>
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
@@ -363,7 +379,6 @@
 
 	</div>
 	<!-- End Container -->
-
 	<script type="text/javascript">
 	$(document).ready(function() {
     $('#example').DataTable();
@@ -505,11 +520,11 @@
       "searching": true,
       "ordering": true,
       "info": true,
-      "autoWidth": true,
+      "autoWidth": false,
       "responsive": true,
-      "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+      "aLengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]],
       "iDisplayLength": 5,
-      "order": [[ 3, "desc" ]]
+      "order":[[ 0, "desc" ]],
     });
   });
 </script>
@@ -518,14 +533,29 @@
 	function selectpaymentmethode()
 	{
 		if($('.stripe').is(':checked') || $('.cod').is(':checked') || $('.paytm').is(':checked') || $('.Instamojo').is(':checked') || $('.Razorpay').is(':checked') ){
-			alert('Checked');
+			alert('Order Proceed Further Successfully!');
 		}
 		else{
 			alert('Please Select Payment Method');
 			return false;
 		}
 	}
-</script><script>
+	//loader
+	var preloader=document.getElementById('loading');
+	function myFunction(){
+    preloader.style.display= 'none';
+    }
+    //hidden password
+    function Password() {
+    	var x = document.getElementById("pass");
+    	if (x.type === "password") {
+    		x.type = "text";
+    	} else {
+    		x.type = "password";
+    	}
+    }
+</script>
+<script>
 // Set the date we're counting down to
 var countDownDate = new Date("May 24, 2021 15:37:25").getTime();
 

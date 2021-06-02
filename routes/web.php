@@ -12,15 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Forgot Password Routes
-// Route::get('forget-password', 'Auth\ForgotPasswordController@getEmail');
-// Route::post('forget-password','Auth\ForgotPasswordController@postEmail');
-
-// Reset Password Routes
-// Route::get('reset-password/{token}', 'Auth\ResetPasswordController@getPassword');
-// Route::post('reset-password', 'Auth\ResetPasswordController@updatePassword');
+Auth::routes(['verify' => true]);
 
 //Frontend Controller
+Route::get('email/{id}','AdminController@email');
 Route::get('/','FrontendController@index');
 Route::get('courses/{id}','FrontendController@courses');
 Route::get('allcourses','FrontendController@allcourses');
@@ -59,7 +54,7 @@ Route::get('checkout','CartController@checkout');
 Route::post('checkout_submit','CartController@checkoutsubmit');
 
 //paytm gateway
-Route::post('/paytm-callback','CartController@paytmCallback');
+Route::post('paytm-callback','CartController@paytmCallback');
 Route::get('payment-success','CartController@paymentsuccess');
 Route::get('payment-fail','CartController@paymentfail');
 
@@ -186,10 +181,19 @@ Route::get('admin/portfolio_delete/{id}','AboutController@delete1');
 //Bill
 Route::get('admin/bill/{id}','AdminController@bill');
 Route::get('admin/billprint/{id}','AdminController@billprint');
-Route::get('front/billprint/{id}','FrontendController@billprint');
 
 //User
 Route::get('admin/print/{name}','AdminController@print');
 
-//Home Controller -Admin
-Route::get('home','AdminController@index');
+//Home Controller -Admin verification
+Route::get('home','HomeController@index');
+
+//cashe clear
+Route::get('/clear', function() { 
+        Artisan::call('cache:clear');
+        Artisan::call('config:clear');
+        Artisan::call('config:cache');
+        Artisan::call('view:clear');
+        Artisan::call('route:clear'); 
+        return "Cleared!"; 
+    });

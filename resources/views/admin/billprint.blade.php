@@ -132,6 +132,7 @@
                   <img src="{{url('backend/dist/img/credit/american-express.png')}}" alt="American Express')}}">
                   <img src="{{url('backend/dist/img/credit/paypal2.png')}}" alt="Paypal">
                   <img style="border: 1px solid orange;width:10%;height:12%" src="{{url('backend/dist/img/credit/paytm.jpg')}}" alt="Paypal">
+                  <img style="border: 1px solid orange;width:10%;height:12%" src="{{url('backend/dist/img/credit/cod.png')}}" alt="Cash On Dilevery">
                   <br><br>
         <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
           PN INFOSYS provides the best service possible to its customers because for us, our client’s happiness is important. Whatever we choose to do, we do it an exorbitant manner. PN INFOSYS Company provides a full range of maintenance and compliance services for Government and Commercial facilities.
@@ -149,7 +150,7 @@
                         <th style="width:50%">Subtotal:</th>
                         <td>₹{{$a->subtotal}}</td>
                       </tr>
-                      @if($a->coupan_code!=NULL)
+                      @if($a->coupan_code!=NULL && $a->coupan_discount!=NULL)
                       <tr>
                         <th>Coupan Code:</th>
                         <td>{{$a->coupan_code}}</td>
@@ -174,6 +175,14 @@
                       </tr>
                     </table>
                   </div>
+                  <p class="lead"><b>Total Amount To Pay : ₹{{$a->total}}</b><br>
+                  Payment Methode : 
+                  @if($a->payment_methode=='Paytm')
+                  <img style="border: 1px solid orange;width:10%;height:12%" src="{{url('backend/dist/img/credit/paytm.jpg')}}" alt="Paytm">
+                  @else
+                  <img style="border: 1px solid orange;width:10%;height:12%" src="{{url('backend/dist/img/credit/cod.png')}}" alt="Cash On Dilevery">
+                  @endif
+                </p>
       </div>
       @endif
       @endforeach

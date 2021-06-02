@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">All Orders <a href="{{url('admin/print/orders')}}"><p class="btn btn-info"><i class="fas fa-print"></i> Print To PDF</p></a></h1>
+            <h1 class="m-0 text-dark">All Orders <a href="" onclick="window.print()"><p class="btn btn-info"><i class="fas fa-print"></i> Print To PDF</p></a></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -59,7 +59,7 @@
                   <th>Customer Id</th>
                   <th>Customer Name</th>
                   <th>Customer Email</th>
-                  <th>Customer Phone</th>
+                  <th>Customer Contact</th>
                   <th>Customer Address</th>
                   <th>Order Id</th>
                   <th>Order Note</th>
@@ -105,7 +105,7 @@
                   <th>Customer Id</th>
                   <th>Customer Name</th>
                   <th>Customer Email</th>
-                  <th>Customer Phone</th>
+                  <th>Customer Contact</th>
                   <th>Customer Address</th>
                   <th>Order Id</th>
                   <th>Order Note</th>

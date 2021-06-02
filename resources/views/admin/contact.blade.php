@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">ContactUs <a href="{{url('admin/print/contact')}}"><p class="btn btn-info"><i class="fas fa-print"></i> Print To PDF</p></a></h1>
+            <h1 class="m-0 text-dark">ContactUs <a href="" onclick="window.print()"><p class="btn btn-info"><i class="fas fa-print"></i> Print To PDF</p></a></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -78,7 +78,7 @@
                     <td>{{$a->created_at}}</td>
                     <td>
                       <a href="{{url('admin/contact_reply/'.$a->id)}}"><p class="btn btn-info"><i class="fas fa-reply"></i></p></a>
-                      <a href="{{url('admin/contact_delete/'.$a->id)}}"><p class="btn btn-danger"><i class="fas fa-trash"></i></p></a>
+                      <a onclick="return confirm('Are you sure to delete?')" href="{{url('admin/contact_delete/'.$a->id)}}"><p class="btn btn-danger"><i class="fas fa-trash"></i></p></a>
                     </td>
                   </tr>
                   @endforeach

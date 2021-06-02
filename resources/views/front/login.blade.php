@@ -3,8 +3,9 @@
 @section("content")
 <style type="text/css">
 .card0 {
-    box-shadow: 0px 4px 8px 0px #757575;
-    border-radius: 0px
+    border-color: #1A237E;
+    box-shadow: 0px 4px 8px 4px #757575;
+    border-radius: 2%
 }
 
 .card2 {
@@ -136,16 +137,29 @@ a {
             </div>
             <div class="col-lg-6">
                 <div class="card2 card border-0 px-4 py-5">
+                    @if($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                    @endif
                     <form method="post" action="{{url('/login_submit')}}" enctype="multipart/form-data">
                     @csrf
-                    <div class="row px-3"> <label class="mb-1">
+                    <div class="row px-3"> 
+                        <label class="mb-1">
                             <h6 class="mb-0 text-sm">Email Address</h6>
                         </label> 
-                        <input class="mb-4" type="email" name="email" placeholder="Enter a valid email address"></div>
+                        <input class="mb-4" type="email" name="email" placeholder="Enter a valid email address">
+                    </div>
                     <div class="row px-3"> <label class="mb-1">
                             <h6 class="mb-0 text-sm">Password</h6>
                         </label> 
-                        <input type="password" name="password" placeholder="Enter password"> </div>
+                        <input type="password" name="password" placeholder="Enter password" id="pass"><br>
+                        <a onclick="Password()"><span style="color:#1A237E" class="material-icons">visibility</span></a> Show Password
+                    </div>
                         @if (Route::has('password.request'))
                         <a href="{{route('password.request')}}" class="ml-auto mb-0 text-md text-danger">Forgot Password?</a>
                         @endif
@@ -155,7 +169,7 @@ a {
                       <input type="submit" class="btn btn-blue text-center" name="submit" value="Login">
                     </form> 
                     </div>
-                    <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a href="{{url('signup')}}" class="text-danger">Signup</a></small> </div>
+                    <div class="mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a href="{{url('signup')}}" class="text-danger">Signup</a></small> </div>
             <center>
               <hr>
               <h3><b>OR LOGIN WITH</b></h3> 

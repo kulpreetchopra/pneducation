@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use App\Navbar;
 use App\Cart;
 use App\Checkout;
@@ -12,6 +13,7 @@ use App\Course_order_product;
 use DB;
 use Session;
 use Auth;
+use Mail;
 
 class CartController extends Controller
 {
@@ -117,7 +119,7 @@ class CartController extends Controller
         $r->phone=$a->phone;
         $r->order_note=$a->order_note;
         $r->order_status="Pending";
-        $order_id= uniqid();
+        $order_id= uniqid('PN');
         $r->order_id=$order_id;
         $r->transaction_id=$a->transaction_id;
         $r->payment_methode=$a->payment_methode;
@@ -167,9 +169,31 @@ class CartController extends Controller
         }
         // print_r($cartproduct);
         if($r['payment_methode']=="Cash On Dilevery"){
+            $user = User::where('email',$a->user_email)->first(); 
+            $to = $a->user_email;
+            $navbar = Navbar::all();
+            $corder = Courseorder::all();
+            $corderd = Course_order_product::all();
+            $id = $r->id;
+            $subject = 'User Order Successful';
+            $message = "Your Order Is Successful In PnInfosys Course Program \n\n";
+            Mail::send('front.order_email', ['msg' => $message,'navbar' => $navbar,'corder' => $corder,'corderd' => $corderd,'id' => $id, 'user' => $user] , function($message) use ($to){ 
+                $message->to($to, 'User')->subject('User Order');  
+            }); 
             return redirect('thanks')->with('message','Order Submitted Successfully');  //reduct rout of url
         }
         elseif($r['payment_methode']=="Paytm"){
+            $user = User::where('email',$a->user_email)->first(); 
+            $to = $a->user_email;
+            $navbar = Navbar::all();
+            $corder = Courseorder::all();
+            $corderd = Course_order_product::all();
+            $id = $r->id;
+            $subject = 'User Order Successful';
+            $message = "Your Order Is Successful In PnInfosys Course Program \n\n";
+            Mail::send('front.order_email', ['msg' => $message,'navbar' => $navbar,'corder' => $corder,'corderd' => $corderd,'id' => $id, 'user' => $user] , function($message) use ($to){ 
+                $message->to($to, 'User')->subject('User Order');  
+            }); 
             return view('front.paytm-merchant-form',compact('paytm_txn_url','paramList','checksum'));
         }
         else{
@@ -220,7 +244,6 @@ class CartController extends Controller
         }
         return view('front.thanks',Compact('navbar','cart','corder','user_id'))->with('message','Course Purchased Successfully');
     }
-
     public function paymentsuccess()
     {
         return view('front.payment-success');
@@ -515,6 +538,8 @@ public function paytmCallback( Request $request ) {
             $order->order_status = 'Complete';
             $order->transaction_id = $transaction_id;
             $order->save();
+            $user_email=Auth::User()->email;
+            DB::table('carts')->where('user_email',$user_email)->delete();
             return view('front.payment-success');
             // echo$order;
            } 

@@ -16,6 +16,13 @@ use App\Category;
 
 class AdminController extends Controller
 {
+    public function email($id){
+        $navbar = Navbar::all();
+        $corder = Courseorder::all();
+        $corderd = Course_order_product::all();
+        $coupan = Coupan::all();
+        return view("front.email",compact('navbar','corder','corderd','id','coupan'));
+    }
     public function __construct()
     {
         $this->middleware('auth');

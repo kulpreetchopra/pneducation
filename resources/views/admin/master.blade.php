@@ -116,7 +116,7 @@
       <div class="user-panel pb-3 d-flex">
         <div class="info">
           <a style="color: white;font-size:18px" href="{{url('admin')}}" class="d-block"><i class="fas fa-envelope"></i>&nbsp; {{ Auth::user()->email }}</a>
-          <a style="color: white;font-size:18px" href="{{url('admin')}}" class="d-block"><i class="fas fa-user"></i>&nbsp; {{ Auth::user()->role }}</a>
+          <a style="color: white;font-size:18px" href="{{url('admin')}}" class="d-block"><i class="fas fa-phone-alt"></i>&nbsp; {{ Auth::user()->phone }}</a>
         </div>
       </div>
       <p style="border-bottom-style: ridge;border-bottom-color: white;"></p>
@@ -357,10 +357,11 @@
       "searching": true,
       "ordering": true,
       "info": true,
-      "autoWidth": true,
+      "autoWidth": false,
       "responsive": true,
-      "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
-      "iDisplayLength": 5
+      "aLengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]],
+      "iDisplayLength": 5,
+      "order":[[ 0, "desc" ]],
     });
   });
 </script>

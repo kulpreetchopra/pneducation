@@ -100,6 +100,10 @@ class SignupController extends Controller
     }
     public function login_submit(Request $b)
     { 
+        $this->validate($b,[
+        'email' => ['required', 'string', 'email', 'max:255'],
+        'password' => ['required', 'string', 'min:5'],
+        ]);
         $session_id = Session::getId();
         $data=$b->all();
         echo$cart= Cart::where('user_email',$b->email)->get();

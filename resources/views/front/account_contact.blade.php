@@ -34,6 +34,7 @@ if(Auth::check()){
     <table id="example1" class="table table-bordered table-hover">
                 <thead>
                 <tr style="text-align: center;">
+                  <th>S.N.</th>
                   <th>Message</th>
                   <th>Message Date</th>
                   <th>Reply</th>
@@ -43,6 +44,7 @@ if(Auth::check()){
                 <tbody>
                   @foreach($contact as $a)
                   <tr style="text-align: center;">
+                    <td>{{$a->id}}</td>
                     <td>{{$a->comment}}</td>
                     <td>{{$a->created_at}}</td>
                     
@@ -58,6 +60,7 @@ if(Auth::check()){
                 </tbody>
                 <tfoot>
                 <tr style="text-align: center;">
+                  <th>S.N.</th>
                   <th>Message</th>
                   <th>Message Date</th>
                   <th>Reply</th>

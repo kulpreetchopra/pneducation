@@ -327,7 +327,7 @@
 											<span><?php echo$order; ?></span>
 										</div>
 										<div class="course-price">
-											<span><b>₹{{$a->c_price}}</b></span>
+											<span>₹{{$a->c_price}}</span>
 										</div>
 									</div>
 								</div>

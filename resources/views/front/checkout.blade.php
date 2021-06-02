@@ -100,13 +100,25 @@
 								<label for="postcode-name">Postcode / Zip*</label>
 								<input type="text" name="pincode" id="postcode-name" />
 								<label for="payment">Payment Methode*</label>
-                                <input class="cod" type="radio" name="payment_methode"value="Cash On Dilevery"/> Cash On Dilevery
-                                <br>
-                                <input class="paytm" type="radio" name="payment_methode"value="Paytm"/> Paytm
+                                <input class="cod" type="radio" name="payment_methode"value="Cash On Dilevery"/>
+                                <img style="border: 1px solid orange;width:25%;height:60px" src="{{url('backend/dist/img/credit/cod.png')}}" alt="Cash On Dilevery">&nbsp;&nbsp;
+                                <input class="paytm" type="radio" name="payment_methode"value="Paytm"/>
+                                <img style="border: 1px solid blue;width:25%;height:60px" src="{{url('backend/dist/img/credit/paytm.jpg')}}" alt="Paytm">
                                 <br><br>
 								<h2>Additional information</h2>
-								<label for="coupan">Coupan Code (optional)</label>
-								<input type="text" name="coupan_code" placeholder="Coupon code">
+								<div class="row">
+									<div class="col-lg-6">
+										<label for="coupan">Coupan Code (optional)</label>
+										<input type="text" name="coupan_code" placeholder="Coupon code">
+									</div>
+									<div class="col-lg-6">
+										<label for="last-name">Check Coupan Validity (optional)</label>
+										<input type="button" class="btn btn-block btn-info" value="Verify Coupan " name="Submit" onclick="Coupan()">
+									</div>
+								</div>
+								<p class="text-success" id="statusy"></p>
+								<p class="text-danger" id="statusn"></p>
+								<br>
 								<label for="notes">Order notes (optional)</label>
 								<textarea name="order_note" id="notes" placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
 						</div>
@@ -118,8 +130,8 @@
 								<table>
 									<tbody>
 										<tr>
-											<td>Product</td>
-											<td>Total</td>
+											<th>Product</th>
+											<th>Total</th>
 										</tr>
 										<?php $total_amount=0; ?>
 									    @foreach($cart as $a)
@@ -127,7 +139,7 @@
                                         $total_amount=$total_amount+($a->course_price*$a->course_quantity);
 									    ?>
 										<tr>
-											<td class="name-pro">{{$a->course_name}}  × {{$a->course_quantity}}</td>
+											<th class="name-pro">{{$a->course_name}}  × {{$a->course_quantity}}</th>
 											<td>₹{{$a->course_price}}</td>
 										</tr>
 							            @endforeach
@@ -138,7 +150,7 @@
 										</tr>
 										<tr class="order-total">
 											<th>Total</th>
-											<td class="total-price">₹<?php echo$total_amount; ?></td>
+											<td class="total-price">₹<?php echo$total_amount; ?><p class="text-success" id="statusd"></p></td>
 											<input type="hidden" name="total" value="<?php echo$total_amount; ?>">
 										</tr>
 									</tbody>
@@ -151,5 +163,35 @@
 				</div>
 			</div>
 		</section>
-		<!-- End cart section -->
+	<script type="text/javascript">
+	function Coupan() { 
+	var x = document.getElementsByName("coupan_code")[0].value;
+    var z = "Your entered coupan code "+x+" is not available or Expired !";
+    var w = "Your entered coupan code "+x+" is Invalid, Please check again and retry !";
+    <?php 
+    foreach ($coupan as $c) {
+    	?>
+    	var y = "Your entered coupan code "+x+" is successfully verified and available to get "+<?php echo$c->discount;?>+"% discount !";
+    	var d = <?php echo$c->discount;?>+"% Off";
+    	if (x==<?php echo$c->coupan_code;?>) {
+    		if(<?php echo$c->status;?>=='1'){
+    		alert("Your entered coupan code "+x+" is successfully verified and available!\r\n"+"Coupan Code : "+x+"\r\nCoupan Discount : "+<?php echo$c->discount;?>+"%");
+    		document.getElementById("statusy").innerHTML = y;
+    		document.getElementById("statusd").innerHTML = d;
+    		return; //stop the execution of function
+    	    }
+    	    else{
+    		alert("Your entered coupan code "+x+" is not available or Expired!");
+    		document.getElementById("statusn").innerHTML = z;
+    		return;
+    	    }
+    	}
+    	<?php
+    }
+    ?>
+    alert("Your entered coupan code "+x+" is Invalid, Please check again and retry!");
+    document.getElementById("statusn").innerHTML = w;
+    }
+		</script>
+	<!-- End cart section -->
 @endsection

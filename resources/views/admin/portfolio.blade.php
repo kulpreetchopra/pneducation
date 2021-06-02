@@ -78,7 +78,7 @@
                     </td>
                     <td>
                       <a href="{{url('admin/portfolio_edit/'.$a->id)}}"><p class="btn btn-success"><i class="fas fa-edit"></i></p></a>
-                      <a href="{{url('admin/portfolio_delete/'.$a->id)}}"><p class="btn btn-danger"><i class="fas fa-trash"></i></p></a>
+                      <a onclick="return confirm('Are you sure to delete?')" href="{{url('admin/portfolio_delete/'.$a->id)}}"><p class="btn btn-danger"><i class="fas fa-trash"></i></p></a>
                     </td>
                   </tr>
                   @endforeach
