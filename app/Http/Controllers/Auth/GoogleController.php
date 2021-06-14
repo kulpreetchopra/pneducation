@@ -8,6 +8,7 @@ use Auth;
 use Exception;
 use App\User;
 use App\Cart;
+use Session;
   
 class GoogleController extends Controller
 {
@@ -39,7 +40,9 @@ class GoogleController extends Controller
             if($finduser){
      
                 Auth::login($finduser);
-    
+                Session::put('ashu',$user->id);
+                Session::forget('kulpreet');
+
                 if($cart!='[]'){
                     // echo"true";
                     return redirect("addtocart")->with('message','Login Successfully');
@@ -58,6 +61,8 @@ class GoogleController extends Controller
                 ]);
     
                 Auth::login($newUser);
+                Session::put('ashu',$user->id);
+                Session::forget('kulpreet');
      
                 if($cart!='[]'){
                     // echo"true";

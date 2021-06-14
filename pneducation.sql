@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2021 at 01:14 PM
+-- Generation Time: Jun 14, 2021 at 07:17 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -69,7 +69,7 @@ CREATE TABLE `alerts` (
 INSERT INTO `alerts` (`id`, `title`, `start_date`, `start_time`, `end_date`, `created_at`, `updated_at`) VALUES
 (1, 'Python summer internship starts on', '2021-05-22', '04:00:00', '2021-07-04', '2021-03-30 03:47:57', '2021-05-20 23:29:01'),
 (2, 'Web designing new batch starts on', '2021-04-10', '17:30:00', '2021-05-07', '2021-04-02 03:28:18', '2021-05-10 01:19:07'),
-(3, 'Laravel summer internship starts on', '2021-05-30', '15:56:00', '2021-08-08', '2021-04-30 04:56:52', '2021-05-20 23:29:33');
+(3, 'Laravel summer internship starts on', '2021-07-15', '15:56:00', '2021-08-01', '2021-04-30 04:56:52', '2021-06-14 10:55:37');
 
 -- --------------------------------------------------------
 
@@ -172,20 +172,6 @@ CREATE TABLE `contacts` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `contacts`
---
-
-INSERT INTO `contacts` (`id`, `name`, `email`, `contact`, `comment`, `reply`, `created_at`, `updated_at`) VALUES
-(1, 'Kulpreet Chopra', 'kulpreetsingh0128@gmail.com', '6266060879', 'Thankyou!!', 'hiii', '2021-03-15 11:01:20', '2021-05-02 04:05:24'),
-(3, 'Janhavi Sahu', 'janhavi@gmail.com', '6266060879', 'Hello Everyone!!', 'hello ji', '2021-03-28 02:36:27', '2021-05-29 02:28:50'),
-(5, 'Apneet Chopra', 'apnneet@gmail.com', '6266060879', 'HElllpppppppp', NULL, '2021-04-07 05:46:46', '2021-04-07 05:46:46'),
-(6, 'Gunjan Gupta', 'gg2354875@gmail.com', '6266060879', 'namastey', 'Thank', '2021-05-01 01:41:44', '2021-05-03 01:33:07'),
-(7, 'Anmol Chopra', 'anmol@gmail.com', '9074261533', 'Thankyou Pn Infosys', 'welcome', '2021-05-01 09:11:43', '2021-05-01 09:37:00'),
-(8, 'Anmol Chopra', 'anmol@gmail.com', '9074261533', 'namaskaram', NULL, '2021-05-01 09:38:07', '2021-05-01 09:38:07'),
-(9, 'KULPREET SINGH CHOPRA', 'kulpreetchopra0128@gmail.com', '6266060879', 'hiiiiiii', 'hello', '2021-05-07 10:58:18', '2021-05-07 22:24:43'),
-(10, 'Janhavi Sahu', 'janhavi@gmail.com', '9074261533', 'Thankyou', NULL, '2021-05-31 03:28:51', '2021-05-31 03:28:51');
-
 -- --------------------------------------------------------
 
 --
@@ -209,7 +195,7 @@ CREATE TABLE `coupans` (
 INSERT INTO `coupans` (`id`, `coupan_code`, `discount`, `status`, `expiry_date`, `created_at`, `updated_at`) VALUES
 (1, '1001', '30', '1', '2021-12-31', '2021-03-24 23:28:22', '2021-06-02 04:37:55'),
 (2, '1002', '20', '1', '2021-03-31', '2021-03-24 23:38:13', '2021-06-02 04:03:58'),
-(3, '1003', '70', '0', '2021-05-27', '2021-05-18 02:43:57', '2021-05-31 04:34:36'),
+(3, '1003', '70', '1', '2021-05-27', '2021-05-18 02:43:57', '2021-06-14 11:21:45'),
 (4, '1004', '40', '1', '2021-05-31', '2021-05-19 04:25:44', '2021-05-19 04:25:44'),
 (5, '1005', '60', '1', '2021-08-11', '2021-06-01 23:44:57', '2021-06-01 23:44:57');
 
@@ -270,12 +256,12 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `c_name`, `c_discription`, `c_price`, `c_details`, `c_include`, `c_containt`, `c_image`, `c_category`, `c_teacher`, `created_at`, `updated_at`) VALUES
-(1, 'Python', 'Improve your productivity, get things done, and find more time for what’s most important with Time Management Tips. This weekly series provides actionable time management techniques to help people better manage their time and ultimately become more productive. Time management expert Dave Crenshaw provides a new tip every Monday, touching on a wide variety of topics. Tune in to learn about everything from managing emails and calendars to setting priorities, collaborating with coworkers, reducing interruptions, crafting a “productivity mindset,” and creating a more comfortable and effective work environment.', '4', 'Improve your productivity, get things done, and find more time for what’s most important with Time Management Tips. This weekly series provides actionable time management techniques to help people better manage their time and ultimately become more productive. Time management expert Dave Crenshaw provides a new tip every Monday, touching on a wide variety of topics. Tune in to learn about everything from managing emails and calendars to setting priorities, collaborating with coworkers, reducing interruptions, crafting a “productivity mindset,” and creating a more comfortable and effective work environment.', 'Improve your productivity, get things done, and find more time for what’s most important with Time Management Tips. This weekly series provides actionable time management techniques to help people better manage their time and ultimately become more productive. Time management expert Dave Crenshaw provides a new tip every Monday, touching on a wide variety of topics. Tune in to learn about everything from managing emails and calendars to setting priorities, collaborating with coworkers, reducing interruptions, crafting a “productivity mindset,” and creating a more comfortable and effective work environment.', 'Improve your productivity, get things done, and find more time for what’s most important with Time Management Tips. This weekly series provides actionable time 1.management techniques to help people better manage their time and ultimately become more productive. Time management expert Dave Crenshaw provides a new tip \r\n2. every Monday, touching on a wide variety of topics. Tune in to learn about everything from managing emails and calendars to setting priorities, collaborating with \r\n3. coworkers, reducing interruptions, crafting a “productivity mindset,” and creating a more comfortable and effective work environment.', 'c_image1614838508.jpg', 'Programming Languages', 'Vikas Jain', '2021-02-24 22:48:20', '2021-05-07 11:18:59'),
-(2, 'Html Css Js', 'NaN', '35', 'NaN', 'NaN', 'NaN', 'c_image1620453060.png', 'Web Designing', 'Gunjan Gupta', '2021-03-03 01:32:50', '2021-05-30 23:40:57'),
+(1, 'Python', 'Improve your productivity, get things done, and find more time for what’s most important with Time Management Tips. This weekly series provides actionable time management techniques to help people better manage their time and ultimately become more productive. Time management expert Dave Crenshaw provides a new tip every Monday, touching on a wide variety of topics. Tune in to learn about everything from managing emails and calendars to setting priorities, collaborating with coworkers, reducing interruptions, crafting a “productivity mindset,” and creating a more comfortable and effective work environment.', '400', 'Improve your productivity, get things done, and find more time for what’s most important with Time Management Tips. This weekly series provides actionable time management techniques to help people better manage their time and ultimately become more productive. Time management expert Dave Crenshaw provides a new tip every Monday, touching on a wide variety of topics. Tune in to learn about everything from managing emails and calendars to setting priorities, collaborating with coworkers, reducing interruptions, crafting a “productivity mindset,” and creating a more comfortable and effective work environment.', 'Improve your productivity, get things done, and find more time for what’s most important with Time Management Tips. This weekly series provides actionable time management techniques to help people better manage their time and ultimately become more productive. Time management expert Dave Crenshaw provides a new tip every Monday, touching on a wide variety of topics. Tune in to learn about everything from managing emails and calendars to setting priorities, collaborating with coworkers, reducing interruptions, crafting a “productivity mindset,” and creating a more comfortable and effective work environment.', 'Improve your productivity, get things done, and find more time for what’s most important with Time Management Tips. This weekly series provides actionable time 1.management techniques to help people better manage their time and ultimately become more productive. Time management expert Dave Crenshaw provides a new tip \r\n2. every Monday, touching on a wide variety of topics. Tune in to learn about everything from managing emails and calendars to setting priorities, collaborating with \r\n3. coworkers, reducing interruptions, crafting a “productivity mindset,” and creating a more comfortable and effective work environment.', 'c_image1614838508.jpg', 'Programming Languages', 'Vikas Jain', '2021-02-24 22:48:20', '2021-06-14 10:53:49'),
+(2, 'Html Css Js', 'NaN', '1000', 'NaN', 'NaN', 'NaN', 'c_image1620453060.png', 'Web Designing', 'Gunjan Gupta', '2021-03-03 01:32:50', '2021-06-14 10:54:25'),
 (3, 'React Js', 'NaN', '1600', 'NaN', 'NaN', 'NaN', 'c_image1620452190.jpg', 'Web Designing', 'Vikas Jain', '2021-03-04 23:17:29', '2021-05-30 23:36:50'),
 (4, 'Node Js', 'NAN', '1700', 'NAN', 'NAN', 'NAN', 'c_image1620452845.png', 'Web Designing', 'Vikas Jain', '2021-04-26 09:22:26', '2021-05-08 00:17:25'),
 (5, 'Core Php', 'NAN', '1300', 'NAN', 'NAN', 'NAN', 'c_image1620452424.png', 'Web Developement', 'Vikas Jain', '2021-05-07 11:21:33', '2021-05-30 23:38:03'),
-(6, 'Laravel', 'NAN', '19', 'NAN', 'NAN', 'NAN', 'c_image1620452299.png', 'Web Developement', 'Vikas Jain', '2021-05-07 11:23:13', '2021-05-08 00:08:19'),
+(6, 'Laravel', 'NAN', '900', 'NAN', 'NAN', 'NAN', 'c_image1620452299.png', 'Web Developement', 'Vikas Jain', '2021-05-07 11:23:13', '2021-06-14 10:54:04'),
 (7, 'Python Django', 'NAN', '1800', 'NAN', 'NAN', 'NAN', 'c_image1620457567.png', 'Web Developement', 'Vikas Jain', '2021-05-08 00:48:51', '2021-05-08 01:36:07'),
 (8, 'Mysql', 'NAN', '1200', 'NAN', 'NAN', 'NAN', 'c_image1620454890.png', 'Programming Languages', 'Gunjan Gupta', '2021-05-08 00:51:30', '2021-05-30 23:38:36');
 
@@ -514,27 +500,6 @@ CREATE TABLE `ratings` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `ratings`
---
-
-INSERT INTO `ratings` (`id`, `user_name`, `user_email`, `course_id`, `course_name`, `rating`, `review`, `created_at`, `updated_at`) VALUES
-(1, 'Apneet Chopra', 'apnneet@gmail.com', 1, 'Python', '5', 'Owsome Course!', '2021-04-07 00:25:11', '2021-04-07 00:25:11'),
-(2, 'Apneet Chopra', 'apnneet@gmail.com', 2, 'JavaScript', '2', 'Nice!', '2021-04-07 00:26:02', '2021-04-07 00:26:02'),
-(3, 'Unknown User', 'Unknown Email', 1, 'Python', '4', 'Woow!', '2021-04-07 00:26:40', '2021-04-07 00:26:40'),
-(4, 'Gunjan Gupta', 'gg2354875@gmail.com', 1, 'Python', '5', 'Good Job!', '2021-04-07 00:29:00', '2021-04-07 00:29:00'),
-(6, 'Anmol Chopra', 'anmol@gmail.com', 2, 'JavaScript', '3', 'owsmmmmm', '2021-04-07 11:20:21', '2021-04-07 11:20:21'),
-(7, 'Unknown User', 'Unknown Email', 2, 'JavaScript', '1', 'poor', '2021-04-07 11:25:06', '2021-04-07 11:25:06'),
-(8, 'Gunjan Gupta', 'gg2354875@gmail.com', 3, 'React JS', '4', 'Hahah!!', '2021-04-20 11:30:17', '2021-04-20 11:30:17'),
-(9, 'Kulpreet Chopra', 'kulpreetchopra0128@gmail.com', 3, 'React JS', '5', 'woow', '2021-05-08 00:22:46', '2021-05-08 00:22:46'),
-(10, 'Kulpreet Chopra', 'kulpreetsingh0128@gmail.com', 4, 'Node Js', '5', 'Owsm!', '2021-05-15 02:14:01', '2021-05-15 02:14:01'),
-(11, 'Unknown User', 'Unknown Email', 7, 'Python Django', '5', 'Owsm', '2021-05-28 03:47:03', '2021-05-28 03:47:03'),
-(12, 'Janhavi Sahu', 'janhavi@gmail.com', 1, 'Python', '4', 'Owsm', '2021-05-31 23:12:07', '2021-05-31 23:12:07'),
-(13, 'Kulpreet Singh Chopra', 'kulpreetsingh0128@gmail.com', 7, 'Python Django', '5', 'Mast!', '2021-06-01 10:39:23', '2021-06-01 10:39:23'),
-(14, 'Kulpreet Chopra', 'kulpreetchopra0128@gmail.com', 1, 'Python', '1', 'hy', '2021-06-01 11:07:31', '2021-06-01 11:07:31'),
-(15, 'Kulpreet Chopra', 'kulpreetchopra0128@gmail.com', 3, 'React Js', '3', 'hooooo', '2021-06-01 11:08:46', '2021-06-01 11:08:46'),
-(16, 'Kulpreet Singh Chopra', 'kulpreetsingh0128@gmail.com', 8, 'Mysql', '4', 'Nice Course', '2021-06-02 03:49:52', '2021-06-02 03:49:52');
-
 -- --------------------------------------------------------
 
 --
@@ -571,19 +536,6 @@ CREATE TABLE `subscribes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `subscribes`
---
-
-INSERT INTO `subscribes` (`id`, `email`, `created_at`, `updated_at`) VALUES
-(1, 'kulpreetsingh0128@gmail.com', '2021-03-15 23:16:58', '2021-03-15 23:16:58'),
-(6, 'apnneet567@gmail.com', '2021-03-28 02:03:48', '2021-03-28 02:03:48'),
-(7, 'janhavi@gmail.com', '2021-03-28 02:10:52', '2021-03-28 02:10:52'),
-(8, 'gg2354875@gmail.com', '2021-03-28 02:31:37', '2021-03-28 02:31:37'),
-(12, 'apnneet@gmail.com', '2021-04-07 05:38:47', '2021-04-07 05:38:47'),
-(13, 'kulpreetsingh0128@gmail.com', '2021-04-07 10:01:17', '2021-04-07 10:01:17'),
-(14, 'gg2354875@gmail.com', '2021-04-17 04:43:48', '2021-04-17 04:43:48');
 
 -- --------------------------------------------------------
 
@@ -623,7 +575,7 @@ CREATE TABLE `users` (
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'User',
+  `role` int(11) DEFAULT 0,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -636,8 +588,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `email_verified_at`, `phone`, `password`, `role`, `remember_token`, `created_at`, `updated_at`, `google_id`, `facebook_id`) VALUES
-(1, 'Kulpreet Singh Chopra', NULL, 'kulpreetsingh0128@gmail.com', '2021-06-01 10:43:57', '6266060879', '$2y$10$aSeanuuVqe8iLrlYhxCUD.ciLg24VVLTqbhOa5c4rVD9V8TxORwyq', 'User', 'GXnKCVYlXh0q57iGZwa0KDa6P5Ki52OvBBM3gobvstp2ZaNy35r1DpRaqAvO', '2021-06-01 10:33:22', '2021-06-02 00:59:08', '100757936250775413206', NULL),
-(2, 'Kulpreet', 'Chopra', 'kulpreetchopra0128@gmail.com', '2021-06-01 10:48:18', '6266060879', '$2y$10$vBxSUqoeV4nlG7qS7kYIeu4qWZj6A8z4uIb/JbqanI9Tu4AV1Fu/u', 'User', NULL, '2021-06-01 10:47:40', '2021-06-01 10:48:18', NULL, NULL);
+(1, 'Kulpreet', 'Chopra', 'kulpreetchopra0128@gmail.com', '2021-06-14 11:44:32', '6266060879', '$2y$10$3ZtHEgIhnzMd4G2xotRVN.nI0jE4KfWbLuZfCOc7BxU7zTaAPMHNy', 1, NULL, '2021-06-14 11:43:22', '2021-06-14 11:44:32', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -862,7 +813,7 @@ ALTER TABLE `checkouts`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `coupans`
@@ -934,7 +885,7 @@ ALTER TABLE `portfolios`
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `specials`
@@ -946,7 +897,7 @@ ALTER TABLE `specials`
 -- AUTO_INCREMENT for table `subscribes`
 --
 ALTER TABLE `subscribes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `teams`
@@ -958,7 +909,7 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `workshops`

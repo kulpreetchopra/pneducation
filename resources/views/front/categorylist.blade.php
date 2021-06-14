@@ -5,7 +5,6 @@
 			================================================== -->
 		<section class="page-banner-section">
 			<div class="container">
-				<h1>Courses</h1>
 				<h1>Courses<span> {{$category->c_name}}</span></h3>
 				<ul class="page-depth">
 					<li><a href="{{url('/')}}">Home</a></li>
@@ -23,13 +22,13 @@
 					<div class="col-lg-8">
 						<div class="courses-top-bar">
 							<div class="courses-view">
-								<a href="{{url('allcourses')}}" class="grid-btn">
+								<a href="{{url('allcategory/'.$category->id)}}" class="grid-btn">
 									<i class="fa fa-th-large" aria-hidden="true"></i>
 								</a>
-								<a href="{{url('allcategory/'.$category->id)}}" class="grid-btn active">
+								<a href="{{url('categorylist/'.$category->id)}}" class="grid-btn active">
 									<i class="fa fa-bars" aria-hidden="true"></i>
 								</a>
-								<span>Showing all results</span>
+								<span>Showing all {{$course->where('c_category',$category->c_name)->count()}} results</span>
 							</div>
 							<form class="search-course">
 								<input type="search" name="search" id="search_course" placeholder="Search Courses..." />
@@ -52,10 +51,16 @@
 										<a href="{{url('courses/'.$a->id)}}">{{$a->c_name}}</a>
 									</h2>
 									<div class="course-rating-teacher">
-										<div class="star-rating has-ratings" title="Rated 5.00 out of 5">
+										<?php $vote=0; ?>
+													@foreach($rating as $r)
+													@if($r->course_name==$a->c_name)
+													<?php $vote++; ?>
+													@endif
+													@endforeach
+												<div class="star-rating has-ratings" title="<?php echo$vote; ?> Users Subscribed To This Course">
 											<span style="width:100%">
-												<span class="rating">5.00</span>
-												<span class="votes-number">1 Votes</span>
+												<span class="rating"><?php echo$vote; ?></span>
+													<span class="votes-number"> Votes</span>
 											</span>
 										</div>
 										<a href="#" class="course-loop-teacher">{{ $a->c_teacher }}</a>
@@ -64,8 +69,14 @@
 								</div>
 								<div class="course-content-bottom">
 									<div class="course-students">
+										<?php $order=0; ?>
+													@foreach($c_order as $c)
+													@if($c->course_name==$a->c_name)
+													<?php $order++; ?>
+													@endif
+													@endforeach
 										<i class="material-icons">group</i>
-										<span>64</span>
+										<span><?php echo$order; ?></span>
 									</div>
 									<div class="course-price">
 										<span>₹{{$a->c_price}}</span>

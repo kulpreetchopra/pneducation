@@ -138,56 +138,73 @@ a {
             </div>
             <div class="col-lg-6">
                 <div class="card2 card border-0 px-4 py-5">
-                    @if($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                    @endif
-                    <form method="post" action="{{ route('register') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ url('submit') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                     <div class="col-md-6 px-3"> 
-                      <label class="mb-1">
+                      <label class="mb-1 mt-4">
                         <h6 class="mb-0 text-sm">First Name</h6>
                       </label> 
-                      <input class="mb-4" type="text" name="fname" placeholder="Enter Your First Name">
+                      <input id="fname" type="text" class="form-control @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" placeholder="Enter Your First Name" autocomplete="fname" autofocus>
+                                @error('fname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                     </div>
                     <div class="col-md-6 px-3"> 
-                      <label class="mb-1">
+                      <label class="mb-1 mt-4">
                         <h6 class="mb-0 text-sm">Last Name</h6>
                       </label> 
-                      <input class="mb-4" type="text" name="lname" placeholder="Enter Your Last Name">
+                      <input id="lname" type="text" class="form-control @error('lname') is-invalid @enderror" name="lname" value="{{ old('lname') }}" placeholder="Enter Your Last Name" autocomplete="lname" autofocus>
+                                @error('lname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                     </div>
                     </div>
                     <div class="row">
                     <div class="col-md-12 px-3"> 
-                      <label class="mb-1">
-                        <h6 class="mb-0 text-sm">Email</h6>
+                      <label class="mb-1 mt-4">
+                        <h6 class="mb-0 text-sm">E-Mail Address</h6>
                       </label> 
-                      <input class="mb-4" type="email" name="email" placeholder="Enter Email Address">
+                      <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter Email Address" autocomplete="email">
+                      <input type="hidden" name="role" value=0>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                     </div>
                     <div class="col-md-12 px-3"> 
-                      <label class="mb-1">
+                      <label class="mb-1 mt-4">
                         <h6 class="mb-0 text-sm">Phone</h6>
                       </label> 
-                      <input class="mb-4" type="tel" name="phone" placeholder="Enter 10 Digit Phone Number">
+                      <input id="phone" type="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" placeholder="Enter 10 Digit Phone Number" autocomplete="phone">
+                                @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                     </div>
                     <div class="col-md-6 px-3"> 
-                      <label class="mb-1">
+                      <label class="mb-1 mt-4">
                         <h6 class="mb-0 text-sm">Password</h6>
                       </label> 
-                      <input type="password" name="password" placeholder="Enter password" id="pass"><br>
+                      <input id="pass" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter password" autocomplete="new-password">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                         <a onclick="Password()"><span style="color:#1A237E" class="material-icons">visibility</span></a> Show Password 
                     </div>
                     <div class="col-md-6 px-3"> 
-                      <label class="mb-1">
+                      <label class="mb-1 mt-4">
                         <h6 class="mb-0 text-sm">Confirm Password</h6>
                       </label> 
-                      <input id="password-confirm" type="password" placeholder="Enter password" name="password_confirmation" autocomplete="new-password">
+                      <input id="password-confirm" type="password" placeholder="Enter password" class="form-control" name="password_confirmation" autocomplete="new-password">
                     </div>
                     <div class="col-md-12 px-3 mb-4">
                           @if (Route::has('password.request'))

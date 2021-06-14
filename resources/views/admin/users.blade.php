@@ -60,6 +60,7 @@
                   <th>Email</th>
                   <th>Email Verified@</th>
                   <th>Phone</th>
+                  <th>Role</th>
                   <th>Google Id</th>
                   <th>Facebook Id</th>
                   <th>Date</th>
@@ -73,6 +74,11 @@
                     <td>{{$a->email}}</td>
                     <td>{{$a->email_verified_at}}</td>
                     <td>{{$a->phone}}</td>
+                    @if($a->role==1)
+                    <td>{{'Admin'}}</td>
+                    @else
+                    <td>{{'User'}}</td>
+                    @endif
                     <td>{{$a->google_id}}</td>
                     <td>{{$a->facebook_id}}</td>
                     <td>{{$a->created_at}}</td>
@@ -86,6 +92,7 @@
                   <th>Email</th>
                   <th>Email Verified@</th>
                   <th>Phone</th>
+                  <th>Role</th>
                   <th>Google Id</th>
                   <th>Facebook Id</th>
                   <th>Date</th>

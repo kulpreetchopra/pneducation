@@ -252,7 +252,7 @@
 										<a href="{{url('allcategory/'.$a->id)}}" class="hover-post">
 											<span class="title">{{$a->c_name}}</span>
 											<span class="numb-courses">
-											{{$course->count()}}</span>
+											{{$course->where('c_category',$a->c_name)->count()}}</span>
 										</a>
 									</div>
 								</div>

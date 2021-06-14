@@ -36,18 +36,14 @@ Route::post('rating_submit','FrontendController@ratingsubmit');
 Route::post('search','FrontendController@search');
 
 //Account user
+Route::group(['middleware' =>['AccountLogin']],function(){ //auth middleware
 Route::get('account','FrontendController@account');
 Route::get('account/cart','FrontendController@account_cart');
 Route::get('account/bill','FrontendController@account_bill');
 Route::get('account/order','FrontendController@account_order');
 Route::get('account/contact','FrontendController@account_contact');
-
-//addtocart [Cart Controller]
-Route::get('addtocart','CartController@cart');
-Route::post('cartsubmit','CartController@cartsubmit');
-Route::get('coursequantity_update/{id}/{course_quantity}','CartController@coursequantity_update');
-Route::get('cart_delete/{id}','CartController@delete');
-Route::get('thanks','CartController@thanks');
+Route::post('update_password','SignupController@update_password');
+Route::post('update_phone','SignupController@update_phone');
 
 //checkout [Cart Controller]
 Route::get('checkout','CartController@checkout');
@@ -57,12 +53,19 @@ Route::post('checkout_submit','CartController@checkoutsubmit');
 Route::post('paytm-callback','CartController@paytmCallback');
 Route::get('payment-success','CartController@paymentsuccess');
 Route::get('payment-fail','CartController@paymentfail');
+});//middleware closed
+
+//addtocart [Cart Controller]
+Route::get('addtocart','CartController@cart');
+Route::post('cartsubmit','CartController@cartsubmit');
+Route::get('coursequantity_update/{id}/{course_quantity}','CartController@coursequantity_update');
+Route::get('cart_delete/{id}','CartController@delete');
+Route::get('thanks','CartController@thanks');
+Route::get('orderemail','CartController@orderemail');
 
 //Signup Controller
 Route::get('signup','SignupController@signup');
 Route::post('submit','SignupController@submit');
-Route::post('update_password','SignupController@update_password');
-Route::post('update_phone','SignupController@update_phone');
 Route::get('user_login','SignupController@user_login');
 Route::post('login_submit','SignupController@login_submit');
 Route::get('user_logout','SignupController@user_logout');
@@ -77,6 +80,7 @@ Route::get('auth/facebook', 'FacebookController@redirectToFacebook');
 Route::get('auth/facebook/callback','FacebookController@handleFacebookCallback');
 
 //Admin controller
+Route::group(['middleware' =>['FrontLogin']],function(){ //auth middleware
 Route::get('admin','AdminController@index');
 Route::get('admin/contact','AdminController@contact');
 Route::get('admin/contact_reply/{id}','AdminController@reply');
@@ -178,15 +182,18 @@ Route::get('admin/portfolio_edit/{id}','AboutController@edit1');
 Route::post('admin/portfolio_update','AboutController@update1');
 Route::get('admin/portfolio_delete/{id}','AboutController@delete1');
 
-//Bill
+//Home Controller -Admin verification
+Route::get('home','HomeController@index');
+//bill
 Route::get('admin/bill/{id}','AdminController@bill');
+
+});//middleware closed
+
+//Bill Print
 Route::get('admin/billprint/{id}','AdminController@billprint');
 
 //User
 Route::get('admin/print/{name}','AdminController@print');
-
-//Home Controller -Admin verification
-Route::get('home','HomeController@index');
 
 //cashe clear
 Route::get('/clear', function() { 

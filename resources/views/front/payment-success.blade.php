@@ -19,7 +19,7 @@
     .payment
 	{
 		border:1px solid #f2f2f2;
-		height:280px;
+    height:350px;
         border-radius:20px;
         background:#fff;
 	}
@@ -91,7 +91,9 @@
                <h1>Payment Success !</h1>
                <p>To Print or Download your bill go to your account section.</p>
                <p><b>Thanks for your order, Have a nice day!!</b></p>
+               <p class="text-danger">Please Do Not Refresh Page!!</p>
                <a href="{{url('/')}}">Go to Home</a>
+               <br>
             </div>
             
          </div>

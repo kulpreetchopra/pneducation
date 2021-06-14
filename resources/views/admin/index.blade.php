@@ -34,9 +34,14 @@
                         </div>
                     @endif
                     <div style="background-color: #138086;color: white" class="alert" role="alert">
-                    {{ __('You are logged in as ') }}<b>{{ Auth::user()->role}}!
+                    {{ __('You are logged in as ') }}<b> 
+                    @if(Auth::user()->role==1)
+                    {{'Admin'}}!
+                    @else
+                    {{'User'}}!
+                    @endif
                     </b>
-                    <p>Welcome to the {{ Auth::user()->role }} Dashboard!!</p>
+                    <p>Welcome <b>{{ Auth::user()->fname }} {{ Auth::user()->lname }}</b> to the Admin Dashboard!!</p>
                     </div>
                 </div>
         <div class="row" style="padding: 2%">

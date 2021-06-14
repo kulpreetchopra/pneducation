@@ -137,27 +137,26 @@ a {
             </div>
             <div class="col-lg-6">
                 <div class="card2 card border-0 px-4 py-5">
-                    @if($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                    @endif
                     <form method="post" action="{{url('/login_submit')}}" enctype="multipart/form-data">
                     @csrf
-                    <div class="row px-3"> 
-                        <label class="mb-1">
-                            <h6 class="mb-0 text-sm">Email Address</h6>
-                        </label> 
-                        <input class="mb-4" type="email" name="email" placeholder="Enter a valid email address">
-                    </div>
-                    <div class="row px-3"> <label class="mb-1">
-                            <h6 class="mb-0 text-sm">Password</h6>
-                        </label> 
-                        <input type="password" name="password" placeholder="Enter password" id="pass"><br>
+                    <div class="row px-3">
+                            <label for="email" class="mt-4">{{ __('E-Mail Address') }}</label>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter Registered Email Address" value="{{ old('email') }}" autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+                    <div class="row px-3">
+                        <label for="password" class="mt-4">{{ __('Password') }}</label>
+                        <input id="pass" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter password" autocomplete="current-password">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror 
                         <a onclick="Password()"><span style="color:#1A237E" class="material-icons">visibility</span></a> Show Password
                     </div>
                         @if (Route::has('password.request'))

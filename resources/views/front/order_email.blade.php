@@ -55,6 +55,7 @@
             margin: 0 !important;
             padding: 0 !important;
             width: 100% !important;
+            text-align: justify !important;
         }
 
         a[x-apple-data-detectors] {
@@ -128,13 +129,13 @@
                                 </tr>
                                 <tr>
                                     <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
-                                        <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">PN INFOSYS provides the best service possible to its customers because for us, our client’s happiness is important. Whatever we choose to do, we do it an exorbitant manner. PN INFOSYS Company provides a full range of maintenance and compliance services for Government and Commercial facilities.</p>
+                                        <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777; text-align: justify;">PN INFOSYS provides the best service possible to its customers because for us, our client’s happiness is important. Whatever we choose to do, we do it an exorbitant manner. PN INFOSYS Company provides a full range of maintenance and compliance services for Government and Commercial facilities.</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="left" style="padding-top: 20px;">
+                                    <td style="padding-top: 20px;">
                                         <div class="col-12 table-responsive">
-        <table class="table table-striped">
+        <table class="table table-striped table-bordered">
           <thead>
           <tr>
             <th>#</th>
@@ -199,29 +200,34 @@
                         </td>
                     </tr>
                     <tr>
-                        <td align="center" height="100%" valign="top" width="100%" style="padding: 0 35px 35px 35px; background-color: #ffffff;" bgcolor="#ffffff">
-                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:660px;">
+                        <td height="100%" valign="top" width="100%" style="padding: 0 35px 35px 35px; background-color: #ffffff;" bgcolor="#ffffff">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:100%;">
                                 <tr>
-                                    <td align="center" valign="top" style="font-size:0;">
-                                        <div style="display:inline-block; max-width:50%; min-width:240px; vertical-align:top; width:100%;">
-                                            <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
+                                    <td valign="top" style="font-size:0;">
+                                        <div style="display:inline-block; max-width:100%; vertical-align:top; width:100%;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:100%;">
                                                 <tr>
-                                                    <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
-                                                        <p style="font-weight: 800;">Customer Address</p>
+                                                    <td valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
+                                                        <p style="font-weight: 800;text-align: justify;">Customer Address</p>
                                                         @foreach($corder as $a)
                                                         @if($id==$a->id)
-                                                        <p>{{$a->fname}} {{$a->lname}}<br>{{$a->address}}<br>{{$a->city}}, {{$a->pincode}}, {{$a->state}}, {{$a->country}}<br>
+                                                        <p><b>Name: </b>{{$a->fname}} {{$a->lname}}<br>
+                                                        <b>Address: </b>{{$a->address}},
+                                                        {{$a->city}}, {{$a->pincode}}, {{$a->state}}, {{$a->country}}<br>
+                                                        <b>Contact: </b>
                                                         {{$a->phone}}<br>
+                                                        <b>E-Mail: </b>
                                                         {{$a->user_email}}</p>
                                                     </td>
                                                 </tr>
                                             </table>
                                         </div>
-                                        <div style="display:inline-block; max-width:50%; min-width:240px; vertical-align:top; width:100%;">
-                                            <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
+                                        <br>
+                                        <div style="display:inline-block; max-width:100%; vertical-align:top; width:100%;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:100%;">
                                                 <tr>
-                                                    <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
-                                                        <p style="font-weight: 800;">Order Details</p>
+                                                    <td valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
+                                                        <p style="font-weight: 800;text-align: justify;">Order Details</p>
                                                         <p>
                                                             @if($a->payment_methode=="Cash On Dilevery")
                   @endif

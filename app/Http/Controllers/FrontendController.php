@@ -133,6 +133,8 @@ class FrontendController extends Controller
         $course= Course::all();
         $categorylist = Category::all();
         $category = Category::find($id);
+        $rating = Rating::all();
+        $c_order= Course_order_product::all();
         if(Auth::check()){
             $user_email=Auth::User()->email;
             $cart= Cart::where('user_email',$user_email)->get();
@@ -143,7 +145,7 @@ class FrontendController extends Controller
             // die;
             $cart= Cart::where('session_id',$session_id)->get();
         }
-        return view("front.categorylist",compact('course','navbar','category','categorylist','cart'));
+        return view("front.categorylist",compact('course','navbar','category','categorylist','cart','rating','c_order'));
     }
     public function ourteam(){
         $session_id = Session::getId();
@@ -248,9 +250,9 @@ class FrontendController extends Controller
     public function contactsubmit(Request $a)
     {   
         $this->validate($a,[
-        "name"=>"required",
+        "name"=>['required', 'string', 'max:255'],
         "email"=>['required', 'string', 'email', 'max:255'],
-        "contact"=>"required",
+        "contact"=>['required', 'numeric', 'digits:10'],
         "comment"=>"required",
         ]);
         $r = new Contact;

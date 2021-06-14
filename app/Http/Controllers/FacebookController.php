@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use Socialite;
 use Exception;
 use Auth;
+use Session;
+
 class FacebookController extends Controller
 {/**
      * Create a new controller instance.
@@ -38,6 +40,8 @@ class FacebookController extends Controller
      
             if($finduser){
                 Auth::login($finduser);
+                Session::put('ashu',$user->id);
+                Session::forget('kulpreet');
 
                 if($cart!='[]'){
                     // echo"true";
@@ -58,6 +62,8 @@ class FacebookController extends Controller
                 ]);
     
                 Auth::login($newUser);
+                Session::put('ashu',$user->id);
+                Session::forget('kulpreet');
      
                 if($cart!='[]'){
                     // echo"true";

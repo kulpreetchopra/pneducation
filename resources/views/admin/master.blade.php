@@ -115,8 +115,12 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel pb-3 d-flex">
         <div class="info">
-          <a style="color: white;font-size:18px" href="{{url('admin')}}" class="d-block"><i class="fas fa-envelope"></i>&nbsp; {{ Auth::user()->email }}</a>
-          <a style="color: white;font-size:18px" href="{{url('admin')}}" class="d-block"><i class="fas fa-phone-alt"></i>&nbsp; {{ Auth::user()->phone }}</a>
+          <?php
+          $mail=Auth::user()->email;
+          $phone=Auth::user()->phone;
+          ?>
+          <a style="color: white;font-size:18px" href="mailto:<?php echo$mail; ?>" class="d-block"><i class="fas fa-envelope"></i>&nbsp; {{ Auth::user()->email }}</a>
+          <a style="color: white;font-size:18px" href="tel:<?php echo$phone; ?>" class="d-block"><i class="fas fa-phone-alt"></i>&nbsp; {{ Auth::user()->phone }}</a>
         </div>
       </div>
       <p style="border-bottom-style: ridge;border-bottom-color: white;"></p>

@@ -183,17 +183,6 @@ class CartController extends Controller
             return redirect('thanks')->with('message','Order Submitted Successfully');  //reduct rout of url
         }
         elseif($r['payment_methode']=="Paytm"){
-            $user = User::where('email',$a->user_email)->first(); 
-            $to = $a->user_email;
-            $navbar = Navbar::all();
-            $corder = Courseorder::all();
-            $corderd = Course_order_product::all();
-            $id = $r->id;
-            $subject = 'User Order Successful';
-            $message = "Your Order Is Successful In PnInfosys Course Program \n\n";
-            Mail::send('front.order_email', ['msg' => $message,'navbar' => $navbar,'corder' => $corder,'corderd' => $corderd,'id' => $id, 'user' => $user] , function($message) use ($to){ 
-                $message->to($to, 'User')->subject('User Order');  
-            }); 
             return view('front.paytm-merchant-form',compact('paytm_txn_url','paramList','checksum'));
         }
         else{
@@ -252,6 +241,47 @@ class CartController extends Controller
     public function paymentfail()
     {
         return view('front.payment-fail');
+    }
+    public function orderemail()
+    {
+        $navbar = Navbar::all();
+        $corder = Courseorder::all();
+        $corderd = Course_order_product::all();
+        $id=1;
+        return view('front.order_email',compact('navbar','corder','corderd','id'));
+    }
+    //callback
+       public function paytmCallback( Request $request ) {
+        // return $request;
+        $order_id = $request['ORDERID'];
+
+        if ( 'TXN_SUCCESS' === $request['STATUS'] ) {
+            $transaction_id = $request['TXNID'];
+            $order = Courseorder::where( 'order_id', $order_id )->first();
+            $order->order_status = 'Complete';
+            $order->transaction_id = $transaction_id;
+            $order->save();
+            $user_email=Auth::User()->email;
+            DB::table('carts')->where('user_email',$user_email)->delete();
+            //order email
+            $user = User::where('email',$user_email)->first(); 
+            $to = $user_email;
+            $navbar = Navbar::all();
+            $corder = Courseorder::all();
+            $corderd = Course_order_product::all();
+            $id = $order->id;
+            $subject = 'User Order Successful';
+            $message = "Your Order Is Successful In PnInfosys Course Program \n\n";
+            Mail::send('front.order_email', ['msg' => $message,'navbar' => $navbar,'corder' => $corder,'corderd' => $corderd,'id' => $id, 'user' => $user] , function($message) use ($to){ 
+                $message->to($to, 'User')->subject('User Order');  
+            }); 
+            //end oreder email
+            return view('front.payment-success');
+            // echo$order;
+           } 
+           else if( 'TXN_FAILURE' === $request['STATUS'] ){
+            return view( 'front.payment-fail' );
+        }
     }
 
     public function getAllEncdecFunc(){
@@ -525,28 +555,5 @@ define('PAYTM_STATUS_QUERY_URL', $PAYTM_STATUS_QUERY_NEW_URL);
 define('PAYTM_STATUS_QUERY_NEW_URL', $PAYTM_STATUS_QUERY_NEW_URL);
 define('PAYTM_TXN_URL', $PAYTM_TXN_URL);
     }
-
-    //callback
-public function paytmCallback( Request $request ) {
-
-        // return $request;
-        $order_id = $request['ORDERID'];
-
-        if ( 'TXN_SUCCESS' === $request['STATUS'] ) {
-            $transaction_id = $request['TXNID'];
-            $order = Courseorder::where( 'order_id', $order_id )->first();
-            $order->order_status = 'Complete';
-            $order->transaction_id = $transaction_id;
-            $order->save();
-            $user_email=Auth::User()->email;
-            DB::table('carts')->where('user_email',$user_email)->delete();
-            return view('front.payment-success');
-            // echo$order;
-           } 
-           else if( 'TXN_FAILURE' === $request['STATUS'] ){
-            return view( 'front.payment-fail' );
-        }
-    }
-
 }
 

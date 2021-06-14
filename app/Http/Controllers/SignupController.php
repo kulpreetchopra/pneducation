@@ -9,6 +9,8 @@ use App\Navbar;
 use App\Cart;
 use DB;
 use Auth;
+use FrontLogin;
+use AccountLogin;
 use Session;
 
 class SignupController extends Controller
@@ -35,15 +37,15 @@ class SignupController extends Controller
         'fname' => ['required', 'string', 'max:255'],
         'lname' => ['required', 'string', 'max:255'],
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        'phone' => ['required', 'string', 'max:10'],
-        'password' => ['required', 'string', 'min:5'],
+        'phone' => ['required', 'numeric', 'digits:10'],
+        'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     	$r = new User;
     	$r->fname=$a->fname;
         $r->lname=$a->lname;
     	$r->email=$a->email;
         $r->phone=$a->phone;
-        $r->role="User";
+        $r->role=$a->role;
     	$r->password=Hash::make($a->password);
     	$r->save();
     	if($r){
@@ -102,12 +104,21 @@ class SignupController extends Controller
     { 
         $this->validate($b,[
         'email' => ['required', 'string', 'email', 'max:255'],
-        'password' => ['required', 'string', 'min:5'],
+        'password' => ['required', 'string', 'min:6'],
         ]);
         $session_id = Session::getId();
         $data=$b->all();
-        echo$cart= Cart::where('user_email',$b->email)->get();
-        if(Auth::attempt(['email'=>$data['email'],'password'=>$data['password'],'role'=>"User"])){
+        $cart= Cart::where('user_email',$b->email)->get();
+        if(Auth::attempt(['email'=>$data['email'],'password'=>$data['password']])){
+            $check_role = User::where('email',$data['email'])->first();
+            if($check_role['role']==1){
+                Session::put('kulpreet',$data['email']);
+                Session::forget('ashu');
+                return redirect('/admin');
+            }
+            elseif($check_role['role']==0){
+            Session::put('ashu',$data['email']);
+            Session::forget('kulpreet');
             Cart::where('session_id',$session_id)->update(['user_email'=>$data['email']]);
             if($cart!='[]'){
                 // echo"true";
@@ -117,22 +128,16 @@ class SignupController extends Controller
                 // echo"false";
                 return redirect("/")->with('message','Login Successfully');
             }
+            }
         }
         else{
             return redirect("user_login")->with('wmessage','Login Unsuccessfully');
         }  
-    	// print_r($a->all());
-     //    $query = Signup::where('email',$b->email)->where('password',$b->password)->get()->first();
-     //    if($query){
-     //    	return redirect("checkout")->with('message','Login Successfully');
-     //    }
-     //    else{
-     //    	return redirect("user_login")->with('wmessage','Login Unsuccessfully');
-     //    }
     }
     public function user_logout()
     {
-        $logout=Auth::logout();
+        Auth::logout();
+        Session::forget('kulpreet');
         return redirect('/')->with('message','Logout Successfully');  //reduct rout of url
     }
 }

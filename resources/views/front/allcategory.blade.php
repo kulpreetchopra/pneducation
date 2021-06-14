@@ -28,7 +28,7 @@
 								<a href="{{url('categorylist/'.$category->id)}}" class="grid-btn">
 									<i class="fa fa-bars" aria-hidden="true"></i>
 								</a>
-								<span>Showing all results</span>
+								<span>Showing all {{$course->where('c_category',$category->c_name)->count()}} results</span>
 							</div>
 							<form class="search-course" method="post" action="{{url('search')}}" enctype="multipart/form-data">
 								@csrf
