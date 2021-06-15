@@ -38,15 +38,15 @@
                     	<div class="row">
 							<div class="col-md-6">
 								<label for="name">Your Name (required)</label>
-								<input name="name" id="name" type="text" value="<?php echo$name ?>" readonly>
+								<input name="name" id="name" type="text" value="<?php echo$name ?>" autofocus readonly>
 							</div>
 							<div class="col-md-6">
 								<label for="mail">Your Email (required)</label>
-								<input name="email" id="mail" type="text" value="<?php echo$email ?>" readonly>
+								<input name="email" id="mail" type="text" value="<?php echo$email ?>" autofocus readonly>
 							</div>
 						</div>
 						<label for="tel-number">Your Phone Number</label>
-						<input name="contact" id="tel-number" type="text" value="<?php echo$phone ?>">
+						<input name="contact" id="tel-number" type="text" value="<?php echo$phone ?>" autofocus>
                     	<?php
                     }
                     else{
@@ -54,20 +54,20 @@
                     	<div class="row">
 							<div class="col-md-6">
 								<label for="name">Your Name (required)</label>
-								<input name="name" id="name" type="text">
+								<input name="name" id="name" type="text"value="{{ old('name') }}" autocomplete="name" autofocus>
 							</div>
 							<div class="col-md-6">
 								<label for="mail">Your Email (required)</label>
-								<input name="email" id="mail" type="text">
+								<input name="email" id="mail" type="text" value="{{ old('email') }}" autocomplete="email" autofocus>
 							</div>
 						</div>
 						<label for="tel-number">Your Phone Number</label>
-						<input name="contact" id="tel-number" type="text">
+						<input name="contact" id="tel-number" type="text" value="{{ old('contact') }}" autocomplete="contact" autofocus>
                     	<?php
                     }
                     ?>
 						<label for="comment">Your Message (required)</label>
-						<textarea name="comment" id="comment"></textarea>
+						<textarea name="comment" id="comment" value="{{ old('comment') }}" autocomplete="comment" autofocus></textarea>
 						<input type="submit" style="color:white;background-color:#1A237E" class="btn" name="submit" value="Submit Contact">
 						<div id="msg" class="message"></div>
 					</form>

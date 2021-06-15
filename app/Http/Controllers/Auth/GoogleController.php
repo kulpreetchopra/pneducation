@@ -8,7 +8,10 @@ use Auth;
 use Exception;
 use App\User;
 use App\Cart;
+use App\Navbar;
 use Session;
+use Mail;
+
   
 class GoogleController extends Controller
 {
@@ -65,10 +68,24 @@ class GoogleController extends Controller
                 Session::forget('kulpreet');
      
                 if($cart!='[]'){
+                    $user = User::where('email',$user->email)->first(); 
+                    $to = $user->email;
+                    $navbar = Navbar::all();
+                    $subject = 'User Registered Successful';
+                    $message = "Your Registration Is Successful In PnInfosys Course Program \n\n";
+                    Mail::send('front.register_email', ['msg' => $message,'user' => $user,'navbar' => $navbar] , function($message) use ($to){ 
+                    $message->to($to, 'User')->subject('User Registered');});
                     // echo"true";
                     return redirect("addtocart")->with('message','Login Successfully');
                 }
                 else{
+                    $user = User::where('email',$user->email)->first(); 
+                    $to = $user->email;
+                    $navbar = Navbar::all();
+                    $subject = 'User Registered Successful';
+                    $message = "Your Registration Is Successful In PnInfosys Course Program \n\n";
+                    Mail::send('front.register_email', ['msg' => $message,'user' => $user,'navbar' => $navbar] , function($message) use ($to){ 
+                    $message->to($to, 'User')->subject('User Registered');});
                     // echo"false";
                     return redirect("/")->with('message','Login Successfully');
                 }

@@ -17,7 +17,7 @@ class FrontLogin
     public function handle($request, Closure $next)
     {
         if (empty(Session::has('kulpreet'))) {
-            return redirect('/user_login')->with('wmessage',"You are not login as Admin login first to reach 'Admin Dashboard' !!");;
+            return redirect('/user_login')->with('wmessage',"You are not login as Admin, login first to reach 'Admin Dashboard' !!");;
             }
         return $next($request);
     }

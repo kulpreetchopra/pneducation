@@ -12,6 +12,7 @@ use Auth;
 use FrontLogin;
 use AccountLogin;
 use Session;
+use Mail;
 
 class SignupController extends Controller
 {
@@ -49,6 +50,14 @@ class SignupController extends Controller
     	$r->password=Hash::make($a->password);
     	$r->save();
     	if($r){
+            $user = User::where('email',$a->email)->first(); 
+            $to = $a->email;
+            $navbar = Navbar::all();
+            $subject = 'User Registered Successful';
+            $message = "Your Registration Is Successful In PnInfosys Course Program \n\n";
+            Mail::send('front.register_email', ['msg' => $message,'user' => $user,'navbar' => $navbar] , function($message) use ($to){ 
+                $message->to($to, 'User')->subject('User Registered');  
+            });
     		return redirect('user_login')->with('message','Registered Successfully Now Login First');  //reduct rout of url
     	}
     	else{

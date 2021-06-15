@@ -25,6 +25,7 @@ use App\Courseorder;
 use App\Course_order_product;
 use Session;
 use Auth;
+use Mail;
 
 class FrontendController extends Controller
 {
@@ -271,16 +272,24 @@ class FrontendController extends Controller
     public function subscribersubmit(Request $a)
     {   
         $this->validate($a,[
-        "email"=>['required', 'string', 'email', 'max:255', 'unique:users'],
+        "email"=>['required', 'string', 'email', 'max:255', 'unique:subscribes'],
         ]);
         $r = new Subscribe;
         $r->email=$a->email;
         $r->save();
         if($r){
-            return redirect('/')->with('message','Subscribed Successfully');
+            $user = Subscribe::where('email',$a->email)->first(); 
+            $to = $a->email;
+            $navbar = Navbar::all();
+            $subject = 'User Subscribed Successful';
+            $message = "Your E-Mail Address Is Successful Subscribed In PnInfosys Course Program \n\n";
+            Mail::send('front.subscribe_email', ['msg' => $message,'user' => $user,'navbar' => $navbar] , function($message) use ($to){ 
+                $message->to($to, 'User')->subject('User Subscribed');  
+            }); 
+            return redirect('/')->with('message','E-Mail Subscribed Successfully');
         }
         else{
-            return redirect('/')->with('wmessage','Subscribed Unsuccessfully');
+            return redirect('/')->with('wmessage','E-Mail Subscribed Unsuccessfully');
         }
     }
     public function ratingsubmit(Request $a)

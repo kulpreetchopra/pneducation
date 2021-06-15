@@ -58,7 +58,6 @@
                   <th>Id</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Email Verified@</th>
                   <th>Phone</th>
                   <th>Role</th>
                   <th>Google Id</th>
@@ -71,13 +70,16 @@
                   <tr style="text-align: center;">
                     <td>{{$a->id}}</td>
                     <td>{{$a->fname}} {{$a->lname}}</td>
-                    <td>{{$a->email}}</td>
-                    <td>{{$a->email_verified_at}}</td>
+                    <td>{{$a->email}}
+                      @if($a->email_verified_at!=NULL)
+                      <i style="color: green" class="fas fa-check-circle"></i>
+                      @endif
+                    </td>
                     <td>{{$a->phone}}</td>
                     @if($a->role==1)
-                    <td>{{'Admin'}}</td>
+                    <td><i style="color: #1A237E" class="fas fa-user-shield"></i> {{'Admin'}}</td>
                     @else
-                    <td>{{'User'}}</td>
+                    <td><i style="color: #17a2b8" class="fas fa-user-tie"></i> {{'User'}}</td>
                     @endif
                     <td>{{$a->google_id}}</td>
                     <td>{{$a->facebook_id}}</td>
@@ -90,7 +92,6 @@
                   <th>Id</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Email Verified@</th>
                   <th>Phone</th>
                   <th>Role</th>
                   <th>Google Id</th>

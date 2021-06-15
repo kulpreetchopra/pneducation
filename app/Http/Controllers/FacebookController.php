@@ -3,14 +3,15 @@
 
 namespace App\Http\Controllers;
 
-
 use App\User;
 use App\Cart;
+use App\Navbar;
 use App\Http\Controllers\Controller;
 use Socialite;
 use Exception;
 use Auth;
 use Session;
+use Mail;
 
 class FacebookController extends Controller
 {/**
@@ -66,11 +67,25 @@ class FacebookController extends Controller
                 Session::forget('kulpreet');
      
                 if($cart!='[]'){
+                    $user = User::where('email',$user->email)->first(); 
+                    $to = $user->email;
+                    $navbar = Navbar::all();
+                    $subject = 'User Registered Successful';
+                    $message = "Your Registration Is Successful In PnInfosys Course Program \n\n";
+                    Mail::send('front.register_email', ['msg' => $message,'user' => $user,'navbar' => $navbar] , function($message) use ($to){ 
+                    $message->to($to, 'User')->subject('User Registered');});
                     // echo"true";
                     return redirect("addtocart")->with('message','Login Successfully');
                 }
                 else{
                     // echo"false";
+                    $user = User::where('email',$user->email)->first(); 
+                    $to = $user->email;
+                    $navbar = Navbar::all();
+                    $subject = 'User Registered Successful';
+                    $message = "Your Registration Is Successful In PnInfosys Course Program \n\n";
+                    Mail::send('front.register_email', ['msg' => $message,'user' => $user,'navbar' => $navbar] , function($message) use ($to){ 
+                    $message->to($to, 'User')->subject('User Registered');});
                     return redirect("/")->with('message','Login Successfully');
                 }
             }
