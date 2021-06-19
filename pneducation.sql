@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2021 at 07:17 PM
+-- Generation Time: Jun 19, 2021 at 12:37 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -195,7 +195,7 @@ CREATE TABLE `coupans` (
 INSERT INTO `coupans` (`id`, `coupan_code`, `discount`, `status`, `expiry_date`, `created_at`, `updated_at`) VALUES
 (1, '1001', '30', '1', '2021-12-31', '2021-03-24 23:28:22', '2021-06-02 04:37:55'),
 (2, '1002', '20', '1', '2021-03-31', '2021-03-24 23:38:13', '2021-06-02 04:03:58'),
-(3, '1003', '70', '1', '2021-05-27', '2021-05-18 02:43:57', '2021-06-14 11:21:45'),
+(3, '1003', '70', '0', '2021-05-27', '2021-05-18 02:43:57', '2021-06-19 04:03:28'),
 (4, '1004', '40', '1', '2021-05-31', '2021-05-19 04:25:44', '2021-05-19 04:25:44'),
 (5, '1005', '60', '1', '2021-08-11', '2021-06-01 23:44:57', '2021-06-01 23:44:57');
 
@@ -576,6 +576,7 @@ CREATE TABLE `users` (
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `role` int(11) DEFAULT 0,
+  `active` int(11) NOT NULL DEFAULT 1,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -587,8 +588,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `email_verified_at`, `phone`, `password`, `role`, `remember_token`, `created_at`, `updated_at`, `google_id`, `facebook_id`) VALUES
-(1, 'Kulpreet', 'Chopra', 'kulpreetchopra0128@gmail.com', '2021-06-14 11:44:32', '6266060879', '$2y$10$3ZtHEgIhnzMd4G2xotRVN.nI0jE4KfWbLuZfCOc7BxU7zTaAPMHNy', 1, NULL, '2021-06-14 11:43:22', '2021-06-14 11:44:32', NULL, NULL);
+INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `email_verified_at`, `phone`, `password`, `role`, `active`, `remember_token`, `created_at`, `updated_at`, `google_id`, `facebook_id`) VALUES
+(1, 'Kulpreet Chopra', NULL, 'choprakulpreet@gmail.com', NULL, NULL, 'eyJpdiI6IktMU09sZ2U1T085SWVHRGJzM2tnQVE9PSIsInZhbHVlIjoiY2RoTUNGU21vTE9xNjY2WnMwU3JsbWcyblFlUkg3NFV1T2VHTzRxdmF1TT0iLCJtYWMiOiIxMzg5NzQwMGNmNjZkNmNkZTc1YTliNjliYzIyZjU3NTE0NDZlMGM2MjBlNWE3OWU1ZjVhMzFhZjk3YzFkYzllIn0=', 0, 0, NULL, '2021-06-18 11:53:31', '2021-06-18 11:53:31', '117272328578037220656', NULL),
+(2, 'Kulpreet', 'Chopra', 'kulpreetsingh0128@gmail.com', '2021-06-18 11:54:54', '6266060879', '$2y$10$Z/SGu.wSGTYBgp9DT5UQ6OHPPHSL2GZIIHAeLYunJ1Z56yePlo.6i', 1, 0, NULL, '2021-06-18 11:54:38', '2021-06-18 11:54:54', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -909,7 +911,7 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `workshops`
