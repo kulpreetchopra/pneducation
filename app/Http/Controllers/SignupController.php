@@ -47,9 +47,10 @@ class SignupController extends Controller
     	$r->email=$a->email;
         $r->phone=$a->phone;
         $r->role=$a->role;
+        $r->active=$a->active;
     	$r->password=Hash::make($a->password);
     	$r->save();
-    	if($r){
+    	if($r){ 
             $user = User::where('email',$a->email)->first(); 
             $to = $a->email;
             $navbar = Navbar::all();
@@ -118,12 +119,13 @@ class SignupController extends Controller
         $session_id = Session::getId();
         $data=$b->all();
         $cart= Cart::where('user_email',$b->email)->get();
+        DB::table('users')->where(['email'=>$b->email])->update(['active'=>1]);
         if(Auth::attempt(['email'=>$data['email'],'password'=>$data['password']])){
             $check_role = User::where('email',$data['email'])->first();
             if($check_role['role']==1){
                 Session::put('kulpreet',$data['email']);
                 Session::forget('ashu');
-                return redirect('/admin');
+                return redirect('/admin')->with('message','Login Successfully');
             }
             elseif($check_role['role']==0){
             Session::put('ashu',$data['email']);
@@ -145,6 +147,8 @@ class SignupController extends Controller
     }
     public function user_logout()
     {
+        echo$email=Auth::User()->email;
+        DB::table('users')->where(['email'=>$email])->update(['active'=>0]);
         Auth::logout();
         Session::forget('kulpreet');
         return redirect('/')->with('message','Logout Successfully');  //reduct rout of url

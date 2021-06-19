@@ -28,11 +28,23 @@
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    <center>
+                      @if(session('message'))
+                      <p class ="alert alert-success">
+                        {{session('message')}}
+                      </p>
+                      @endif
+                      @if(session('wmessage'))
+                      <p class ="alert alert-danger">
+                        {{session('wmessage')}}
+                      </p>
+                      @endif
+                      @if (session('status'))
+                      <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                      </div>
+                      @endif
+                    </center>
                     <div style="background-color: #138086;color: white" class="alert" role="alert">
                     {{ __('You are logged in as ') }}<b> 
                     @if(Auth::user()->role==1)
@@ -42,6 +54,18 @@
                     @endif
                     </b>
                     <p>Welcome <b>{{ Auth::user()->fname }} {{ Auth::user()->lname }}</b> to the Admin Dashboard!!</p>
+                    <!-- user activity -->
+                    <p><b><a href="{{url('admin/users')}}" class="small-box-footer"><i class="fas fa-lightbulb text"></i>Active Users And Admins [{{$signup->where('active',1)->count()}}] <i class="fas fa-arrow-circle-right"></i></a></b></p>
+                    @foreach($signup as $a)
+                    @if($a->active==1)
+                      @if($a->role==1)
+                      <i class="fas fa-user-shield"></i>
+                      @else
+                      <i class="fas fa-user-tie"></i>
+                      @endif
+                      &nbsp;{{$a->fname}} {{$a->lname}} ({{$a->email}})</br>
+                    @endif
+                    @endforeach
                     </div>
                 </div>
         <div class="row" style="padding: 2%">
@@ -103,7 +127,7 @@
           </div>
           <!-- ./col -->
         </div>
-            </div>
+      </div>
         </div>
     </div>
 </div>

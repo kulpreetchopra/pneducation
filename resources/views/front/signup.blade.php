@@ -171,6 +171,7 @@ a {
                       </label> 
                       <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter Email Address" autocomplete="email">
                       <input type="hidden" name="role" value=0>
+                      <input type="hidden" name="active" value=0>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -60,8 +60,9 @@
                   <th>Email</th>
                   <th>Phone</th>
                   <th>Role</th>
-                  <th>Google Id</th>
-                  <th>Facebook Id</th>
+                  <th>Active_Status</th>
+                  <th>Google_Id</th>
+                  <th>Facebook_Id</th>
                   <th>Date</th>
                 </tr>
                 </thead>
@@ -75,14 +76,36 @@
                       <i style="color: green" class="fas fa-check-circle"></i>
                       @endif
                     </td>
-                    <td>{{$a->phone}}</td>
+                    <td>
+                      @if($a->phone==NULL)
+                      <i style="font-size: 25px" class="far fa-frown text-warning">
+                      @else
+                      {{$a->phone}}
+                      @endif
+                    </td>
                     @if($a->role==1)
                     <td><i style="color: #1A237E" class="fas fa-user-shield"></i> {{'Admin'}}</td>
                     @else
                     <td><i style="color: #17a2b8" class="fas fa-user-tie"></i> {{'User'}}</td>
                     @endif
-                    <td>{{$a->google_id}}</td>
-                    <td>{{$a->facebook_id}}</td>
+                    @if($a->active==1)
+                    <td><i class="fas fa-lightbulb text-success"></i> {{'Active'}}</td>
+                    @else
+                    <td><i class="fas fa-lightbulb text-danger"></i> {{'InActive'}}</td>
+                    @endif
+                    <td>
+                      @if($a->google_id==NULL)
+                      <i style="font-size: 25px" class="far fa-frown text-warning">
+                      @else
+                      {{$a->google_id}}
+                      @endif
+                    </td>
+                    <td>@if($a->facebook_id==NULL)
+                      <i style="font-size: 25px" class="far fa-frown text-warning">
+                      @else
+                      {{$a->facebook_id}}
+                      @endif
+                    </td>
                     <td>{{$a->created_at}}</td>
                   </tr>
                   @endforeach
@@ -94,8 +117,9 @@
                   <th>Email</th>
                   <th>Phone</th>
                   <th>Role</th>
-                  <th>Google Id</th>
-                  <th>Facebook Id</th>
+                  <th>Active_Status</th>
+                  <th>Google_Id</th>
+                  <th>Facebook_Id</th>
                   <th>Date</th>
                 </tr>
                 </tfoot>

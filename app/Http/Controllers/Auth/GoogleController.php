@@ -11,7 +11,7 @@ use App\Cart;
 use App\Navbar;
 use Session;
 use Mail;
-
+use DB;
   
 class GoogleController extends Controller
 {
@@ -45,6 +45,7 @@ class GoogleController extends Controller
                 Auth::login($finduser);
                 Session::put('ashu',$user->id);
                 Session::forget('kulpreet');
+                DB::table('users')->where(['email'=>$user->email])->update(['active'=>1]);
 
                 if($cart!='[]'){
                     // echo"true";
@@ -66,6 +67,7 @@ class GoogleController extends Controller
                 Auth::login($newUser);
                 Session::put('ashu',$user->id);
                 Session::forget('kulpreet');
+                DB::table('users')->where(['email'=>$user->email])->update(['active'=>1]);
      
                 if($cart!='[]'){
                     $user = User::where('email',$user->email)->first(); 

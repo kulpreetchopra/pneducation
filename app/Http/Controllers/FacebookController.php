@@ -12,6 +12,7 @@ use Exception;
 use Auth;
 use Session;
 use Mail;
+use Auth;
 
 class FacebookController extends Controller
 {/**
@@ -43,6 +44,7 @@ class FacebookController extends Controller
                 Auth::login($finduser);
                 Session::put('ashu',$user->id);
                 Session::forget('kulpreet');
+                DB::table('users')->where(['email'=>$user->email])->update(['active'=>1]);
 
                 if($cart!='[]'){
                     // echo"true";
@@ -65,6 +67,7 @@ class FacebookController extends Controller
                 Auth::login($newUser);
                 Session::put('ashu',$user->id);
                 Session::forget('kulpreet');
+                DB::table('users')->where(['email'=>$user->email])->update(['active'=>1]);
      
                 if($cart!='[]'){
                     $user = User::where('email',$user->email)->first(); 

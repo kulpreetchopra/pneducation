@@ -85,9 +85,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{url('user_logout')}}">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -278,8 +276,7 @@
         </ul>
       </nav>
           <li class="nav-item">
-            <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();">
+            <a href="{{ url('user_logout')}}" class="nav-link">
               <p class="btn btn-success">
                 <i class="nav-icon fas fa-th"></i>
                 {{ __('Logout') }}
