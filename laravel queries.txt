@@ -1,0 +1,20 @@
+php artisan tinker;//to start insert in database
+DB::table('students')->insert(['name'=>'rajfhgf', 'city' =>'efddf@gmail.com']);//students is tablename
+DB::table('students')->get();
+DB::table('students')->orderBy('id','desc')->get();
+DB::table('students')->where(['id'=>3])->get();
+DB::table('students')->where(['id'=>3])->first();
+DB::table('students')->pluck('name');
+DB::table('students')->select('name','email')->get();
+DB::table('students')->select('name','email as email_id')->get();
+DB::table('students')->where(['id'=>2])->update(['name'=>'update name', 'city'=>'update city']);
+//or
+DB::table('students')->where('id',2)->update(['name'=>'update name', 'city'=>'update city']);
+DB::table('students')->where(['id'=>2])->delete();
+//or
+DB::table('students')->where(['id',2])->delete();
+DB::table('students')->count();
+DB::table('students')->max('id');
+DB::table('students')->min('id');
+DB::table('students')->avg('id');
+//exit or ctrl+c

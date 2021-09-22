@@ -1,2 +1,0 @@
-To download bootstrap jquery pooper js
-npm install bootstrap jquery popper.js --save

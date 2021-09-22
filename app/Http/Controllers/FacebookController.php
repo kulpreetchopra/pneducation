@@ -12,7 +12,6 @@ use Exception;
 use Auth;
 use Session;
 use Mail;
-use Auth;
 
 class FacebookController extends Controller
 {/**

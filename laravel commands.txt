@@ -1,0 +1,26 @@
+
+#start server
+php artisan serve
+#exit server
+ctr+c
+#make controller
+php artisan make:controller FrontendController #Frontend is controller name
+#create tinker
+php artisan tinker
+#create migration
+php artisan make:migration create_students_table --create=students #student is table name
+#transfer tables to server
+php artisan migrate
+#create model and migration simultaneously
+php artisan make:model Flight -m  #Flight is modal and migration name
+#create modal,migration and controller simultaneously
+php artisan make:model Curd -mc  #Curd is modal,migration and controller name
+
+#login system(authentication)
+composer require laravel/ui:^2.4
+php artisan ui vue --auth
+npm install && npm run dev(optional)
+
+
+
+
